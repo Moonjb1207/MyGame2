@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IBattle
 {
     public float moveSpeed = 2.0f;
     public Rigidbody rg;
     public int curHP;
-
 
     private void Awake()
     {
@@ -34,5 +33,15 @@ public class Player : MonoBehaviour
     public void MoveTo(Vector3 dir)
     {
         rg.velocity = dir * moveSpeed;
+    }
+
+    public void OnDamage(float dmg)
+    {
+
+    }
+
+    public bool IsLive
+    {
+        get => true;
     }
 }
