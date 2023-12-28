@@ -6,7 +6,7 @@ public class Player : MonoBehaviour, IBattle
 {
     public float moveSpeed = 2.0f;
     public Rigidbody rg;
-    public int curHP;
+    public float curHP;
 
     private void Awake()
     {
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour, IBattle
 
     public void OnDamage(float dmg)
     {
-
+        curHP -= dmg;
     }
 
     public bool IsLive

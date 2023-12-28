@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Enemy : EnemyMovement, IBattle
 {
+    public GameObject Target = null;
+    public float attackRange;
+    public float moveSpeed;
+    public float rotSpeed;
+    public float attackDamage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,5 +29,11 @@ public class Enemy : EnemyMovement, IBattle
     public bool IsLive
     {
         get => true;
+    }
+
+    public void OnAttack()
+    {
+        IBattle ib = Target.GetComponent<IBattle>();
+        ib?.OnDamage(attackDamage);
     }
 }
