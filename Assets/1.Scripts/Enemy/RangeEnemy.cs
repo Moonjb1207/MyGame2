@@ -7,7 +7,7 @@ public class RangeEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        FollowTarget(Target.transform, moveSpeed, rotSpeed, attackRange, OnAttack);
+        enemyMovement.FollowTarget(Player.Instance.transform, moveSpeed, rotSpeed, attackRange, OnAttack);
     }
 
     // Update is called once per frame

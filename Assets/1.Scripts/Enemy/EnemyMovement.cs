@@ -23,23 +23,27 @@ public class EnemyMovement : MonoBehaviour
     public void FollowTarget(Transform target, float moveSpeed, float rotSpeed, float attackRange, NextAction reached = null)
     {
         if (coFollow != null) StopCoroutine(coFollow);
-        coFollow = StartCoroutine(FollowingTarget(target, moveSpeed, rotSpeed, attackRange, reached));
+        coFollow = StartCoroutine(FollowingTarget(target, moveSpeed, rotSpeed, attackRange));
+
+        StartCoroutine(CoAttack(target, attackRange, reached));
     }
 
 
-    IEnumerator FollowingTarget(Transform target, float moveSpeed, float rotSpeed, float attackRange, NextAction reached = null)
+    IEnumerator FollowingTarget(Transform target, float moveSpeed, float rotSpeed, float attackRange)
     {
         while(target != null)
         {
-            float rdelta = rotSpeed * Time.deltaTime;
+            //float rdelta = rotSpeed * Time.deltaTime;
 
             Vector3 dir = target.position - transform.position;
 
             dir.y = 0.0f;
 
-            Vector3 rot =
-                Vector3.RotateTowards(transform.forward, dir, rdelta * Mathf.Deg2Rad, 0.0f);
-            transform.rotation = Quaternion.LookRotation(rot);
+            //Vector3 rot =
+            //    Vector3.RotateTowards(transform.forward, dir, rdelta * Mathf.Deg2Rad, 0.0f);
+            //transform.rotation = Quaternion.LookRotation(rot);
+
+            transform.forward = dir;
 
             if (dir.magnitude > attackRange)
             {
@@ -52,7 +56,18 @@ public class EnemyMovement : MonoBehaviour
 
                 transform.Translate(dir.normalized * delta, Space.World);
             }
-            else if (dir.magnitude <= attackRange)
+
+            yield return null;
+        }
+    }
+
+    IEnumerator CoAttack(Transform target, float attackRange, NextAction reached = null)
+    {
+        while (target != null)
+        {
+            Vector3 dir = target.position - transform.position;
+
+            if (dir.magnitude <= attackRange)
             {
                 reached?.Invoke();
                 yield return new WaitForSeconds(3);

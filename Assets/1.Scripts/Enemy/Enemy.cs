@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : EnemyMovement, IBattle
+public class Enemy : MonoBehaviour, IBattle
 {
-    public GameObject Target = null;
     public float attackRange;
     public float moveSpeed;
     public float rotSpeed;
     public float attackDamage;
+
+    protected EnemyMovement enemyMovement;
+
+    private void Awake()
+    {
+        enemyMovement = GetComponent<EnemyMovement>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +39,7 @@ public class Enemy : EnemyMovement, IBattle
 
     public void OnAttack()
     {
-        IBattle ib = Target.GetComponent<IBattle>();
+        IBattle ib = Player.Instance.GetComponent<IBattle>();
         ib?.OnDamage(attackDamage);
     }
 }
