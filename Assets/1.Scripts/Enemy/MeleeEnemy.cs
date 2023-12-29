@@ -7,7 +7,7 @@ public class MeleeEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        enemyMovement.FollowTarget(Player.Instance.transform, moveSpeed, rotSpeed, attackRange, OnAttack);
+        enemyMovement.FollowTarget(Player.Instance.transform, moveSpeed, attackRange, OnAttack);
     }
 
     // Update is called once per frame

@@ -8,6 +8,13 @@ public class EnemyMovement : MonoBehaviour
 {
     Coroutine coFollow = null;
 
+    public Animator myAnim;
+
+    private void Awake()
+    {
+        myAnim = GetComponentInChildren<Animator>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,16 +27,16 @@ public class EnemyMovement : MonoBehaviour
         
     }
 
-    public void FollowTarget(Transform target, float moveSpeed, float rotSpeed, float attackRange, NextAction reached = null)
+    public void FollowTarget(Transform target, float moveSpeed, float attackRange, NextAction reached = null)
     {
         if (coFollow != null) StopCoroutine(coFollow);
-        coFollow = StartCoroutine(FollowingTarget(target, moveSpeed, rotSpeed, attackRange));
+        coFollow = StartCoroutine(FollowingTarget(target, moveSpeed, attackRange));
 
         StartCoroutine(CoAttack(target, attackRange, reached));
     }
 
 
-    IEnumerator FollowingTarget(Transform target, float moveSpeed, float rotSpeed, float attackRange)
+    IEnumerator FollowingTarget(Transform target, float moveSpeed, float attackRange)
     {
         while(target != null)
         {
@@ -45,8 +52,10 @@ public class EnemyMovement : MonoBehaviour
 
             transform.forward = dir;
 
-            if (dir.magnitude > attackRange)
+            if (dir.magnitude > attackRange && !myAnim.GetBool("IsAttacking"))
             {
+                myAnim.SetBool("IsMoving", true);
+
                 float delta = moveSpeed * Time.deltaTime;
 
                 if(delta > dir.magnitude - attackRange)
@@ -61,7 +70,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    IEnumerator CoAttack(Transform target, float attackRange, NextAction reached = null)
+    IEnumerator CoAttack(Transform target, float attackRange, NextAction reached = null, float attackDelay = 3)
     {
         while (target != null)
         {
@@ -69,8 +78,10 @@ public class EnemyMovement : MonoBehaviour
 
             if (dir.magnitude <= attackRange)
             {
+                myAnim.SetBool("IsMoving", false);
+
                 reached?.Invoke();
-                yield return new WaitForSeconds(3);
+                yield return new WaitForSeconds(attackDelay);
             }
 
             yield return null;

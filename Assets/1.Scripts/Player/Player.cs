@@ -12,8 +12,13 @@ public class Player : MonoBehaviour, IBattle
     public float curHP;
 
     public Transform bodyTr;
+    public GameObject curWeapon;
+    public Transform shootingPos;
+    public LayerMask myEnemy;
 
     Joystick joystick;
+
+    Animator myAnim;
 
     private void Awake()
     {
@@ -24,7 +29,10 @@ public class Player : MonoBehaviour, IBattle
 
         joystick = FindObjectOfType<Joystick>();
 
-        bodyTr = transform.Find("Body");
+        bodyTr = transform.Find("P_Jungle_Charc");
+        shootingPos = curWeapon.transform.Find("shotPos");
+
+        myAnim = bodyTr.GetComponent<Animator>();
 
         Debug.Log(joystick.Direction);
     }
@@ -49,6 +57,12 @@ public class Player : MonoBehaviour, IBattle
             Vector3 dir = new Vector3(joystick.Direction.x, 0, joystick.Direction.y);
 
             MoveTo(dir);
+
+            myAnim.SetBool("IsMoving", true);
+        }
+        else
+        {
+            myAnim.SetBool("IsMoving", false);
         }
     }
 
@@ -66,5 +80,38 @@ public class Player : MonoBehaviour, IBattle
     public bool IsLive
     {
         get => true;
+    }
+
+    public void OnMeleeAttack()
+    {
+        if(myAnim.GetBool("IsAttacking"))
+            return;
+
+        myAnim.SetTrigger("M_Attacking");
+
+        Vector3 attackPos = transform.position + new Vector3(0, 0.8f, 0.8f);
+
+        Collider[] list = Physics.OverlapSphere(attackPos, 0.5f, myEnemy);
+        if (list != null)
+        {
+            foreach(Collider col in list)
+            {
+                col.GetComponent<IBattle>().OnDamage(3);
+            }
+        }
+    }
+
+    public void OnRangedAttack()
+    {
+        if (myAnim.GetBool("IsAttacking"))
+            return;
+
+        myAnim.SetTrigger("R_Attacking");
+        Shooting();
+    }
+
+    public void Shooting()
+    {
+        GameObject obj = Instantiate(Resources.Load("Prefabs/Bullet"), shootingPos.position, shootingPos.rotation) as GameObject;
     }
 }

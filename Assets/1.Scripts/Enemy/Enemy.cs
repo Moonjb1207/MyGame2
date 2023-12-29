@@ -9,11 +9,15 @@ public class Enemy : MonoBehaviour, IBattle
     public float rotSpeed;
     public float attackDamage;
 
+    public float curHP;
+
     protected EnemyMovement enemyMovement;
 
     private void Awake()
     {
         enemyMovement = GetComponent<EnemyMovement>();
+
+        curHP = 10;
     }
 
     // Start is called before the first frame update
@@ -29,7 +33,7 @@ public class Enemy : MonoBehaviour, IBattle
     }
     public void OnDamage(float dmg)
     {
-
+        curHP -= dmg;
     }
 
     public bool IsLive
@@ -41,5 +45,6 @@ public class Enemy : MonoBehaviour, IBattle
     {
         IBattle ib = Player.Instance.GetComponent<IBattle>();
         ib?.OnDamage(attackDamage);
+        enemyMovement.myAnim.SetTrigger("Attacking");
     }
 }
