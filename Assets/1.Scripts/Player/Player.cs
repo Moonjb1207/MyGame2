@@ -7,7 +7,7 @@ public class Player : MonoBehaviour, IBattle
     private static Player instance;
     public static Player Instance => instance;
 
-    public float moveSpeed = 2.0f;
+    public float moveSpeed = 4.0f;
     public Rigidbody rg;
     public float curHP;
 
@@ -15,6 +15,12 @@ public class Player : MonoBehaviour, IBattle
     public GameObject curWeapon;
     public Transform shootingPos;
     public LayerMask myEnemy;
+
+    public int shootingCount;
+    public float shootingDelay;
+    public int curWeapNum;
+
+    public Transform weaponContainer;
 
     Joystick joystick;
 
@@ -33,8 +39,10 @@ public class Player : MonoBehaviour, IBattle
         shootingPos = curWeapon.transform.Find("shotPos");
 
         myAnim = bodyTr.GetComponent<Animator>();
+        myAnim.SetFloat("AttackDelay", 1.5f);
 
-        Debug.Log(joystick.Direction);
+        shootingCount = 3;
+        shootingDelay = 0.2f;
     }
 
     // Start is called before the first frame update
@@ -69,7 +77,7 @@ public class Player : MonoBehaviour, IBattle
     public void MoveTo(Vector3 dir)
     {
         rg.velocity = dir * moveSpeed;
-        bodyTr.forward = dir;
+        bodyTr.forward = dir.normalized;
     }
 
     public void OnDamage(float dmg)
@@ -107,11 +115,29 @@ public class Player : MonoBehaviour, IBattle
             return;
 
         myAnim.SetTrigger("R_Attacking");
-        Shooting();
+        StartCoroutine(shootingBullets(shootingCount, shootingDelay));
     }
 
     public void Shooting()
     {
-        GameObject obj = Instantiate(Resources.Load("Prefabs/Bullet"), shootingPos.position, shootingPos.rotation) as GameObject;
+        Instantiate(Resources.Load("Prefabs/Bullet") as GameObject, shootingPos.position, shootingPos.rotation);
+    }
+
+    IEnumerator shootingBullets(int count, float delay)
+    {
+        myAnim.SetBool("IsAttacking", true);
+        while(count != 0)
+        {
+            count--;
+            Shooting();
+            yield return new WaitForSeconds(delay);
+        }
+        myAnim.SetBool("IsAttacking", false);
+    }
+    
+    public void equipWeapon(int weapNum)
+    {
+        weaponContainer.GetChild(curWeapNum).gameObject.SetActive(false);
+        weaponContainer.GetChild(weapNum).gameObject.SetActive(true);
     }
 }
