@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
     private void Awake()
     {
         LifeTime = 5.0f;
-        moveSpeed = 3.0f;
+        moveSpeed = 20.0f;
         Damage = 2.0f;
     }
 
@@ -25,33 +25,49 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LifeTime -= Time.deltaTime;
-        if(LifeTime < 0)
-        {
-            Destroy(gameObject);
-        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if((myEnemy & 1 << other.gameObject.layer) != 0)
-        {
-            IBattle Ib = other.GetComponent<IBattle>();
-            Ib?.OnDamage(Damage);
+        //if((myEnemy & 1 << other.gameObject.layer) != 0)
+        //{
+        //    IBattle Ib = other.GetComponent<IBattle>();
+        //    Ib?.OnDamage(Damage);
 
-            Destroy(gameObject);
-        }
+        //    Destroy(gameObject);
+        //}
     }
 
     IEnumerator movingBullet()
     {
-        while(true)
+        while(LifeTime >= 0)
         {
+            LifeTime -= Time.deltaTime;
+
+            Ray ray = new Ray();
+            ray.origin = transform.position;
+            ray.direction = transform.forward;
+
             float delta = moveSpeed * Time.deltaTime;
 
-            transform.Translate(transform.forward.normalized * delta, Space.World);
+            if (Physics.Raycast(ray, out RaycastHit hit, delta, myEnemy))
+            {
+                if ((myEnemy & 1 << hit.transform.gameObject.layer) != 0)
+                {
+                    IBattle ib = hit.transform.GetComponent<IBattle>();
+                    ib?.OnDamage(Damage);
 
+                    Destroy(gameObject);
+                }
+            }
+            else
+            {
+                transform.Translate(transform.forward.normalized * delta, Space.World);
+            }
             yield return null;
         }
+
+        Destroy(gameObject);
     }
 }
