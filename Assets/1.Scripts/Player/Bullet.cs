@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
         LifeTime -= Time.deltaTime;
         if(LifeTime < 0)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
@@ -36,8 +36,10 @@ public class Bullet : MonoBehaviour
     {
         if((myEnemy & 1 << other.gameObject.layer) != 0)
         {
-            other.GetComponent<IBattle>().OnDamage(Damage);
-            Destroy(this);
+            IBattle Ib = other.GetComponent<IBattle>();
+            Ib?.OnDamage(Damage);
+
+            Destroy(gameObject);
         }
     }
 
