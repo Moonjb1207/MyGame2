@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     public float moveSpeed;
     public float Damage;
 
+
     private void Awake()
     {
         LifeTime = 5.0f;

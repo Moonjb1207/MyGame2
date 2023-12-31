@@ -21,6 +21,8 @@ public class Player : MonoBehaviour, IBattle
     public int curWeapNum;
 
     public Transform weaponContainer;
+    public WeaponData myWeapon;
+    public float meleeDamage;
 
     Joystick joystick;
 
@@ -43,6 +45,7 @@ public class Player : MonoBehaviour, IBattle
 
         shootingCount = 3;
         shootingDelay = 0.2f;
+        meleeDamage = 3;
     }
 
     // Start is called before the first frame update
@@ -104,14 +107,14 @@ public class Player : MonoBehaviour, IBattle
         {
             foreach(Collider col in list)
             {
-                col.GetComponent<IBattle>().OnDamage(3);
+                col.GetComponent<IBattle>().OnDamage(meleeDamage);
             }
         }
     }
 
     public void OnRangedAttack()
     {
-        if (myAnim.GetBool("IsAttacking"))
+        if (myAnim.GetBool("IsAttacking") || curWeapNum <= 1)
             return;
 
         myAnim.SetTrigger("R_Attacking");
@@ -120,7 +123,11 @@ public class Player : MonoBehaviour, IBattle
 
     public void Shooting()
     {
-        Instantiate(Resources.Load("Prefabs/Bullet") as GameObject, shootingPos.position, shootingPos.rotation);
+        GameObject obj = Instantiate(Resources.Load("Prefabs/Bullet") as GameObject, shootingPos.position, shootingPos.rotation);
+
+        obj.GetComponent<Bullet>().moveSpeed = myWeapon.getWeaponStat(curWeapNum).moveSpeed;
+        obj.GetComponent<Bullet>().LifeTime = myWeapon.getWeaponStat(curWeapNum).LifeTime;
+        obj.GetComponent<Bullet>().Damage = myWeapon.getWeaponStat(curWeapNum).Damage;
     }
 
     IEnumerator shootingBullets(int count, float delay)
@@ -137,7 +144,18 @@ public class Player : MonoBehaviour, IBattle
     
     public void equipWeapon(int weapNum)
     {
+        if (curWeapNum == weapNum) return;
+
         weaponContainer.GetChild(curWeapNum).gameObject.SetActive(false);
-        weaponContainer.GetChild(weapNum).gameObject.SetActive(true);
+        curWeapNum = weapNum;
+        weaponContainer.GetChild(curWeapNum).gameObject.SetActive(true);
+
+        curWeapon = weaponContainer.GetChild(curWeapNum).gameObject;
+        shootingPos = curWeapon.transform.Find("shotPos");
+
+        shootingCount = myWeapon.getWeaponStat(curWeapNum).shootingCount;
+        shootingDelay = myWeapon.getWeaponStat(curWeapNum).shootingDelay;
+        myAnim.SetFloat("AttackDelay", myWeapon.getWeaponStat(curWeapNum).attackDelay);
+        meleeDamage = myWeapon.getWeaponStat(curWeapNum).meleeDamage;
     }
 }
