@@ -38,20 +38,15 @@ public class Player : MonoBehaviour, IBattle
         joystick = FindObjectOfType<Joystick>();
 
         bodyTr = transform.Find("P_Jungle_Charc");
-        shootingPos = curWeapon.transform.Find("shotPos");
 
         myAnim = bodyTr.GetComponent<Animator>();
-        myAnim.SetFloat("AttackDelay", 1.5f);
-
-        shootingCount = 3;
-        shootingDelay = 0.2f;
-        meleeDamage = 3;
+        curWeapNum = -1;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        equipWeapon(0);
     }
 
     // Update is called once per frame
@@ -98,7 +93,10 @@ public class Player : MonoBehaviour, IBattle
         if(myAnim.GetBool("IsAttacking"))
             return;
 
-        myAnim.SetTrigger("M_Attacking");
+        if (curWeapNum > 1)
+            myAnim.SetTrigger("M_Attacking");
+        else
+            myAnim.SetTrigger("MK_Attacking");
 
         Vector3 attackPos = transform.position + new Vector3(0, 0.8f, 0.8f);
 
@@ -146,7 +144,10 @@ public class Player : MonoBehaviour, IBattle
     {
         if (curWeapNum == weapNum) return;
 
-        weaponContainer.GetChild(curWeapNum).gameObject.SetActive(false);
+        if (curWeapNum != -1)
+        {
+            weaponContainer.GetChild(curWeapNum).gameObject.SetActive(false);
+        }
         curWeapNum = weapNum;
         weaponContainer.GetChild(curWeapNum).gameObject.SetActive(true);
 
@@ -157,5 +158,10 @@ public class Player : MonoBehaviour, IBattle
         shootingDelay = myWeapon.getWeaponStat(curWeapNum).shootingDelay;
         myAnim.SetFloat("AttackDelay", myWeapon.getWeaponStat(curWeapNum).attackDelay);
         meleeDamage = myWeapon.getWeaponStat(curWeapNum).meleeDamage;
+    }
+
+    public void changeWeapon(int num)
+    {
+        equipWeapon(num);
     }
 }

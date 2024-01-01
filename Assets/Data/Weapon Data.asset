@@ -30,30 +30,22 @@ MonoBehaviour:
     attackDelay: 1
     meleeDamage: 7
   - weaponNum: 2
-    LifeTime: 0
-    moveSpeed: 0
-    Damage: 0
-    shootingDelay: 0
-    shootingCount: 0
-    attackDelay: 0
-    meleeDamage: 0
-  - weaponNum: 0
-    LifeTime: 0
-    moveSpeed: 0
-    Damage: 0
-    shootingDelay: 0
-    shootingCount: 0
-    attackDelay: 0
-    meleeDamage: 0
-  - weaponNum: 0
-    LifeTime: 0
-    moveSpeed: 0
-    Damage: 0
-    shootingDelay: 0
-    shootingCount: 0
-    attackDelay: 0
-    meleeDamage: 0
-  - weaponNum: 5
+    LifeTime: 4
+    moveSpeed: 15
+    Damage: 1
+    shootingDelay: 0.3
+    shootingCount: 2
+    attackDelay: 1.5
+    meleeDamage: 4
+  - weaponNum: 3
+    LifeTime: 3
+    moveSpeed: 15
+    Damage: 3
+    shootingDelay: 0.5
+    shootingCount: 4
+    attackDelay: 1
+    meleeDamage: 4
+  - weaponNum: 4
     LifeTime: 3
     moveSpeed: 20
     Damage: 2
@@ -61,27 +53,35 @@ MonoBehaviour:
     shootingCount: 3
     attackDelay: 1.5
     meleeDamage: 4
-  - weaponNum: 0
-    LifeTime: 0
-    moveSpeed: 0
-    Damage: 0
-    shootingDelay: 0
-    shootingCount: 0
-    attackDelay: 0
-    meleeDamage: 0
+  - weaponNum: 5
+    LifeTime: 3
+    moveSpeed: 15
+    Damage: 3
+    shootingDelay: 0.4
+    shootingCount: 2
+    attackDelay: 1.5
+    meleeDamage: 4
+  - weaponNum: 6
+    LifeTime: 3
+    moveSpeed: 20
+    Damage: 3
+    shootingDelay: 0.15
+    shootingCount: 4
+    attackDelay: 1.5
+    meleeDamage: 4
   - weaponNum: 7
+    LifeTime: 2
+    moveSpeed: 25
+    Damage: 4
+    shootingDelay: 0.4
+    shootingCount: 3
+    attackDelay: 1
+    meleeDamage: 4
+  - weaponNum: 8
     LifeTime: 2
     moveSpeed: 40
     Damage: 10
     shootingDelay: 1
-    shootingCount: 3
-    attackDelay: 1.5
-    meleeDamage: 0
-  - weaponNum: 0
-    LifeTime: 0
-    moveSpeed: 0
-    Damage: 0
-    shootingDelay: 0
-    shootingCount: 0
-    attackDelay: 0
-    meleeDamage: 0
+    shootingCount: 1
+    attackDelay: 1
+    meleeDamage: 4
