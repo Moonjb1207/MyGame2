@@ -7,7 +7,7 @@ public class Player : MonoBehaviour, IBattle
     private static Player instance;
     public static Player Instance => instance;
 
-    public float moveSpeed = 4.0f;
+    public float moveSpeed;
     public Rigidbody rg;
     public float curHP;
 
@@ -24,6 +24,18 @@ public class Player : MonoBehaviour, IBattle
     public WeaponData myWeapon;
     public float meleeDamage;
 
+    public Transform armorContainer;
+    public ArmorData myArmor;
+    public float armorDamageReduced;
+    public float armorSpeed;
+    public int curArmorNum;
+
+    public Transform helmetContainer;
+    public HelmetData myHelmet;
+    public float helmetDamageReduced;
+    public float helmetSpeed;
+    public int curHelmetNum;
+
     Joystick joystick;
 
     Animator myAnim;
@@ -34,6 +46,7 @@ public class Player : MonoBehaviour, IBattle
 
         rg = GetComponent<Rigidbody>();
         curHP = 10;
+        moveSpeed = 10;
 
         joystick = FindObjectOfType<Joystick>();
 
@@ -41,12 +54,16 @@ public class Player : MonoBehaviour, IBattle
 
         myAnim = bodyTr.GetComponent<Animator>();
         curWeapNum = -1;
+        curArmorNum = -1;
+        curHelmetNum = -1;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         equipWeapon(0);
+        equipArmor(0);
+        equipHelmet(0);
     }
 
     // Update is called once per frame
@@ -74,13 +91,13 @@ public class Player : MonoBehaviour, IBattle
 
     public void MoveTo(Vector3 dir)
     {
-        rg.velocity = dir * moveSpeed;
+        rg.velocity = dir * moveSpeed * armorSpeed * helmetSpeed;
         bodyTr.forward = dir.normalized;
     }
 
     public void OnDamage(float dmg)
     {
-        curHP -= dmg;
+        curHP -= dmg * armorDamageReduced * helmetDamageReduced;
     }
 
     public bool IsLive
@@ -163,5 +180,45 @@ public class Player : MonoBehaviour, IBattle
     public void changeWeapon(int num)
     {
         equipWeapon(num);
+    }
+
+    public void equipArmor(int armorNum)
+    {
+        if (curArmorNum == armorNum) return;
+
+        if (curArmorNum != -1)
+        {
+            armorContainer.GetChild(curArmorNum).gameObject.SetActive(false);
+        }
+
+        curArmorNum = armorNum;
+        armorContainer.GetChild(curArmorNum).gameObject.SetActive(true);
+        armorSpeed = myArmor.getArmorStat(curArmorNum).armorSpeed;
+        armorDamageReduced = myArmor.getArmorStat(curArmorNum).Damage;
+    }
+
+    public void changeArmor(int num)
+    {
+        equipArmor(num);
+    }
+
+    public void equipHelmet(int helmetNum)
+    {
+        if (curHelmetNum == helmetNum) return;
+
+        if (curHelmetNum != -1)
+        {
+            helmetContainer.GetChild(curHelmetNum).gameObject.SetActive(false);
+        }
+
+        curHelmetNum = helmetNum;
+        helmetContainer.GetChild(curHelmetNum).gameObject.SetActive(true);
+        helmetSpeed = myHelmet.getHelmetStat(curHelmetNum).helmetSpeed;
+        helmetDamageReduced = myHelmet.getHelmetStat(curHelmetNum).Damage;
+    }
+
+    public void changeHelmet(int num)
+    {
+        equipHelmet(num);
     }
 }
