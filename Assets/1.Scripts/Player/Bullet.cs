@@ -11,12 +11,9 @@ public class Bullet : MonoBehaviour
 
     Vector3 direction = Vector3.forward;
 
-
     private void Awake()
     {
-        LifeTime = 5.0f;
-        moveSpeed = 20.0f;
-        Damage = 2.0f;
+
     }
 
     // Start is called before the first frame update
@@ -44,6 +41,8 @@ public class Bullet : MonoBehaviour
 
     IEnumerator movingBullet()
     {
+        transform.forward = direction;
+
         while(LifeTime >= 0)
         {
             LifeTime -= Time.deltaTime;
@@ -74,9 +73,11 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Shoot(Vector3 dir, float d)
+    public void Shoot(Vector3 dir, float d, float lt, float ms)
     {
         direction = dir;
         Damage = d;
+        LifeTime = lt;
+        moveSpeed = ms;
     }
 }

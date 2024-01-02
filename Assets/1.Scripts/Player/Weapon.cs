@@ -4,16 +4,16 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    public WeaponName weaponName;
     public WeaponStat stat;
+    public bool IsAttacking;
+    public Transform shootTr;
+
+
+
+    private void Start()
+    {
+        stat = WeaponManager.Instance.weaponData.getWeaponStat(stat.weaponName);
+    }
 
     public abstract void Attack();
-}
-
-public enum WeaponName
-{
-    knife,
-    machete,
-    colt,
-    awp
 }

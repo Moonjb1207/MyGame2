@@ -2987,15 +2987,20 @@ MonoBehaviour:
   rg: {fileID: 0}
   curHP: 0
   bodyTr: {fileID: 0}
-  shootingPos: {fileID: 0}
   myEnemy:
     serializedVersion: 2
     m_Bits: 256
-  shootingCount: 0
-  shootingDelay: 0
-  curWeapNum: 0
-  weaponContainer: {fileID: 7999750370869368389}
-  myWeapon: {fileID: 11400000, guid: 7db205afb3d40994f9ddbe2880820ae2, type: 2}
+  weapons:
+  - {fileID: 7999750369472432123}
+  - {fileID: 7999750370143066959}
+  - {fileID: 7999750369598096781}
+  - {fileID: 7999750370335622143}
+  - {fileID: 7999750370167640050}
+  - {fileID: 7999750370022318752}
+  - {fileID: 7999750369434785453}
+  - {fileID: 7999750369626640767}
+  - {fileID: 7999750369871111808}
+  curWeapon: {fileID: 0}
   meleeDamage: 0
   armorContainer: {fileID: 7455960261317444762}
   myArmor: {fileID: 11400000, guid: b31fb8bff00c2d543bc711dce24589b2, type: 2}
@@ -3007,8 +3012,6 @@ MonoBehaviour:
   helmetDamageReduced: 0
   helmetSpeed: 0
   curHelmetNum: 0
-  weapons: []
-  curWeapon: {fileID: 0}
 --- !u!136 &1441262243
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -48645,6 +48648,7 @@ GameObject:
   - component: {fileID: 7999750369431361164}
   - component: {fileID: 7999750369434785452}
   - component: {fileID: 7999750369433654380}
+  - component: {fileID: 7999750369434785453}
   m_Layer: 9
   m_Name: w_aug
   m_TagString: Untagged
@@ -48702,6 +48706,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7999750369431653036}
   m_Mesh: {fileID: 4300000, guid: 2d7a063446c28f041b4c33a3b1e30fd5, type: 3}
+--- !u!114 &7999750369434785453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7999750369431653036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e49c01082872745b89de198a75c2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat:
+    weaponName: 6
+    LifeTime: 0
+    moveSpeed: 0
+    Damage: 0
+    shootingDelay: 0
+    shootingCount: 0
+    attackDelay: 0
+    meleeDamage: 0
+  IsAttacking: 0
+  shootTr: {fileID: 484003005}
+  bulletPrefab: {fileID: -8776923074991913517, guid: 84f31ff2376e75744a5beaf9bcc0ee55, type: 3}
 --- !u!4 &7999750369469007834
 Transform:
   m_ObjectHideFlags: 0
@@ -48728,6 +48756,7 @@ GameObject:
   - component: {fileID: 7999750369469007834}
   - component: {fileID: 7999750369472432122}
   - component: {fileID: 7999750369471431994}
+  - component: {fileID: 7999750369472432123}
   m_Layer: 9
   m_Name: w_knife
   m_TagString: Untagged
@@ -48785,6 +48814,29 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7999750369469504506}
   m_Mesh: {fileID: 4300000, guid: a2052fc83162bcd47b922b56d95237be, type: 3}
+--- !u!114 &7999750369472432123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7999750369469504506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be799604aeb3a304285093fdc1927939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat:
+    weaponName: 0
+    LifeTime: 0
+    moveSpeed: 0
+    Damage: 0
+    shootingDelay: 0
+    shootingCount: 0
+    attackDelay: 0
+    meleeDamage: 0
+  IsAttacking: 0
+  shootTr: {fileID: 0}
 --- !u!1 &7999750369594972556
 GameObject:
   m_ObjectHideFlags: 0
@@ -48882,9 +48934,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e49c01082872745b89de198a75c2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: 0
   stat:
-    weaponNum: 0
+    weaponName: 2
     LifeTime: 0
     moveSpeed: 0
     Damage: 0
@@ -48892,6 +48943,8 @@ MonoBehaviour:
     shootingCount: 0
     attackDelay: 0
     meleeDamage: 0
+  IsAttacking: 0
+  shootTr: {fileID: 543070026}
   bulletPrefab: {fileID: -8776923074991913517, guid: 84f31ff2376e75744a5beaf9bcc0ee55, type: 3}
 --- !u!23 &7999750369624707006
 MeshRenderer:
@@ -48970,6 +49023,7 @@ GameObject:
   - component: {fileID: 7999750369626475870}
   - component: {fileID: 7999750369625673086}
   - component: {fileID: 7999750369624707006}
+  - component: {fileID: 7999750369626640767}
   m_Layer: 9
   m_Name: w_famas
   m_TagString: Untagged
@@ -48977,6 +49031,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &7999750369626640767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7999750369626640766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e49c01082872745b89de198a75c2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat:
+    weaponName: 7
+    LifeTime: 0
+    moveSpeed: 0
+    Damage: 0
+    shootingDelay: 0
+    shootingCount: 0
+    attackDelay: 0
+    meleeDamage: 0
+  IsAttacking: 0
+  shootTr: {fileID: 2002822490}
+  bulletPrefab: {fileID: -8776923074991913517, guid: 84f31ff2376e75744a5beaf9bcc0ee55, type: 3}
 --- !u!4 &7999750369867720287
 Transform:
   m_ObjectHideFlags: 0
@@ -49011,7 +49089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &7999750369870013631
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -49074,9 +49152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc0cde12c365314fa2984dd359de1af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: 3
   stat:
-    weaponNum: 0
+    weaponName: 8
     LifeTime: 0
     moveSpeed: 0
     Damage: 0
@@ -49084,6 +49161,7 @@ MonoBehaviour:
     shootingCount: 0
     attackDelay: 0
     meleeDamage: 0
+  IsAttacking: 0
   shootTr: {fileID: 1787979175}
   atkRange: 10
   layerMask:
@@ -49100,6 +49178,7 @@ GameObject:
   - component: {fileID: 7999750370019418815}
   - component: {fileID: 7999750370022318751}
   - component: {fileID: 7999750370021318751}
+  - component: {fileID: 7999750370022318752}
   m_Layer: 9
   m_Name: w_ak47
   m_TagString: Untagged
@@ -49173,6 +49252,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7999750370019065503}
   m_Mesh: {fileID: 4300000, guid: 9514c110953faae49b1f1170b3eb1ed9, type: 3}
+--- !u!114 &7999750370022318752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7999750370019065503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e49c01082872745b89de198a75c2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat:
+    weaponName: 5
+    LifeTime: 0
+    moveSpeed: 0
+    Damage: 0
+    shootingDelay: 0
+    shootingCount: 0
+    attackDelay: 0
+    meleeDamage: 0
+  IsAttacking: 0
+  shootTr: {fileID: 2108995389}
+  bulletPrefab: {fileID: -8776923074991913517, guid: 84f31ff2376e75744a5beaf9bcc0ee55, type: 3}
 --- !u!23 &7999750370141128078
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -49249,6 +49352,7 @@ GameObject:
   - component: {fileID: 7999750370142898030}
   - component: {fileID: 7999750370142095182}
   - component: {fileID: 7999750370141128078}
+  - component: {fileID: 7999750370143066959}
   m_Layer: 9
   m_Name: w_machete
   m_TagString: Untagged
@@ -49256,6 +49360,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &7999750370143066959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7999750370143066958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be799604aeb3a304285093fdc1927939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat:
+    weaponName: 1
+    LifeTime: 0
+    moveSpeed: 0
+    Damage: 0
+    shootingDelay: 0
+    shootingCount: 0
+    attackDelay: 0
+    meleeDamage: 0
+  IsAttacking: 0
+  shootTr: {fileID: 0}
 --- !u!23 &7999750370165707057
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -49333,6 +49460,7 @@ GameObject:
   - component: {fileID: 7999750370167608273}
   - component: {fileID: 7999750370166805489}
   - component: {fileID: 7999750370165707057}
+  - component: {fileID: 7999750370167640050}
   m_Layer: 9
   m_Name: w_m4a1
   m_TagString: Untagged
@@ -49340,6 +49468,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &7999750370167640050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7999750370167640049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e49c01082872745b89de198a75c2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat:
+    weaponName: 4
+    LifeTime: 0
+    moveSpeed: 0
+    Damage: 0
+    shootingDelay: 0
+    shootingCount: 0
+    attackDelay: 0
+    meleeDamage: 0
+  IsAttacking: 0
+  shootTr: {fileID: 1284076504}
+  bulletPrefab: {fileID: -8776923074991913517, guid: 84f31ff2376e75744a5beaf9bcc0ee55, type: 3}
 --- !u!23 &7999750370333196574
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -49437,9 +49589,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9527a1a82d09f8b468d6f491a241f016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: 0
   stat:
-    weaponNum: 0
+    weaponName: 3
     LifeTime: 0
     moveSpeed: 0
     Damage: 0
@@ -49447,6 +49598,8 @@ MonoBehaviour:
     shootingCount: 0
     attackDelay: 0
     meleeDamage: 0
+  IsAttacking: 0
+  shootTr: {fileID: 1818049596}
   bulletPrefab: {fileID: -8776923074991913517, guid: 84f31ff2376e75744a5beaf9bcc0ee55, type: 3}
 --- !u!1 &7999750370868873765
 GameObject:

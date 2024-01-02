@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Hitscaner : Weapon
 {
-    public Transform shootTr;
     public float atkRange;
 
     public LayerMask layerMask;

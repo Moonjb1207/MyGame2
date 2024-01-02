@@ -12,16 +12,11 @@ public class Player : MonoBehaviour, IBattle
     public float curHP;
 
     public Transform bodyTr;
-    //public GameObject curWeapon;
-    public Transform shootingPos;
     public LayerMask myEnemy;
 
-    public int shootingCount;
-    public float shootingDelay;
-    public int curWeapNum;
+    [SerializeField] Weapon[] weapons;
+    public Weapon curWeapon;
 
-    public Transform weaponContainer;
-    public WeaponData myWeapon;
     public float meleeDamage;
 
     public Transform armorContainer;
@@ -35,9 +30,6 @@ public class Player : MonoBehaviour, IBattle
     public float helmetDamageReduced;
     public float helmetSpeed;
     public int curHelmetNum;
-
-    [SerializeField] Weapon[] weapons;
-    public Weapon curWeapon;
 
 
     Joystick joystick;
@@ -57,7 +49,6 @@ public class Player : MonoBehaviour, IBattle
         bodyTr = transform.Find("P_Jungle_Charc");
 
         myAnim = bodyTr.GetComponent<Animator>();
-        curWeapNum = -1;
         curArmorNum = -1;
         curHelmetNum = -1;
     }
@@ -65,7 +56,6 @@ public class Player : MonoBehaviour, IBattle
     // Start is called before the first frame update
     void Start()
     {
-        //equipWeapon(0);
         EquipWeapon(WeaponName.colt);
         equipArmor(0);
         equipHelmet(0);
@@ -115,7 +105,7 @@ public class Player : MonoBehaviour, IBattle
         if(myAnim.GetBool("IsAttacking"))
             return;
 
-        if (curWeapNum > 1)
+        if ((int)curWeapon.stat.weaponName > 1)
             myAnim.SetTrigger("M_Attacking");
         else
             myAnim.SetTrigger("MK_Attacking");
@@ -134,65 +124,24 @@ public class Player : MonoBehaviour, IBattle
 
     public void OnRangedAttack()
     {
-        if (myAnim.GetBool("IsAttacking") || curWeapNum <= 1)
+        if (myAnim.GetBool("IsAttacking") || (int)curWeapon.stat.weaponName <= 1 || curWeapon.IsAttacking)
             return;
 
         curWeapon.Attack();
+        myAnim.SetTrigger("R_Attacking");
     }
-
-    public void Shooting()
-    {
-        GameObject obj = Instantiate(Resources.Load("Prefabs/Bullet") as GameObject, shootingPos.position, shootingPos.rotation);
-
-        obj.GetComponent<Bullet>().moveSpeed = myWeapon.getWeaponStat(curWeapNum).moveSpeed;
-        obj.GetComponent<Bullet>().LifeTime = myWeapon.getWeaponStat(curWeapNum).LifeTime;
-        obj.GetComponent<Bullet>().Damage = myWeapon.getWeaponStat(curWeapNum).Damage;
-    }
-
-    IEnumerator shootingBullets(int count, float delay)
-    {
-        myAnim.SetBool("IsAttacking", true);
-        while(count != 0)
-        {
-            count--;
-            Shooting();
-            yield return new WaitForSeconds(delay);
-        }
-        myAnim.SetBool("IsAttacking", false);
-    }
-
-    //public void equipWeapon(int weapNum)
-    //{
-    //    if (curWeapNum == weapNum) return;
-
-    //    if (curWeapNum != -1)
-    //    {
-    //        weaponContainer.GetChild(curWeapNum).gameObject.SetActive(false);
-    //    }
-    //    curWeapNum = weapNum;
-    //    weaponContainer.GetChild(curWeapNum).gameObject.SetActive(true);
-
-    //    curWeapon = weaponContainer.GetChild(curWeapNum).gameObject;
-    //    shootingPos = curWeapon.transform.Find("shotPos");
-
-    //    shootingCount = myWeapon.getWeaponStat(curWeapNum).shootingCount;
-    //    shootingDelay = myWeapon.getWeaponStat(curWeapNum).shootingDelay;
-    //    myAnim.SetFloat("AttackDelay", myWeapon.getWeaponStat(curWeapNum).attackDelay);
-    //    meleeDamage = myWeapon.getWeaponStat(curWeapNum).meleeDamage;
-    //}
-
-    //public void changeWeapon(int num)
-    //{
-    //    equipWeapon(num);
-    //}
 
     public void EquipWeapon(WeaponName weaponName)
     {
+        if (curWeapon != null)
+            curWeapon.gameObject.SetActive(false);
+
         for(int i = 0; i < weapons.Length; i++)
         {
-            if(weapons[i].weaponName.Equals(weaponName))
+            if(weapons[i].stat.weaponName.Equals(weaponName))
             {
                 curWeapon = weapons[i];
+                curWeapon.gameObject.SetActive(true);
                 break;
             }
         }
