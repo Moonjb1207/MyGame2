@@ -9,6 +9,8 @@ public class Bullet : MonoBehaviour
     public float moveSpeed;
     public float Damage;
 
+    Vector3 direction = Vector3.forward;
+
 
     private void Awake()
     {
@@ -70,5 +72,11 @@ public class Bullet : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    public void Shoot(Vector3 dir, float d)
+    {
+        direction = dir;
+        Damage = d;
     }
 }

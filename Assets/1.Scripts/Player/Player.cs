@@ -12,7 +12,7 @@ public class Player : MonoBehaviour, IBattle
     public float curHP;
 
     public Transform bodyTr;
-    public GameObject curWeapon;
+    //public GameObject curWeapon;
     public Transform shootingPos;
     public LayerMask myEnemy;
 
@@ -35,6 +35,10 @@ public class Player : MonoBehaviour, IBattle
     public float helmetDamageReduced;
     public float helmetSpeed;
     public int curHelmetNum;
+
+    [SerializeField] Weapon[] weapons;
+    public Weapon curWeapon;
+
 
     Joystick joystick;
 
@@ -61,7 +65,8 @@ public class Player : MonoBehaviour, IBattle
     // Start is called before the first frame update
     void Start()
     {
-        equipWeapon(0);
+        //equipWeapon(0);
+        EquipWeapon(WeaponName.colt);
         equipArmor(0);
         equipHelmet(0);
     }
@@ -132,8 +137,7 @@ public class Player : MonoBehaviour, IBattle
         if (myAnim.GetBool("IsAttacking") || curWeapNum <= 1)
             return;
 
-        myAnim.SetTrigger("R_Attacking");
-        StartCoroutine(shootingBullets(shootingCount, shootingDelay));
+        curWeapon.Attack();
     }
 
     public void Shooting()
@@ -156,30 +160,42 @@ public class Player : MonoBehaviour, IBattle
         }
         myAnim.SetBool("IsAttacking", false);
     }
-    
-    public void equipWeapon(int weapNum)
-    {
-        if (curWeapNum == weapNum) return;
 
-        if (curWeapNum != -1)
+    //public void equipWeapon(int weapNum)
+    //{
+    //    if (curWeapNum == weapNum) return;
+
+    //    if (curWeapNum != -1)
+    //    {
+    //        weaponContainer.GetChild(curWeapNum).gameObject.SetActive(false);
+    //    }
+    //    curWeapNum = weapNum;
+    //    weaponContainer.GetChild(curWeapNum).gameObject.SetActive(true);
+
+    //    curWeapon = weaponContainer.GetChild(curWeapNum).gameObject;
+    //    shootingPos = curWeapon.transform.Find("shotPos");
+
+    //    shootingCount = myWeapon.getWeaponStat(curWeapNum).shootingCount;
+    //    shootingDelay = myWeapon.getWeaponStat(curWeapNum).shootingDelay;
+    //    myAnim.SetFloat("AttackDelay", myWeapon.getWeaponStat(curWeapNum).attackDelay);
+    //    meleeDamage = myWeapon.getWeaponStat(curWeapNum).meleeDamage;
+    //}
+
+    //public void changeWeapon(int num)
+    //{
+    //    equipWeapon(num);
+    //}
+
+    public void EquipWeapon(WeaponName weaponName)
+    {
+        for(int i = 0; i < weapons.Length; i++)
         {
-            weaponContainer.GetChild(curWeapNum).gameObject.SetActive(false);
+            if(weapons[i].weaponName.Equals(weaponName))
+            {
+                curWeapon = weapons[i];
+                break;
+            }
         }
-        curWeapNum = weapNum;
-        weaponContainer.GetChild(curWeapNum).gameObject.SetActive(true);
-
-        curWeapon = weaponContainer.GetChild(curWeapNum).gameObject;
-        shootingPos = curWeapon.transform.Find("shotPos");
-
-        shootingCount = myWeapon.getWeaponStat(curWeapNum).shootingCount;
-        shootingDelay = myWeapon.getWeaponStat(curWeapNum).shootingDelay;
-        myAnim.SetFloat("AttackDelay", myWeapon.getWeaponStat(curWeapNum).attackDelay);
-        meleeDamage = myWeapon.getWeaponStat(curWeapNum).meleeDamage;
-    }
-
-    public void changeWeapon(int num)
-    {
-        equipWeapon(num);
     }
 
     public void equipArmor(int armorNum)
