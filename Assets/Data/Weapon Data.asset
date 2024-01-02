@@ -14,20 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponStat:
   - weaponName: 0
-    LifeTime: 0
+    LifeTime: 0.5
     moveSpeed: 0
     Damage: 0
     shootingDelay: 0
     shootingCount: 0
-    attackDelay: 1.2
     meleeDamage: 5
   - weaponName: 1
-    LifeTime: 0
+    LifeTime: 0.7
     moveSpeed: 0
     Damage: 0
     shootingDelay: 0
     shootingCount: 0
-    attackDelay: 1
     meleeDamage: 7
   - weaponName: 2
     LifeTime: 4
@@ -35,7 +33,6 @@ MonoBehaviour:
     Damage: 1
     shootingDelay: 0.3
     shootingCount: 2
-    attackDelay: 1.5
     meleeDamage: 4
   - weaponName: 3
     LifeTime: 3
@@ -43,7 +40,6 @@ MonoBehaviour:
     Damage: 3
     shootingDelay: 0.5
     shootingCount: 4
-    attackDelay: 1
     meleeDamage: 4
   - weaponName: 4
     LifeTime: 3
@@ -51,7 +47,6 @@ MonoBehaviour:
     Damage: 2
     shootingDelay: 0.2
     shootingCount: 3
-    attackDelay: 1.5
     meleeDamage: 4
   - weaponName: 5
     LifeTime: 3
@@ -59,7 +54,6 @@ MonoBehaviour:
     Damage: 3
     shootingDelay: 0.4
     shootingCount: 2
-    attackDelay: 1.5
     meleeDamage: 4
   - weaponName: 6
     LifeTime: 3
@@ -67,7 +61,6 @@ MonoBehaviour:
     Damage: 3
     shootingDelay: 0.15
     shootingCount: 4
-    attackDelay: 1.5
     meleeDamage: 4
   - weaponName: 7
     LifeTime: 2
@@ -75,7 +68,6 @@ MonoBehaviour:
     Damage: 4
     shootingDelay: 0.4
     shootingCount: 3
-    attackDelay: 1
     meleeDamage: 4
   - weaponName: 8
     LifeTime: 2
@@ -83,5 +75,4 @@ MonoBehaviour:
     Damage: 10
     shootingDelay: 1
     shootingCount: 1
-    attackDelay: 1
     meleeDamage: 4

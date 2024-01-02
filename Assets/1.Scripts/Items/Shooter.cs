@@ -8,10 +8,7 @@ public class Shooter : Weapon
 
     public override void Attack()
     {
-        Bullet bullet = Instantiate(bulletPrefab);
-
-        bullet.transform.position = shootTr.position;
-        bullet.Shoot(transform.forward, stat.Damage, stat.LifeTime, stat.moveSpeed);
+        StartCoroutine(shootingBullets(stat.shootingCount, stat.shootingDelay));
     }
 
     IEnumerator shootingBullets(int count, float delay)
@@ -20,7 +17,7 @@ public class Shooter : Weapon
         while (count != 0)
         {
             count--;
-            Attack();
+            Shooting();
             yield return new WaitForSeconds(delay);
         }
         IsAttacking = false;
@@ -28,6 +25,9 @@ public class Shooter : Weapon
 
     public void Shooting()
     {
-        StartCoroutine(shootingBullets(stat.shootingCount, stat.shootingDelay));
+        Bullet bullet = Instantiate(bulletPrefab);
+
+        bullet.transform.position = shootTr.position;
+        bullet.Shoot(transform.forward, stat.Damage, stat.LifeTime, stat.moveSpeed);
     }
 }

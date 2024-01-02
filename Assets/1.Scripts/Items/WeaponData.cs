@@ -12,10 +12,9 @@ public class WeaponStat
     public float Damage;
     public float shootingDelay;
     public int shootingCount;
-    public float attackDelay;
     public float meleeDamage;
 
-    public WeaponStat(WeaponName wn, float lt, float ms, float dmg, float shd, int shc, float ad, float md)
+    public WeaponStat(WeaponName wn, float lt, float ms, float dmg, float shd, int shc, float md)
     {
         weaponName = wn;
         LifeTime = lt;
@@ -23,7 +22,6 @@ public class WeaponStat
         Damage = dmg;
         shootingDelay = shd;
         shootingCount = shc;
-        attackDelay = ad;
         meleeDamage = md;
     }
 }

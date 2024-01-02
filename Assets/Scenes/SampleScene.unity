@@ -48823,7 +48823,6 @@ MonoBehaviour:
     Damage: 0
     shootingDelay: 0
     shootingCount: 0
-    attackDelay: 0
     meleeDamage: 0
   IsAttacking: 0
   shootTr: {fileID: 484003005}
@@ -48931,10 +48930,13 @@ MonoBehaviour:
     Damage: 0
     shootingDelay: 0
     shootingCount: 0
-    attackDelay: 0
     meleeDamage: 0
   IsAttacking: 0
   shootTr: {fileID: 0}
+  attackPos: {fileID: 7999750369469007834}
+  myEnemy:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &7999750369594972556
 GameObject:
   m_ObjectHideFlags: 0
@@ -49039,7 +49041,6 @@ MonoBehaviour:
     Damage: 0
     shootingDelay: 0
     shootingCount: 0
-    attackDelay: 0
     meleeDamage: 0
   IsAttacking: 0
   shootTr: {fileID: 543070026}
@@ -49148,7 +49149,6 @@ MonoBehaviour:
     Damage: 0
     shootingDelay: 0
     shootingCount: 0
-    attackDelay: 0
     meleeDamage: 0
   IsAttacking: 0
   shootTr: {fileID: 2002822490}
@@ -49257,7 +49257,6 @@ MonoBehaviour:
     Damage: 0
     shootingDelay: 0
     shootingCount: 0
-    attackDelay: 0
     meleeDamage: 0
   IsAttacking: 0
   shootTr: {fileID: 1787979175}
@@ -49369,7 +49368,6 @@ MonoBehaviour:
     Damage: 0
     shootingDelay: 0
     shootingCount: 0
-    attackDelay: 0
     meleeDamage: 0
   IsAttacking: 0
   shootTr: {fileID: 2108995389}
@@ -49477,10 +49475,13 @@ MonoBehaviour:
     Damage: 0
     shootingDelay: 0
     shootingCount: 0
-    attackDelay: 0
     meleeDamage: 0
   IsAttacking: 0
   shootTr: {fileID: 0}
+  attackPos: {fileID: 7999750370142898030}
+  myEnemy:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!23 &7999750370165707057
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -49585,7 +49586,6 @@ MonoBehaviour:
     Damage: 0
     shootingDelay: 0
     shootingCount: 0
-    attackDelay: 0
     meleeDamage: 0
   IsAttacking: 0
   shootTr: {fileID: 1284076504}
@@ -49694,7 +49694,6 @@ MonoBehaviour:
     Damage: 0
     shootingDelay: 0
     shootingCount: 0
-    attackDelay: 0
     meleeDamage: 0
   IsAttacking: 0
   shootTr: {fileID: 1818049596}

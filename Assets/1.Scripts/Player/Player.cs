@@ -95,21 +95,8 @@ public class Player : MonoBehaviour, IBattle
         if(myAnim.GetBool("IsAttacking"))
             return;
 
-        if ((int)curWeapon.stat.weaponName > 1)
-            myAnim.SetTrigger("M_Attacking");
-        else
+        if ((int)curWeapon.stat.weaponName <= (int)WeaponName.machete)
             myAnim.SetTrigger("MK_Attacking");
-
-        Vector3 attackPos = transform.position + new Vector3(0, 0.8f, 0.8f);
-
-        Collider[] list = Physics.OverlapSphere(attackPos, 0.5f, myEnemy);
-        if (list != null)
-        {
-            foreach(Collider col in list)
-            {
-                col.GetComponent<IBattle>().OnDamage(meleeDamage);
-            }
-        }
     }
 
     public void OnRangedAttack()
