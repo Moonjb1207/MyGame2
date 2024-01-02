@@ -19,17 +19,9 @@ public class Player : MonoBehaviour, IBattle
 
     public float meleeDamage;
 
-    public Transform armorContainer;
-    public ArmorData myArmor;
-    public float armorDamageReduced;
-    public float armorSpeed;
-    public int curArmorNum;
-
-    public Transform helmetContainer;
-    public HelmetData myHelmet;
-    public float helmetDamageReduced;
-    public float helmetSpeed;
-    public int curHelmetNum;
+    [SerializeField] Equipment[] equips;
+    public EquipArmor curArmor;
+    public EquipHelmet curHelmet;
 
 
     Joystick joystick;
@@ -42,23 +34,21 @@ public class Player : MonoBehaviour, IBattle
 
         rg = GetComponent<Rigidbody>();
         curHP = 10;
-        moveSpeed = 10;
+        moveSpeed = 7;
 
         joystick = FindObjectOfType<Joystick>();
 
         bodyTr = transform.Find("P_Jungle_Charc");
 
         myAnim = bodyTr.GetComponent<Animator>();
-        curArmorNum = -1;
-        curHelmetNum = -1;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         EquipWeapon(WeaponName.colt);
-        equipArmor(0);
-        equipHelmet(0);
+        EquipArmor(EquipName.none_armor);
+        EquipHelmet(EquipName.none_helmet);
     }
 
     // Update is called once per frame
@@ -86,13 +76,13 @@ public class Player : MonoBehaviour, IBattle
 
     public void MoveTo(Vector3 dir)
     {
-        rg.velocity = dir * moveSpeed * armorSpeed * helmetSpeed;
+        rg.velocity = dir * moveSpeed * curHelmet.stat.equipmentSpeed * curHelmet.stat.equipmentSpeed;
         bodyTr.forward = dir.normalized;
     }
 
     public void OnDamage(float dmg)
     {
-        curHP -= dmg * armorDamageReduced * helmetDamageReduced;
+        curHP -= dmg * curHelmet.stat.Damage * curHelmet.stat.Damage;
     }
 
     public bool IsLive
@@ -142,48 +132,56 @@ public class Player : MonoBehaviour, IBattle
             {
                 curWeapon = weapons[i];
                 curWeapon.gameObject.SetActive(true);
+                meleeDamage = curWeapon.stat.meleeDamage;
                 break;
             }
         }
     }
 
-    public void equipArmor(int armorNum)
+    public void EquipArmor(EquipName equipname)
     {
-        if (curArmorNum == armorNum) return;
+        if (curArmor != null)
+            curArmor.gameObject.SetActive(false);
 
-        if (curArmorNum != -1)
+        for (int i = 0; i < equips.Length; i++)
         {
-            armorContainer.GetChild(curArmorNum).gameObject.SetActive(false);
+            if (equips[i].stat.equipName.Equals(equipname))
+            {
+                curArmor = (EquipArmor)equips[i];
+                curArmor.gameObject.SetActive(true);
+                break;
+            }
         }
-
-        curArmorNum = armorNum;
-        armorContainer.GetChild(curArmorNum).gameObject.SetActive(true);
-        armorSpeed = myArmor.getArmorStat(curArmorNum).armorSpeed;
-        armorDamageReduced = myArmor.getArmorStat(curArmorNum).Damage;
     }
 
-    public void changeArmor(int num)
+    public void EquipHelmet(EquipName equipname)
     {
-        equipArmor(num);
-    }
+        if (curHelmet != null)
+            curHelmet.gameObject.SetActive(false);
 
-    public void equipHelmet(int helmetNum)
-    {
-        if (curHelmetNum == helmetNum) return;
-
-        if (curHelmetNum != -1)
+        for (int i = 0; i < equips.Length; i++)
         {
-            helmetContainer.GetChild(curHelmetNum).gameObject.SetActive(false);
+            if (equips[i].stat.equipName.Equals(equipname))
+            {
+                curHelmet = (EquipHelmet)equips[i];
+                curHelmet.gameObject.SetActive(true);
+                break;
+            }
         }
-
-        curHelmetNum = helmetNum;
-        helmetContainer.GetChild(curHelmetNum).gameObject.SetActive(true);
-        helmetSpeed = myHelmet.getHelmetStat(curHelmetNum).helmetSpeed;
-        helmetDamageReduced = myHelmet.getHelmetStat(curHelmetNum).Damage;
     }
 
-    public void changeHelmet(int num)
+    public void changeWeapon(int i)
     {
-        equipHelmet(num);
+        EquipWeapon((WeaponName)i);
+    }
+
+    public void changeArmor(int i)
+    {
+        EquipArmor((EquipName)i);
+    }
+
+    public void changeHelmet(int i)
+    {
+        EquipHelmet((EquipName)(i + (int)EquipName.none_helmet));
     }
 }

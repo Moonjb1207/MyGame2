@@ -10,18 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1880e7b33c24aa4d80e4e34d6b3ac02, type: 3}
-  m_Name: Armor Data
+  m_Name: EquipmentStat Data
   m_EditorClassIdentifier: 
-  armorStat:
-  - armorNum: 0
-    armorSpeed: 1
+  equipmentStat:
+  - equipName: 0
+    equipmentSpeed: 1
     Damage: 1
-  - armorNum: 1
-    armorSpeed: 0.8
+  - equipName: 1
+    equipmentSpeed: 0.8
     Damage: 0.8
-  - armorNum: 2
-    armorSpeed: 0.6
+  - equipName: 2
+    equipmentSpeed: 0.6
     Damage: 0.6
-  - armorNum: 3
-    armorSpeed: 0.5
+  - equipName: 3
+    equipmentSpeed: 0.5
     Damage: 0.5
+  - equipName: 4
+    equipmentSpeed: 1
+    Damage: 1
+  - equipName: 5
+    equipmentSpeed: 0.9
+    Damage: 0.9
+  - equipName: 6
+    equipmentSpeed: 0.8
+    Damage: 0.8
+  - equipName: 7
+    equipmentSpeed: 0.7
+    Damage: 0.7

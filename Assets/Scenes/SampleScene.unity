@@ -1461,6 +1461,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &720306664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 720306666}
+  - component: {fileID: 720306665}
+  m_Layer: 0
+  m_Name: EquipmentManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &720306665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720306664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba4f8053de740b4c8531f77d6f6f044, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentData: {fileID: 11400000, guid: 77923c4b9dfd08a4abd7338f62c8c3be, type: 2}
+--- !u!4 &720306666
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720306664}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.2603326, y: 1.3995001, z: 0.38887808}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &830327576
 GameObject:
   m_ObjectHideFlags: 0
@@ -3002,16 +3047,17 @@ MonoBehaviour:
   - {fileID: 7999750369871111808}
   curWeapon: {fileID: 0}
   meleeDamage: 0
-  armorContainer: {fileID: 7455960261317444762}
-  myArmor: {fileID: 11400000, guid: b31fb8bff00c2d543bc711dce24589b2, type: 2}
-  armorDamageReduced: 0
-  armorSpeed: 0
-  curArmorNum: 0
-  helmetContainer: {fileID: 5612561838015284233}
-  myHelmet: {fileID: 11400000, guid: e4e40c7d9dcc9cf4f821c7d30fc0cfd8, type: 2}
-  helmetDamageReduced: 0
-  helmetSpeed: 0
-  curHelmetNum: 0
+  equips:
+  - {fileID: 8737781894292208467}
+  - {fileID: 9000333964177671919}
+  - {fileID: 9035595023908359955}
+  - {fileID: 6983897278043799455}
+  - {fileID: 9172345682157252721}
+  - {fileID: 6989269407118599450}
+  - {fileID: 8573633146563416440}
+  - {fileID: 5932091222907394336}
+  curArmor: {fileID: 0}
+  curHelmet: {fileID: 0}
 --- !u!136 &1441262243
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8367,6 +8413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6989269407118599449}
   - component: {fileID: 3644903623278219125}
+  - component: {fileID: 6989269407118599450}
   m_Layer: 9
   m_Name: TTS_Head_camo_B_14
   m_TagString: Untagged
@@ -31703,6 +31750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6983897278043799454}
   - component: {fileID: 5436873572645947484}
+  - component: {fileID: 6983897278043799455}
   m_Layer: 9
   m_Name: TTS_Body_camo_B_03
   m_TagString: Untagged
@@ -37455,6 +37503,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9035595023908359954}
   - component: {fileID: 3488706096515683158}
+  - component: {fileID: 9035595023908359955}
   m_Layer: 9
   m_Name: TTS_Body_camo_B_02
   m_TagString: Untagged
@@ -37605,6 +37654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4394827217403612666}
   - component: {fileID: 2105252234565654315}
+  - component: {fileID: 5932091222907394336}
   m_Layer: 9
   m_Name: TTS_Head_camo_B_06
   m_TagString: Untagged
@@ -37612,6 +37662,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &5932091222907394336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932091222907394335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4130a9031f60dbd469b1d2dcbc6bb40e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat:
+    equipName: 7
+    equipmentSpeed: 0
+    Damage: 0
 --- !u!4 &5934985005048284921
 Transform:
   m_ObjectHideFlags: 0
@@ -42904,6 +42970,22 @@ Transform:
   m_Father: {fileID: 7455960261317444762}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6983897278043799455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4873330063435049651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf08f6b2b25450469d5ffc53f732a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat:
+    equipName: 3
+    equipmentSpeed: 0
+    Damage: 0
 --- !u!4 &6985350258147060603
 Transform:
   m_ObjectHideFlags: 0
@@ -43072,6 +43154,22 @@ Transform:
   m_Father: {fileID: 5612561838015284233}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6989269407118599450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744379434297834131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4130a9031f60dbd469b1d2dcbc6bb40e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat:
+    equipName: 5
+    equipmentSpeed: 0
+    Damage: 0
 --- !u!4 &6996327046392695182
 Transform:
   m_ObjectHideFlags: 0
@@ -53664,6 +53762,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7489602734827565843}
   - component: {fileID: 8297639663825404074}
+  - component: {fileID: 8573633146563416440}
   m_Layer: 9
   m_Name: TTS_Head_camo_B_03
   m_TagString: Untagged
@@ -53671,6 +53770,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &8573633146563416440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8573633146563416439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4130a9031f60dbd469b1d2dcbc6bb40e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat:
+    equipName: 6
+    equipmentSpeed: 0
+    Damage: 0
 --- !u!4 &8597900200864492444
 Transform:
   m_ObjectHideFlags: 0
@@ -54361,6 +54476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1830269681184471934}
   - component: {fileID: 5070829129862937315}
+  - component: {fileID: 8737781894292208467}
   m_Layer: 9
   m_Name: TTS_Body_camo_B_06
   m_TagString: Untagged
@@ -54368,6 +54484,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8737781894292208467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8737781894292208466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf08f6b2b25450469d5ffc53f732a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat:
+    equipName: 0
+    equipmentSpeed: 0
+    Damage: 0
 --- !u!137 &8740928152904650691
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -56203,6 +56335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2372648406708716361}
   - component: {fileID: 1050244143296346636}
+  - component: {fileID: 9000333964177671919}
   m_Layer: 9
   m_Name: TTS_Body_camo_B_01
   m_TagString: Untagged
@@ -56210,6 +56343,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &9000333964177671919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9000333964177671918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf08f6b2b25450469d5ffc53f732a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat:
+    equipName: 1
+    equipmentSpeed: 0
+    Damage: 0
 --- !u!1 &9000640822069266654
 GameObject:
   m_ObjectHideFlags: 0
@@ -56444,6 +56593,22 @@ Transform:
   m_Father: {fileID: 7455960261317444762}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9035595023908359955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5897183904380920863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf08f6b2b25450469d5ffc53f732a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat:
+    equipName: 2
+    equipmentSpeed: 0
+    Damage: 0
 --- !u!1 &9038720153195583571
 GameObject:
   m_ObjectHideFlags: 0
@@ -57465,6 +57630,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7491215541399913672}
   - component: {fileID: 7997646111483022215}
+  - component: {fileID: 9172345682157252721}
   m_Layer: 9
   m_Name: TTS_Head_camo_B_10
   m_TagString: Untagged
@@ -57472,6 +57638,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9172345682157252721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9172345682157252720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4130a9031f60dbd469b1d2dcbc6bb40e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat:
+    equipName: 4
+    equipmentSpeed: 0
+    Damage: 0
 --- !u!137 &9175180471438327366
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
