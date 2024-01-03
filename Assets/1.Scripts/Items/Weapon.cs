@@ -13,7 +13,6 @@ public abstract class Weapon : Items
     private void Start()
     {
         stat = WeaponManager.Instance.weaponData.getWeaponStat(stat.weaponName);
-        itemName = ItemName.weapon;
     }
 
     public abstract void Attack();

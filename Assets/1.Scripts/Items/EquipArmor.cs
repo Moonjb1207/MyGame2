@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EquipArmor : Equipment
 {
+    public ArmorStat stat;
+
     private void Start()
     {
-        itemName = ItemName.equip_armor;
+        stat = EquipmentManager.Instance.armorData.getArmorStat(stat.equipName);
     }
 }

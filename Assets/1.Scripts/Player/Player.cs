@@ -19,7 +19,8 @@ public class Player : MonoBehaviour, IBattle
 
     public float meleeDamage;
 
-    [SerializeField] Equipment[] equips;
+    [SerializeField] EquipArmor[] armors;
+    [SerializeField] EquipHelmet[] helmets;
     public EquipArmor curArmor;
     public EquipHelmet curHelmet;
 
@@ -46,9 +47,9 @@ public class Player : MonoBehaviour, IBattle
     // Start is called before the first frame update
     void Start()
     {
-        EquipWeapon(WeaponName.colt);
-        EquipArmor(EquipName.none_armor);
-        EquipHelmet(EquipName.none_helmet);
+        EquipWeapon(ItemName.colt);
+        EquipArmor(ItemName.none_armor);
+        EquipHelmet(ItemName.none_helmet);
     }
 
     // Update is called once per frame
@@ -76,13 +77,13 @@ public class Player : MonoBehaviour, IBattle
 
     public void MoveTo(Vector3 dir)
     {
-        rg.velocity = dir * moveSpeed * curHelmet.stat.equipmentSpeed * curHelmet.stat.equipmentSpeed;
+        rg.velocity = dir * moveSpeed * curArmor.stat.equipmentSpeed * curHelmet.stat.equipmentSpeed;
         bodyTr.forward = dir.normalized;
     }
 
     public void OnDamage(float dmg)
     {
-        curHP -= dmg * curHelmet.stat.Damage * curHelmet.stat.Damage;
+        curHP -= dmg * curArmor.stat.Damage * curHelmet.stat.Damage;
     }
 
     public bool IsLive
@@ -95,7 +96,7 @@ public class Player : MonoBehaviour, IBattle
         if(myAnim.GetBool("IsAttacking"))
             return;
 
-        if ((int)curWeapon.stat.weaponName <= (int)WeaponName.machete)
+        if ((int)curWeapon.stat.weaponName <= (int)ItemName.machete)
             myAnim.SetTrigger("MK_Attacking");
     }
 
@@ -108,7 +109,7 @@ public class Player : MonoBehaviour, IBattle
         myAnim.SetTrigger("R_Attacking");
     }
 
-    public void EquipWeapon(WeaponName weaponName)
+    public void EquipWeapon(ItemName weaponName)
     {
         if (curWeapon != null)
             curWeapon.gameObject.SetActive(false);
@@ -125,32 +126,32 @@ public class Player : MonoBehaviour, IBattle
         }
     }
 
-    public void EquipArmor(EquipName equipname)
+    public void EquipArmor(ItemName equipname)
     {
         if (curArmor != null)
             curArmor.gameObject.SetActive(false);
 
-        for (int i = 0; i < equips.Length; i++)
+        for (int i = 0; i < armors.Length; i++)
         {
-            if (equips[i].stat.equipName.Equals(equipname))
+            if (armors[i].stat.equipName.Equals(equipname))
             {
-                curArmor = (EquipArmor)equips[i];
+                curArmor = armors[i];
                 curArmor.gameObject.SetActive(true);
                 break;
             }
         }
     }
 
-    public void EquipHelmet(EquipName equipname)
+    public void EquipHelmet(ItemName equipname)
     {
         if (curHelmet != null)
             curHelmet.gameObject.SetActive(false);
 
-        for (int i = 0; i < equips.Length; i++)
+        for (int i = 0; i < helmets.Length; i++)
         {
-            if (equips[i].stat.equipName.Equals(equipname))
+            if (helmets[i].stat.equipName.Equals(equipname))
             {
-                curHelmet = (EquipHelmet)equips[i];
+                curHelmet = (EquipHelmet)helmets[i];
                 curHelmet.gameObject.SetActive(true);
                 break;
             }
@@ -159,16 +160,16 @@ public class Player : MonoBehaviour, IBattle
 
     public void changeWeapon(int i)
     {
-        EquipWeapon((WeaponName)i);
+        EquipWeapon((ItemName)i);
     }
 
     public void changeArmor(int i)
     {
-        EquipArmor((EquipName)i);
+        EquipArmor((ItemName)(i + (int)ItemName.weaponEnd + 1));
     }
 
     public void changeHelmet(int i)
     {
-        EquipHelmet((EquipName)(i + (int)EquipName.none_helmet));
+        EquipHelmet((ItemName)(i + (int)ItemName.armorEnd + 1));
     }
 }

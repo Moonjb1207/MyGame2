@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EquipHelmet : Equipment
 {
+    public HelmetStat stat;
+
     private void Start()
     {
-        itemName = ItemName.equip_helmet;
+        stat = EquipmentManager.Instance.helmetData.getHelmetStat(stat.equipName);
     }
 }

@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat:
-    equipName: 4
+    equipName: 15
     equipmentSpeed: 0
     Damage: 0
 --- !u!1 &9341289605928161
@@ -1702,7 +1702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat:
-    equipName: 1
+    equipName: 11
     equipmentSpeed: 0
     Damage: 0
 --- !u!1 &263916683918380644
@@ -2966,7 +2966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat:
-    equipName: 0
+    equipName: 10
     equipmentSpeed: 0
     Damage: 0
 --- !u!1 &440425149975670220
@@ -4212,7 +4212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat:
-    equipName: 6
+    equipName: 17
     equipmentSpeed: 0
     Damage: 0
 --- !u!1 &706658452959855652
@@ -20209,7 +20209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat:
-    equipName: 7
+    equipName: 18
     equipmentSpeed: 0
     Damage: 0
 --- !u!1 &3260511506008788758
@@ -20828,7 +20828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat:
-    equipName: 2
+    equipName: 12
     equipmentSpeed: 0
     Damage: 0
 --- !u!1 &3368103750657942842
@@ -27474,7 +27474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat:
-    equipName: 3
+    equipName: 13
     equipmentSpeed: 0
     Damage: 0
 --- !u!1 &4420825334007212642
@@ -49280,7 +49280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat:
-    equipName: 5
+    equipName: 16
     equipmentSpeed: 0
     Damage: 0
 --- !u!1 &8482499915700720609
@@ -53497,11 +53497,12 @@ MonoBehaviour:
   - {fileID: 1172624079386517562}
   curWeapon: {fileID: 0}
   meleeDamage: 0
-  equips:
+  armors:
   - {fileID: 433466679728602601}
   - {fileID: 263093330573852757}
   - {fileID: 154754327587113385}
   - {fileID: 2281887274810390821}
+  helmets:
   - {fileID: 3265809296307915}
   - {fileID: 2287813828498400160}
   - {fileID: 701017945429366722}

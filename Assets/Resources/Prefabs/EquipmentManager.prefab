@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba4f8053de740b4c8531f77d6f6f044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipmentData: {fileID: 11400000, guid: 77923c4b9dfd08a4abd7338f62c8c3be, type: 2}
+  armorData: {fileID: 11400000, guid: 611aa9e6f4202cc4fb00c04c8a6b910e, type: 2}
+  helmetData: {fileID: 11400000, guid: 929ad0ea94a092c4995421126bb7cc5e, type: 2}

@@ -6,7 +6,7 @@ using System;
 [Serializable]
 public class WeaponStat
 {
-    public WeaponName weaponName;
+    public ItemName weaponName;
     public float LifeTime;
     public float moveSpeed;
     public float Damage;
@@ -14,7 +14,7 @@ public class WeaponStat
     public int shootingCount;
     public float meleeDamage;
 
-    public WeaponStat(WeaponName wn, float lt, float ms, float dmg, float shd, int shc, float md)
+    public WeaponStat(ItemName wn, float lt, float ms, float dmg, float shd, int shc, float md)
     {
         weaponName = wn;
         LifeTime = lt;
@@ -31,22 +31,8 @@ public class WeaponData : ScriptableObject
 {
     [SerializeField] WeaponStat[] weaponStat;
 
-    public WeaponStat getWeaponStat(WeaponName weaponName)
+    public WeaponStat getWeaponStat(ItemName weaponName)
     {
         return weaponStat[(int)weaponName];
     }
-}
-
-public enum WeaponName
-{
-    knife,
-    machete,
-    colt,
-    shotgun,
-    m4a1,
-    ak47,
-    aug,
-    famas,
-    awp,
-    End
 }

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88624f2767834d74dae1d1e6d4841b7d, type: 3}
+  m_Name: Helmet Data
+  m_EditorClassIdentifier: 
+  helmetStat:
+  - equipName: 15
+    equipmentSpeed: 1
+    Damage: 1
+  - equipName: 16
+    equipmentSpeed: 0.9
+    Damage: 0.9
+  - equipName: 17
+    equipmentSpeed: 0.8
+    Damage: 0.8
+  - equipName: 18
+    equipmentSpeed: 0.7
+    Damage: 0.7
