@@ -47,5 +47,6 @@ public enum WeaponName
     ak47,
     aug,
     famas,
-    awp
+    awp,
+    End
 }

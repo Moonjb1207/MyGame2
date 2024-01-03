@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class EquipArmor : Equipment
 {
-
+    private void Start()
+    {
+        itemName = ItemName.equip_armor;
+    }
 }

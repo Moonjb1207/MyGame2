@@ -39,4 +39,5 @@ public enum EquipName
     lv1_helmet,
     lv2_helmet,
     lv3_helmet,
+    End,
 }

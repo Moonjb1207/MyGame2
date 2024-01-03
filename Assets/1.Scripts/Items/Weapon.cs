@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon : MonoBehaviour
+public abstract class Weapon : Items
 {
     public WeaponStat stat;
     public bool IsAttacking;
@@ -13,6 +13,7 @@ public abstract class Weapon : MonoBehaviour
     private void Start()
     {
         stat = WeaponManager.Instance.weaponData.getWeaponStat(stat.weaponName);
+        itemName = ItemName.weapon;
     }
 
     public abstract void Attack();
