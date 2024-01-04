@@ -8,21 +8,18 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager Instance => instance;
 
     public Inventory myInven;
+    public Inventory loadInven;
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void LoadScene()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        loadInven = myInven;
     }
 }

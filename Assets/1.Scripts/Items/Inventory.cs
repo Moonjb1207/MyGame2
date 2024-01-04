@@ -46,4 +46,46 @@ public class Inventory : MonoBehaviour
 
         myItems.Add(itemName);
     }
+
+    public List<ItemName> showWeapons()
+    {
+        List<ItemName> weapons = new List<ItemName>();
+        for(int i = 0; i < myItems.Count; i++)
+        {
+            if(myItems[i] < ItemName.weaponEnd)
+            {
+                weapons.Add(myItems[i]);
+            }
+        }
+
+        return weapons;
+    }
+
+    public List<ItemName> showArmors()
+    {
+        List<ItemName> armors = new List<ItemName>();
+        for (int i = 0; i < myItems.Count; i++)
+        {
+            if (myItems[i] < ItemName.armorEnd && myItems[i] > ItemName.weaponEnd)
+            {
+                armors.Add(myItems[i]);
+            }
+        }
+
+        return armors;
+    }
+
+    public List<ItemName> showHelmets()
+    {
+        List<ItemName> helmets = new List<ItemName>();
+        for (int i = 0; i < myItems.Count; i++)
+        {
+            if (myItems[i] < ItemName.helmetEnd && myItems[i] > ItemName.armorEnd)
+            {
+                helmets.Add(myItems[i]);
+            }
+        }
+
+        return helmets;
+    }
 }

@@ -42,14 +42,25 @@ public class Player : MonoBehaviour, IBattle
         bodyTr = transform.Find("P_Jungle_Charc");
 
         myAnim = bodyTr.GetComponent<Animator>();
+
+        if (InventoryManager.Instance == null)
+        {
+            EquipWeapon(ItemName.colt);
+            EquipArmor(ItemName.none_armor);
+            EquipHelmet(ItemName.none_helmet);
+        }
+        else
+        {
+            EquipWeapon(InventoryManager.Instance.loadInven.myWeapon);
+            EquipArmor(InventoryManager.Instance.loadInven.myArmor);
+            EquipHelmet(InventoryManager.Instance.loadInven.myHelmet);
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        EquipWeapon(ItemName.colt);
-        EquipArmor(ItemName.none_armor);
-        EquipHelmet(ItemName.none_helmet);
+
     }
 
     // Update is called once per frame

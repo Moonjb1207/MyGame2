@@ -6,6 +6,7 @@ public class Store : MonoBehaviour
 {
     int rnd;
     public StoreResult result;
+    public EquipInventory equipInven;
 
     public void BuyWeapon()
     {
@@ -34,8 +35,4 @@ public class Store : MonoBehaviour
         result.ShowResult((ItemName)rnd);
     }
 
-    public void Back()
-    {
-
-    }
 }
