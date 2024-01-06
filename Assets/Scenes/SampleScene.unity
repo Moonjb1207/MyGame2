@@ -3075,6 +3075,7 @@ MonoBehaviour:
   helmets: []
   curArmor: {fileID: 0}
   curHelmet: {fileID: 0}
+  InvenUI: {fileID: 0}
 --- !u!136 &1441262243
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -37748,10 +37749,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4130a9031f60dbd469b1d2dcbc6bb40e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 0
   stat:
     equipName: 7
     equipmentSpeed: 0
     Damage: 0
+    helNum: 0
 --- !u!4 &5934985005048284921
 Transform:
   m_ObjectHideFlags: 0
@@ -43056,10 +43059,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf08f6b2b25450469d5ffc53f732a22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 0
   stat:
     equipName: 3
     equipmentSpeed: 0
     Damage: 0
+    armorNum: 0
 --- !u!4 &6985350258147060603
 Transform:
   m_ObjectHideFlags: 0
@@ -43240,10 +43245,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4130a9031f60dbd469b1d2dcbc6bb40e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 0
   stat:
     equipName: 5
     equipmentSpeed: 0
     Damage: 0
+    helNum: 0
 --- !u!4 &6996327046392695182
 Transform:
   m_ObjectHideFlags: 0
@@ -48890,6 +48897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e49c01082872745b89de198a75c2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 0
   stat:
     weaponName: 6
     LifeTime: 0
@@ -48898,6 +48906,7 @@ MonoBehaviour:
     shootingDelay: 0
     shootingCount: 0
     meleeDamage: 0
+    weaponNum: 0
   IsAttacking: 0
   shootTr: {fileID: 484003005}
   bulletPrefab: {fileID: -8776923074991913517, guid: 84f31ff2376e75744a5beaf9bcc0ee55, type: 3}
@@ -48997,6 +49006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be799604aeb3a304285093fdc1927939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 0
   stat:
     weaponName: 0
     LifeTime: 0
@@ -49005,6 +49015,7 @@ MonoBehaviour:
     shootingDelay: 0
     shootingCount: 0
     meleeDamage: 0
+    weaponNum: 0
   IsAttacking: 0
   shootTr: {fileID: 0}
   attackPos: {fileID: 7999750369469007834}
@@ -49108,6 +49119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e49c01082872745b89de198a75c2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 0
   stat:
     weaponName: 2
     LifeTime: 0
@@ -49116,6 +49128,7 @@ MonoBehaviour:
     shootingDelay: 0
     shootingCount: 0
     meleeDamage: 0
+    weaponNum: 0
   IsAttacking: 0
   shootTr: {fileID: 543070026}
   bulletPrefab: {fileID: -8776923074991913517, guid: 84f31ff2376e75744a5beaf9bcc0ee55, type: 3}
@@ -49216,6 +49229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e49c01082872745b89de198a75c2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 0
   stat:
     weaponName: 7
     LifeTime: 0
@@ -49224,6 +49238,7 @@ MonoBehaviour:
     shootingDelay: 0
     shootingCount: 0
     meleeDamage: 0
+    weaponNum: 0
   IsAttacking: 0
   shootTr: {fileID: 2002822490}
   bulletPrefab: {fileID: -8776923074991913517, guid: 84f31ff2376e75744a5beaf9bcc0ee55, type: 3}
@@ -49324,6 +49339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc0cde12c365314fa2984dd359de1af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 0
   stat:
     weaponName: 8
     LifeTime: 0
@@ -49332,6 +49348,7 @@ MonoBehaviour:
     shootingDelay: 0
     shootingCount: 0
     meleeDamage: 0
+    weaponNum: 0
   IsAttacking: 0
   shootTr: {fileID: 1787979175}
   atkRange: 10
@@ -49435,6 +49452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e49c01082872745b89de198a75c2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 0
   stat:
     weaponName: 5
     LifeTime: 0
@@ -49443,6 +49461,7 @@ MonoBehaviour:
     shootingDelay: 0
     shootingCount: 0
     meleeDamage: 0
+    weaponNum: 0
   IsAttacking: 0
   shootTr: {fileID: 2108995389}
   bulletPrefab: {fileID: -8776923074991913517, guid: 84f31ff2376e75744a5beaf9bcc0ee55, type: 3}
@@ -49542,6 +49561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be799604aeb3a304285093fdc1927939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 0
   stat:
     weaponName: 1
     LifeTime: 0
@@ -49550,6 +49570,7 @@ MonoBehaviour:
     shootingDelay: 0
     shootingCount: 0
     meleeDamage: 0
+    weaponNum: 0
   IsAttacking: 0
   shootTr: {fileID: 0}
   attackPos: {fileID: 7999750370142898030}
@@ -49653,6 +49674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e49c01082872745b89de198a75c2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 0
   stat:
     weaponName: 4
     LifeTime: 0
@@ -49661,6 +49683,7 @@ MonoBehaviour:
     shootingDelay: 0
     shootingCount: 0
     meleeDamage: 0
+    weaponNum: 0
   IsAttacking: 0
   shootTr: {fileID: 1284076504}
   bulletPrefab: {fileID: -8776923074991913517, guid: 84f31ff2376e75744a5beaf9bcc0ee55, type: 3}
@@ -49761,6 +49784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9527a1a82d09f8b468d6f491a241f016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 0
   stat:
     weaponName: 3
     LifeTime: 0
@@ -49769,6 +49793,7 @@ MonoBehaviour:
     shootingDelay: 0
     shootingCount: 0
     meleeDamage: 0
+    weaponNum: 0
   IsAttacking: 0
   shootTr: {fileID: 1818049596}
   bulletPrefab: {fileID: -8776923074991913517, guid: 84f31ff2376e75744a5beaf9bcc0ee55, type: 3}
@@ -53855,10 +53880,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4130a9031f60dbd469b1d2dcbc6bb40e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 0
   stat:
     equipName: 6
     equipmentSpeed: 0
     Damage: 0
+    helNum: 0
 --- !u!4 &8597900200864492444
 Transform:
   m_ObjectHideFlags: 0
@@ -54569,10 +54596,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf08f6b2b25450469d5ffc53f732a22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 0
   stat:
     equipName: 0
     equipmentSpeed: 0
     Damage: 0
+    armorNum: 0
 --- !u!137 &8740928152904650691
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -56428,10 +56457,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf08f6b2b25450469d5ffc53f732a22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 0
   stat:
     equipName: 1
     equipmentSpeed: 0
     Damage: 0
+    armorNum: 0
 --- !u!1 &9000640822069266654
 GameObject:
   m_ObjectHideFlags: 0
@@ -56678,10 +56709,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf08f6b2b25450469d5ffc53f732a22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 0
   stat:
     equipName: 2
     equipmentSpeed: 0
     Damage: 0
+    armorNum: 0
 --- !u!1 &9038720153195583571
 GameObject:
   m_ObjectHideFlags: 0
@@ -57723,10 +57756,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4130a9031f60dbd469b1d2dcbc6bb40e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 0
   stat:
     equipName: 4
     equipmentSpeed: 0
     Damage: 0
+    helNum: 0
 --- !u!137 &9175180471438327366
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0

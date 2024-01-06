@@ -85,3 +85,11 @@ MonoBehaviour:
     shootingCount: 1
     meleeDamage: 4
     weaponNum: 8
+  - weaponName: rpg
+    LifeTime: 2
+    moveSpeed: 2
+    Damage: 15
+    shootingDelay: 1
+    shootingCount: 1
+    meleeDamage: 4
+    weaponNum: 9

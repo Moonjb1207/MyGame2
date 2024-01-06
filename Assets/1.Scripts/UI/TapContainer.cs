@@ -41,5 +41,10 @@ public class TapContainer : MonoBehaviour
         {
             tapPanels[curIdx].LoadEquipment(idx);
         }
+
+        for(int i = 0; i < tapBtns.Length; i++)
+        {
+            tapBtns[i].Selected(curIdx);
+        }
     }
 }

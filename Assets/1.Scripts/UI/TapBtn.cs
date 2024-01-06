@@ -17,4 +17,16 @@ public class TapBtn : MonoBehaviour
     {
         GetComponentInParent<TapContainer>().Select(idx);
     }
+
+    public void Selected(int curIdx)
+    {
+        if(idx == curIdx)
+        {
+            btn.image.color = ColorInfo.activeColor;
+        }
+        else
+        {
+            btn.image.color = Color.white;
+        }
+    }
 }
