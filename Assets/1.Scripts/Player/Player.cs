@@ -24,6 +24,8 @@ public class Player : MonoBehaviour, IBattle
     public EquipArmor curArmor;
     public EquipHelmet curHelmet;
 
+    public GameObject InvenUI;
+
 
     Joystick joystick;
 
@@ -55,6 +57,7 @@ public class Player : MonoBehaviour, IBattle
             EquipArmor(InventoryManager.Instance.loadInven.myArmor);
             EquipHelmet(InventoryManager.Instance.loadInven.myHelmet);
         }
+
     }
 
     // Start is called before the first frame update
@@ -162,10 +165,20 @@ public class Player : MonoBehaviour, IBattle
         {
             if (helmets[i].stat.equipName.Equals(equipname))
             {
-                curHelmet = (EquipHelmet)helmets[i];
+                curHelmet = helmets[i];
                 curHelmet.gameObject.SetActive(true);
                 break;
             }
         }
+    }
+
+    public void OpenInven()
+    {
+        InvenUI.SetActive(true);
+    }
+
+    public void CloseInven()
+    {
+        InvenUI.SetActive(false);
     }
 }

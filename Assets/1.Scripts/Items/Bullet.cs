@@ -11,32 +11,11 @@ public class Bullet : MonoBehaviour
 
     Vector3 direction = Vector3.forward;
 
-    private void Awake()
-    {
-
-    }
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(movingBullet());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        //if((myEnemy & 1 << other.gameObject.layer) != 0)
-        //{
-        //    IBattle Ib = other.GetComponent<IBattle>();
-        //    Ib?.OnDamage(Damage);
-
-        //    Destroy(gameObject);
-        //}
     }
 
     IEnumerator movingBullet()

@@ -48,8 +48,9 @@ public class TapPanel : MonoBehaviour
                 }
                 for (int i = items.Count; i < showItems.Count; i++)
                 {
-                    items.Add(Instantiate(selectItem, transform));
+                    items.Add(Instantiate(selectItem, transform.GetChild(0)));
                     items[i].setMyName(showItems[i]);
+                    items[i].setMyType(ItemType.weapon);
                 }
             }
         }
@@ -78,8 +79,9 @@ public class TapPanel : MonoBehaviour
                 }
                 for (int i = items.Count; i < showItems.Count; i++)
                 {
-                    items.Add(Instantiate(selectItem, transform));
+                    items.Add(Instantiate(selectItem, transform.GetChild(0)));
                     items[i].setMyName(showItems[i]);
+                    items[i].setMyType(ItemType.armor);
                 }
             }
         }
@@ -108,8 +110,9 @@ public class TapPanel : MonoBehaviour
                 }
                 for (int i = items.Count; i < showItems.Count; i++)
                 {
-                    items.Add(Instantiate(selectItem, transform));
+                    items.Add(Instantiate(selectItem, transform.GetChild(0)));
                     items[i].setMyName(showItems[i]);
+                    items[i].setMyType(ItemType.helmet);
                 }
             }
         }
