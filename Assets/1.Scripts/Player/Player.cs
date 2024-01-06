@@ -45,9 +45,9 @@ public class Player : MonoBehaviour, IBattle
 
         if (InventoryManager.Instance == null)
         {
-            EquipWeapon(ItemName.colt);
-            EquipArmor(ItemName.none_armor);
-            EquipHelmet(ItemName.none_helmet);
+            EquipWeapon("colt");
+            EquipArmor("none_armor");
+            EquipHelmet("none_helmet");
         }
         else
         {
@@ -107,20 +107,20 @@ public class Player : MonoBehaviour, IBattle
         if(myAnim.GetBool("IsAttacking"))
             return;
 
-        if ((int)curWeapon.stat.weaponName <= (int)ItemName.machete)
+        if (curWeapon.stat.Damage == 0)
             myAnim.SetTrigger("MK_Attacking");
     }
 
     public void OnRangedAttack()
     {
-        if (myAnim.GetBool("IsAttacking") || (int)curWeapon.stat.weaponName <= 1 || curWeapon.IsAttacking)
+        if (myAnim.GetBool("IsAttacking") || curWeapon.stat.Damage == 0 || curWeapon.IsAttacking)
             return;
 
         curWeapon.Attack();
         myAnim.SetTrigger("R_Attacking");
     }
 
-    public void EquipWeapon(ItemName weaponName)
+    public void EquipWeapon(string weaponName)
     {
         if (curWeapon != null)
             curWeapon.gameObject.SetActive(false);
@@ -137,7 +137,7 @@ public class Player : MonoBehaviour, IBattle
         }
     }
 
-    public void EquipArmor(ItemName equipname)
+    public void EquipArmor(string equipname)
     {
         if (curArmor != null)
             curArmor.gameObject.SetActive(false);
@@ -153,7 +153,7 @@ public class Player : MonoBehaviour, IBattle
         }
     }
 
-    public void EquipHelmet(ItemName equipname)
+    public void EquipHelmet(string equipname)
     {
         if (curHelmet != null)
             curHelmet.gameObject.SetActive(false);
@@ -167,20 +167,5 @@ public class Player : MonoBehaviour, IBattle
                 break;
             }
         }
-    }
-
-    public void changeWeapon(int i)
-    {
-        EquipWeapon((ItemName)i);
-    }
-
-    public void changeArmor(int i)
-    {
-        EquipArmor((ItemName)(i + (int)ItemName.weaponEnd + 1));
-    }
-
-    public void changeHelmet(int i)
-    {
-        EquipHelmet((ItemName)(i + (int)ItemName.armorEnd + 1));
     }
 }

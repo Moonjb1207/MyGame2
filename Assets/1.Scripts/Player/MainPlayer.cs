@@ -17,23 +17,20 @@ public class MainPlayer : MonoBehaviour
     public EquipArmor curArmor;
     public EquipHelmet curHelmet;
 
-    Animator myAnim;
 
     private void Awake()
     {
         instance = this;
 
         bodyTr = transform.Find("P_Jungle_Charc");
-
-        myAnim = bodyTr.GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        EquipWeapon(ItemName.colt);
-        EquipArmor(ItemName.none_armor);
-        EquipHelmet(ItemName.none_helmet);
+        EquipWeapon("knife");
+        EquipArmor("none_armor");
+        EquipHelmet("none_helmet");
     }
 
     // Update is called once per frame
@@ -42,7 +39,7 @@ public class MainPlayer : MonoBehaviour
 
     }
 
-    public void EquipWeapon(ItemName weaponName)
+    public void EquipWeapon(string weaponName)
     {
         if (curWeapon != null)
             curWeapon.gameObject.SetActive(false);
@@ -58,7 +55,7 @@ public class MainPlayer : MonoBehaviour
         }
     }
 
-    public void EquipArmor(ItemName equipname)
+    public void EquipArmor(string equipname)
     {
         if (curArmor != null)
             curArmor.gameObject.SetActive(false);
@@ -74,7 +71,7 @@ public class MainPlayer : MonoBehaviour
         }
     }
 
-    public void EquipHelmet(ItemName equipname)
+    public void EquipHelmet(string equipname)
     {
         if (curHelmet != null)
             curHelmet.gameObject.SetActive(false);
@@ -83,25 +80,10 @@ public class MainPlayer : MonoBehaviour
         {
             if (helmets[i].stat.equipName.Equals(equipname))
             {
-                curHelmet = (EquipHelmet)helmets[i];
+                curHelmet = helmets[i];
                 curHelmet.gameObject.SetActive(true);
                 break;
             }
         }
-    }
-
-    public void changeWeapon(int i)
-    {
-        EquipWeapon((ItemName)i);
-    }
-
-    public void changeArmor(int i)
-    {
-        EquipArmor((ItemName)(i + (int)ItemName.weaponEnd + 1));
-    }
-
-    public void changeHelmet(int i)
-    {
-        EquipHelmet((ItemName)(i + (int)ItemName.armorEnd + 1));
     }
 }

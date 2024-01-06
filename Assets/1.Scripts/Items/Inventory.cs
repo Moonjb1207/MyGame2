@@ -4,85 +4,82 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public List<ItemName> myItems = new List<ItemName>();
-    public ItemName myHelmet;
-    public ItemName myArmor;
-    public ItemName myWeapon;
+    public Dictionary<string, ItemType> myItems = new Dictionary<string, ItemType>();
+    public string myHelmet;
+    public string myArmor;
+    public string myWeapon;
 
     private void Awake()
     {
-        myItems.Add(ItemName.knife);
-        myItems.Add(ItemName.none_helmet);
-        myItems.Add(ItemName.none_armor);
+        myItems.Add("knife", ItemType.weapon);
+        myItems.Add("none_helmet", ItemType.helmet);
+        myItems.Add("none_armor", ItemType.armor);
 
-        myHelmet = ItemName.none_helmet;
-        myArmor = ItemName.none_armor;
-        myWeapon = ItemName.knife;
+        myHelmet = "none_helmet";
+        myArmor = "none_armor";
+        myWeapon = "knife";
     }
 
-    public void EquipWeapon_I(ItemName weaponName)
+    public void EquipWeapon_I(string weaponName)
     {
         myWeapon = weaponName;
     }
 
-    public void EquipArmor_I(ItemName armorName)
+    public void EquipArmor_I(string armorName)
     {
         myArmor = armorName;
     }
-    public void EquipHelmet_I(ItemName helmetName)
+    public void EquipHelmet_I(string helmetName)
     {
         myHelmet = helmetName;
     }
 
-    public void AddItems(ItemName itemName)
+    public void AddItems(string itemName, ItemType itemType)
     {
-        for(int i = 0; i < myItems.Count; i++)
+        if (myItems.ContainsKey(itemName))
         {
-            if (myItems[i] == itemName)
-            {
-                return;
-            }
+            return;
         }
 
-        myItems.Add(itemName);
+        myItems.Add(itemName, itemType);
     }
 
-    public List<ItemName> showWeapons()
+    public List<string> showWeapons()
     {
-        List<ItemName> weapons = new List<ItemName>();
-        for(int i = 0; i < myItems.Count; i++)
+        List<string> weapons = new List<string>();
+        foreach(KeyValuePair<string, ItemType> data in myItems)
         {
-            if(myItems[i] < ItemName.weaponEnd)
+            if(data.Value == ItemType.weapon)
             {
-                weapons.Add(myItems[i]);
+                weapons.Add(data.Key);
             }
         }
 
         return weapons;
     }
 
-    public List<ItemName> showArmors()
+    public List<string> showArmors()
     {
-        List<ItemName> armors = new List<ItemName>();
-        for (int i = 0; i < myItems.Count; i++)
+        List<string> armors = new List<string>();
+        foreach (KeyValuePair<string, ItemType> data in myItems)
         {
-            if (myItems[i] < ItemName.armorEnd && myItems[i] > ItemName.weaponEnd)
+            if (data.Value == ItemType.armor)
             {
-                armors.Add(myItems[i]);
+                armors.Add(data.Key);
             }
         }
 
         return armors;
     }
 
-    public List<ItemName> showHelmets()
+    public List<string> showHelmets()
     {
-        List<ItemName> helmets = new List<ItemName>();
-        for (int i = 0; i < myItems.Count; i++)
+        List<string> helmets = new List<string>();
+        foreach (KeyValuePair<string, ItemType> data in myItems)
         {
-            if (myItems[i] < ItemName.helmetEnd && myItems[i] > ItemName.armorEnd)
+            if (data.Value == ItemType.helmet)
             {
-                helmets.Add(myItems[i]);
+                helmets.Add(data.Key);
             }
         }
 

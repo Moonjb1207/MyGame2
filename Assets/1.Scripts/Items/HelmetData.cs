@@ -6,15 +6,17 @@ using System;
 [Serializable]
 public class HelmetStat
 {
-    public ItemName equipName;
+    public string equipName;
     public float equipmentSpeed;
     public float Damage;
+    public int helNum;
 
-    public HelmetStat(ItemName an, float asd, float dmg)
+    public HelmetStat(string en, float asd, float dmg, int hnm)
     {
-        equipName = an;
+        equipName = en;
         equipmentSpeed = asd;
         Damage = dmg;
+        helNum = hnm;
     }
 }
 
@@ -23,8 +25,26 @@ public class HelmetData : ScriptableObject
 {
     [SerializeField] HelmetStat[] helmetStat;
 
-    public HelmetStat getHelmetStat(ItemName equipName)
+    public HelmetStat[] helmetStats
     {
-        return helmetStat[(int)equipName - (int)ItemName.armorEnd - 1];
+        get => helmetStat;
+    }
+
+    public HelmetStat getHelmetStat(string equipName)
+    {
+        for (int i = 0; i < helmetStat.Length; i++)
+        {
+            if (helmetStat[i].equipName.Equals(equipName))
+            {
+                return helmetStat[i];
+            }
+        }
+
+        return null;
+    }
+
+    public string getEquipName(int i)
+    {
+        return helmetStat[i].equipName;
     }
 }

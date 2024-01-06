@@ -12,7 +12,8 @@ public abstract class Weapon : Items
 
     private void Start()
     {
-        stat = WeaponManager.Instance.weaponData.getWeaponStat(stat.weaponName);
+        stat = EquipmentManager.Instance.weaponData.getWeaponStat(stat.weaponName);
+        myType = ItemType.weapon;
     }
 
     public abstract void Attack();

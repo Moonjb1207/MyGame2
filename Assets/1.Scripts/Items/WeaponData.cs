@@ -6,15 +6,16 @@ using System;
 [Serializable]
 public class WeaponStat
 {
-    public ItemName weaponName;
+    public string weaponName;
     public float LifeTime;
     public float moveSpeed;
     public float Damage;
     public float shootingDelay;
     public int shootingCount;
     public float meleeDamage;
+    public int weaponNum;
 
-    public WeaponStat(ItemName wn, float lt, float ms, float dmg, float shd, int shc, float md)
+    public WeaponStat(string wn, float lt, float ms, float dmg, float shd, int shc, float md, int wnm)
     {
         weaponName = wn;
         LifeTime = lt;
@@ -23,6 +24,7 @@ public class WeaponStat
         shootingDelay = shd;
         shootingCount = shc;
         meleeDamage = md;
+        weaponNum = wnm;
     }
 }
 
@@ -31,8 +33,26 @@ public class WeaponData : ScriptableObject
 {
     [SerializeField] WeaponStat[] weaponStat;
 
-    public WeaponStat getWeaponStat(ItemName weaponName)
+    public WeaponStat[] weaponStats
     {
-        return weaponStat[(int)weaponName];
+        get => weaponStat;
+    }
+
+    public WeaponStat getWeaponStat(string weaponName)
+    {
+        for(int i = 0; i < weaponStat.Length; i++)
+        {
+            if (weaponStat[i].weaponName.Equals(weaponName))
+            {
+                return weaponStat[i];
+            }
+        }
+
+        return null;
+    }
+
+    public string getEquipName(int i)
+    {
+        return weaponStat[i].weaponName;
     }
 }

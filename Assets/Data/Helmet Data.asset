@@ -13,15 +13,19 @@ MonoBehaviour:
   m_Name: Helmet Data
   m_EditorClassIdentifier: 
   helmetStat:
-  - equipName: 15
+  - equipName: none_helmet
     equipmentSpeed: 1
     Damage: 1
-  - equipName: 16
+    helNum: 0
+  - equipName: lv1_helmet
     equipmentSpeed: 0.9
     Damage: 0.9
-  - equipName: 17
+    helNum: 1
+  - equipName: lv2_helmet
     equipmentSpeed: 0.8
     Damage: 0.8
-  - equipName: 18
+    helNum: 2
+  - equipName: lv3_helmet
     equipmentSpeed: 0.7
     Damage: 0.7
+    helNum: 3

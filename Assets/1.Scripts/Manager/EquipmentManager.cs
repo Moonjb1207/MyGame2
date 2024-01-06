@@ -9,6 +9,7 @@ public class EquipmentManager : MonoBehaviour
 
     public ArmorData armorData;
     public HelmetData helmetData;
+    public WeaponData weaponData;
 
     private void Awake()
     {

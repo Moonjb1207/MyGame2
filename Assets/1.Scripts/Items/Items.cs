@@ -4,29 +4,13 @@ using UnityEngine;
 
 public class Items : MonoBehaviour
 {
-
+    public ItemType myType;
 }
 
-public enum ItemName
+public enum ItemType
 {
-    knife,
-    machete,
-    colt,
-    shotgun,
-    m4a1,
-    ak47,
-    aug,
-    famas,
-    awp,
-    weaponEnd,
-    none_armor,
-    lv1_armor,
-    lv2_armor,
-    lv3_armor,
-    armorEnd,
-    none_helmet,
-    lv1_helmet,
-    lv2_helmet,
-    lv3_helmet,
-    helmetEnd,
+    weapon,
+    armor,
+    helmet,
+
 }

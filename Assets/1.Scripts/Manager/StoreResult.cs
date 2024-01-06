@@ -9,22 +9,20 @@ public class StoreResult : MonoBehaviour
     public TMPro.TMP_Text infoText;
     public TMPro.TMP_Text resultText;
 
-    public Store store;
-
-    public void ShowResult(ItemName itemName)
+    public void ShowResult(string itemName, ItemType itemType)
     {
         gameObject.SetActive(true);
-        if (itemName < ItemName.weaponEnd)
+        if (itemType == ItemType.weapon)
         {
             infoText.text = "»ÌÀº ¹«±â!!";
-            resultText.text = "ÃàÇÏÇÕ´Ï´Ù!! : " + WeaponManager.Instance.weaponData.getWeaponStat(itemName).weaponName.ToString();
+            resultText.text = "ÃàÇÏÇÕ´Ï´Ù!! : " + EquipmentManager.Instance.weaponData.getWeaponStat(itemName).weaponName.ToString();
         }
-        else if (itemName < ItemName.armorEnd)
+        else if (itemType == ItemType.armor)
         {
             infoText.text = "»ÌÀº °©¿Ê!!";
             resultText.text = "ÃàÇÏÇÕ´Ï´Ù!! : " + EquipmentManager.Instance.armorData.getArmorStat(itemName).equipName.ToString();
         }
-        else if (itemName < ItemName.helmetEnd)
+        else if (itemType == ItemType.helmet)
         {
             infoText.text = "»ÌÀº Çï¸ä!!";
             resultText.text = "ÃàÇÏÇÕ´Ï´Ù!! : " + EquipmentManager.Instance.helmetData.getHelmetStat(itemName).equipName.ToString();

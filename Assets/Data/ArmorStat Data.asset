@@ -13,15 +13,19 @@ MonoBehaviour:
   m_Name: ArmorStat Data
   m_EditorClassIdentifier: 
   armorStat:
-  - equipName: 10
+  - equipName: none_armor
     equipmentSpeed: 1
     Damage: 1
-  - equipName: 11
+    armorNum: 0
+  - equipName: lv1_armor
     equipmentSpeed: 0.9
     Damage: 0.9
-  - equipName: 12
+    armorNum: 1
+  - equipName: lv2_armor
     equipmentSpeed: 0.7
     Damage: 0.7
-  - equipName: 13
+    armorNum: 2
+  - equipName: lv3_armor
     equipmentSpeed: 0.5
     Damage: 0.5
+    armorNum: 3

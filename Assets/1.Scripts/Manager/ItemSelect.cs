@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class ItemSelect : MonoBehaviour
 {
     public Image Img;
-    public ItemName myName;
+    public string myName;
+    public ItemType myType;
 
     private void Awake()
     {
@@ -15,24 +16,24 @@ public class ItemSelect : MonoBehaviour
 
     public void SelectItem()
     {
-        if(myName < ItemName.weaponEnd)
+        if (myType == ItemType.weapon)
         {
             InventoryManager.Instance.myInven.EquipWeapon_I(myName);
             MainPlayer.Instance.EquipWeapon(myName);
         }
-        else if(myName < ItemName.armorEnd)
+        else if(myType == ItemType.armor)
         {
             InventoryManager.Instance.myInven.EquipArmor_I(myName);
             MainPlayer.Instance.EquipArmor(myName);
         }
-        else if(myName < ItemName.helmetEnd)
+        else if(myType == ItemType.helmet)
         {
             InventoryManager.Instance.myInven.EquipHelmet_I(myName);
             MainPlayer.Instance.EquipHelmet(myName);
         }
     }
 
-    public void setMyName(ItemName itemName)
+    public void setMyName(string itemName)
     {
         myName = itemName;
     }
