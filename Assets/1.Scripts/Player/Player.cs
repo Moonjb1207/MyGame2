@@ -85,6 +85,7 @@ public class Player : MonoBehaviour, IBattle
         }
         else
         {
+            rg.velocity = Vector3.zero;
             myAnim.SetBool("IsMoving", false);
         }
     }

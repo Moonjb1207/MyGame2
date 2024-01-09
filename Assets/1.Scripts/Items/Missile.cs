@@ -9,6 +9,8 @@ public class Missile : MonoBehaviour
     public float moveSpeed;
     public float Damage;
 
+    public GameObject expEffect;
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.layer == myEnemy)
