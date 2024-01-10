@@ -39,7 +39,7 @@ public class RocketLauncher : Weapon
 
     public void CreateMissile()
     {
-        myMissile = Instantiate(missilePrefab, transform);
+        myMissile = MissilePool.Instance.DequeueMissile(this);
 
         myMissile.transform.position = shootTr.position;
         myMissile.Create(transform.forward, stat.Damage, stat.LifeTime, stat.moveSpeed);

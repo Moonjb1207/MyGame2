@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EnemyData", menuName = "Game/EnemyData", order = int.MaxValue)]
+[CreateAssetMenu(fileName = "EnemyData", menuName = "ScriptableObject/EnemyData", order = int.MaxValue)]
 public class EnemyData : ScriptableObject
 {
     public float hp; // Ã¼·Â

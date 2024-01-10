@@ -11,9 +11,7 @@ public class Bullet : MonoBehaviour
 
     Vector3 direction = Vector3.forward;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
         StartCoroutine(movingBullet());
     }
@@ -39,7 +37,8 @@ public class Bullet : MonoBehaviour
                     IBattle ib = hit.transform.GetComponent<IBattle>();
                     ib?.OnDamage(Damage);
 
-                    Destroy(gameObject);
+                    BulletPool.Instance.EnqueueBullet(this);
+                    gameObject.SetActive(false);
                 }
             }
             else
@@ -49,7 +48,8 @@ public class Bullet : MonoBehaviour
             yield return null;
         }
 
-        Destroy(gameObject);
+        BulletPool.Instance.EnqueueBullet(this);
+        gameObject.SetActive(false);
     }
 
     public void Shoot(Vector3 dir, float d, float lt, float ms)

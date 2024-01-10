@@ -23,7 +23,8 @@ public class Missile : MonoBehaviour
                     col.GetComponent<IBattle>().OnDamage(Damage);
                 }
             }
-            Destroy(gameObject);
+            MissilePool.Instance.EnqueueMissile(this);
+            gameObject.SetActive(false);
         }
     }
 
@@ -47,7 +48,8 @@ public class Missile : MonoBehaviour
                 col.GetComponent<IBattle>().OnDamage(Damage);
             }
         }
-        Destroy(gameObject);
+        MissilePool.Instance.EnqueueMissile(this);
+        gameObject.SetActive(false);
     }
 
     public void Shooting()

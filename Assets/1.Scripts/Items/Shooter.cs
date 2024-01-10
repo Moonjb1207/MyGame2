@@ -25,9 +25,10 @@ public class Shooter : Weapon
 
     public void Shooting()
     {
-        Bullet bullet = Instantiate(bulletPrefab);
+        Bullet bullet = BulletPool.Instance.DequeueBullet();
 
         bullet.transform.position = shootTr.position;
         bullet.Shoot(transform.forward, stat.Damage, stat.LifeTime, stat.moveSpeed);
+        bullet.gameObject.SetActive(true);
     }
 }

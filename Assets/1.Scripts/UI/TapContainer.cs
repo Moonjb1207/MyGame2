@@ -37,11 +37,6 @@ public class TapContainer : MonoBehaviour
                       //직접해보기 - tapPanels 배열의 인덱스 curIdx만 활성화하기
         tapPanels[curIdx].gameObject.SetActive(true);
 
-        if (!tapPanels[curIdx].isUpdated)
-        {
-            tapPanels[curIdx].LoadEquipment(idx);
-        }
-
         for(int i = 0; i < tapBtns.Length; i++)
         {
             tapBtns[i].Selected(curIdx);

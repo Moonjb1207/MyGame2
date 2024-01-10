@@ -14,7 +14,6 @@ public class Store : MonoBehaviour
 
         gameObject.SetActive(false);
         result.ShowResult(EquipmentManager.Instance.weaponData.getEquipName(rnd), ItemType.weapon);
-        tapContainer.tapPanels[(int)ItemType.weapon].isUpdated = false;
     }
 
     public void BuyEquipArmor()
@@ -24,7 +23,6 @@ public class Store : MonoBehaviour
 
         gameObject.SetActive(false);
         result.ShowResult(EquipmentManager.Instance.armorData.getEquipName(rnd), ItemType.armor);
-        tapContainer.tapPanels[(int)ItemType.armor].isUpdated = false;
     }
 
     public void BuyEquipHelmet()
@@ -34,7 +32,6 @@ public class Store : MonoBehaviour
 
         gameObject.SetActive(false);
         result.ShowResult(EquipmentManager.Instance.helmetData.getEquipName(rnd), ItemType.helmet);
-        tapContainer.tapPanels[(int)ItemType.helmet].isUpdated = false;
     }
 
 }

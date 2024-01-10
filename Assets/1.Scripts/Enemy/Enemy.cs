@@ -6,16 +6,12 @@ public class Enemy : MonoBehaviour, IBattle
 {
     public EnemyData data;
 
-    public float attackRange;
-    public float moveSpeed;
-    public float rotSpeed;
-    public float attackDamage;
-
     public float curHP;
+    public float curDelay;
     
     public Transform target;
 
-    [SerializeField] EnemyState curEnemyState;
+    [SerializeField] protected EnemyState curEnemyState;
     public EnemyMovementState movementState;
     public EnemyAttackState attackState;
 
@@ -29,6 +25,7 @@ public class Enemy : MonoBehaviour, IBattle
     {
         curHP = data.hp;
         target = Player.Instance?.transform;
+        curDelay = 0;
 
         NextState(movementState);
     }
