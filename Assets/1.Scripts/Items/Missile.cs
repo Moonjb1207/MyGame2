@@ -11,10 +11,11 @@ public class Missile : MonoBehaviour
 
     public GameObject expEffect;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.layer == myEnemy)
+        if((myEnemy & 1 << other.gameObject.layer) != 0)
         {
+            StopAllCoroutines();
             Collider[] list = Physics.OverlapSphere(transform.position + new Vector3(0, 0, 0.5f), 5.0f, myEnemy);
             if (list != null)
             {
@@ -23,6 +24,8 @@ public class Missile : MonoBehaviour
                     col.GetComponent<IBattle>().OnDamage(Damage);
                 }
             }
+            GameObject temp = Instantiate(expEffect);
+            temp.transform.position = transform.position;
             MissilePool.Instance.EnqueueMissile(this);
             gameObject.SetActive(false);
         }
@@ -48,6 +51,8 @@ public class Missile : MonoBehaviour
                 col.GetComponent<IBattle>().OnDamage(Damage);
             }
         }
+        GameObject temp = Instantiate(expEffect);
+        temp.transform.position = transform.position;
         MissilePool.Instance.EnqueueMissile(this);
         gameObject.SetActive(false);
     }

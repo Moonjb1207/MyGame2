@@ -42,7 +42,7 @@ MonoBehaviour:
     moveSpeed: 15
     Damage: 3
     shootingDelay: 0.5
-    shootingCount: 4
+    shootingCount: 2
     meleeDamage: 4
     weaponNum: 3
   - weaponName: m4a1
@@ -87,7 +87,7 @@ MonoBehaviour:
     weaponNum: 8
   - weaponName: rpg
     LifeTime: 2
-    moveSpeed: 2
+    moveSpeed: 5
     Damage: 15
     shootingDelay: 1
     shootingCount: 1

@@ -9,10 +9,7 @@ public class RocketLauncher : Weapon
 
     private void Awake()
     {
-        if(myMissile == null)
-        {
-            myMissile = GetComponentInChildren<Missile>();
-        }
+        CreateMissile();
     }
 
     public override void Attack()
@@ -43,5 +40,6 @@ public class RocketLauncher : Weapon
 
         myMissile.transform.position = shootTr.position;
         myMissile.Create(transform.forward, stat.Damage, stat.LifeTime, stat.moveSpeed);
+        myMissile.gameObject.SetActive(true);
     }
 }

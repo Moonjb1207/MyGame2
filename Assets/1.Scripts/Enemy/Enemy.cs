@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour, IBattle
     public EnemyMovementState movementState;
     public EnemyAttackState attackState;
 
+    public LayerMask myEnemy;
+
     private void Awake()
     {
         movementState = GetComponentInChildren<EnemyMovementState>();
