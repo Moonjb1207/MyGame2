@@ -182,4 +182,15 @@ public class Player : MonoBehaviour, IBattle
     {
         InvenUI.SetActive(false);
     }
+
+    public void falseJoystick()
+    {
+        joystick.gameObject.SetActive(false);
+    }
+
+    public void trueJoystick()
+    {
+        joystick.gameObject.SetActive(true);
+    }
+
 }

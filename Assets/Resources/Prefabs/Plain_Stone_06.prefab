@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3498061558470063648}
   - component: {fileID: 3498061558471092688}
   - component: {fileID: 4521210022154090456}
+  - component: {fileID: 217380417925094038}
   m_Layer: 11
   m_Name: Plain_Stone_06
   m_TagString: Untagged
@@ -97,3 +98,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5577118, y: 0.48033512, z: 0.56794715}
   m_Center: {x: -0.0000015199184, y: 0.24016786, z: -0.0000009983778}
+--- !u!208 &217380417925094038
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3498061558473050166}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.279, y: 0.24000001, z: 0.284}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.24000001, z: 0}
+  m_TimeToStationary: 0.5

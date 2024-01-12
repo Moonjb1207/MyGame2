@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BuildingManager : MonoBehaviour
 {
@@ -11,10 +12,12 @@ public class BuildingManager : MonoBehaviour
     public Material canPlaceMaterial;
     public Material cantPlaceMaterial;
 
+    public bool BuildState;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        BuildState = false;
     }
 
     // Update is called once per frame
@@ -86,6 +89,8 @@ public class BuildingManager : MonoBehaviour
 
     void Down()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+
         myBox = Instantiate(myBoxPrefab);
 
         myBox.GetComponentInChildren<Collider>().enabled = false;
@@ -108,6 +113,34 @@ public class BuildingManager : MonoBehaviour
         else
         {
             myBox.canPlaceIndicator.material = canPlaceMaterial;
+        }
+    }
+
+    public void ChangeBuildState()
+    {
+        if(BuildState)
+        {
+            BuildState = !BuildState;
+
+            Camera.main.transform.SetParent(Player.Instance.transform);
+
+            Player.Instance.trueJoystick();
+            Player.Instance.gameObject.SetActive(true);
+            Time.timeScale = 1.0f;
+
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            BuildState = !BuildState;
+
+            Camera.main.transform.SetParent(null);
+
+            Player.Instance.falseJoystick();
+            Player.Instance.gameObject.SetActive(false);
+            Time.timeScale = 0.0f;
+
+            gameObject.SetActive(true);
         }
     }
 }
