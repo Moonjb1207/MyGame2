@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class BuildingManager : MonoBehaviour
 {
-    public Building cube;
+    public Building myBox;
     public Building myBoxPrefab;
+    public LayerMask Block;
+
+    public Material canPlaceMaterial;
+    public Material cantPlaceMaterial;
 
     // Start is called before the first frame update
     void Start()
@@ -18,28 +22,11 @@ public class BuildingManager : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            bool hitted = Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, LayerMask.GetMask("Ground"));
-            
-            if(hitted)
-            {
-                Debug.Log("충돌한 위치 : " + hitInfo.point);
-
-                cube = Instantiate(myBoxPrefab);
-                cube.GetComponent<Collider>().enabled = false;
-            }
+            Down();
         }
         else if(Input.GetMouseButton(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            bool hitted = Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, LayerMask.GetMask("Ground"));
-
-            if (hitted)
-            {
-                Debug.Log("충돌한 위치 : " + hitInfo.point);
-
-                cube.transform.position = GetGridPoint(hitInfo.point);
-            }
+            Drag();
         }
         else if(Input.GetMouseButtonUp(0))
         {
@@ -52,6 +39,7 @@ public class BuildingManager : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         bool hitted = Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, LayerMask.GetMask("Ground"));
+
         if (hitted)
         {
             return GetGridPoint(hitInfo.point);
@@ -67,20 +55,59 @@ public class BuildingManager : MonoBehaviour
         return new Vector3(x, 0, z);
     }
 
-    private void Up()
+    void Up()
     {
-        if (cube == null) return;
+        if (myBox == null) return;
 
         Vector3 point = GetPointOnGround();
-        Collider[] cols = Physics.OverlapBox(point, cube.size, Quaternion.identity, LayerMask.GetMask("Obstacle"));
+        Collider[] cols = Physics.OverlapBox(point, myBox.size, Quaternion.identity, Block);
 
         if(cols.Length > 0)
         {
-            Destroy(cube.gameObject);
+            Destroy(myBox.gameObject);
             return;
         }
 
-        cube.GetComponent<Collider>().enabled = true;
-        cube = null;
+        myBox.canPlaceIndicator.gameObject.SetActive(false);
+        myBox.GetComponentInChildren<Collider>().enabled = true;
+        myBox = null;
+    }
+
+    void Drag()
+    {
+        if (myBox == null) return;
+
+        Vector3 point = GetPointOnGround();
+
+        myBox.transform.position = point;
+
+        CheckCanPlace(point);
+    }
+
+    void Down()
+    {
+        myBox = Instantiate(myBoxPrefab);
+
+        myBox.GetComponentInChildren<Collider>().enabled = false;
+        myBox.canPlaceIndicator.gameObject.SetActive(true);
+
+        Vector3 point = GetPointOnGround();
+        myBox.transform.position = point;
+
+        CheckCanPlace(point);
+    }
+
+    void CheckCanPlace(Vector3 point)
+    {
+        Collider[] cols = Physics.OverlapBox(point, myBox.size, Quaternion.identity, Block);
+
+        if (cols.Length > 0)
+        {
+            myBox.canPlaceIndicator.material = cantPlaceMaterial;
+        }
+        else
+        {
+            myBox.canPlaceIndicator.material = canPlaceMaterial;
+        }
     }
 }
