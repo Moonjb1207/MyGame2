@@ -9,16 +9,20 @@ public class RangeWeapon : MonoBehaviour
     public float moveSpeed;
     public float Damage;
 
+    public Transform mySpin;
+
     Vector3 direction = Vector3.forward;
 
     private void Start()
     {
+        mySpin = transform.GetChild(0);
         StartCoroutine(movingWeapon());
     }
 
     IEnumerator movingWeapon()
     {
         transform.forward = direction;
+        StartCoroutine(Spin());
 
         while (LifeTime >= 0)
         {
@@ -37,8 +41,8 @@ public class RangeWeapon : MonoBehaviour
                     IBattle ib = hit.transform.GetComponent<IBattle>();
                     ib?.OnDamage(Damage);
 
-                    //BulletPool.Instance.EnqueueBullet(this);
-                    Destroy(gameObject);
+                    EnemyWeaponPool.Instance.EnqueueWeapon(this);
+                    gameObject.SetActive(false);
                 }
             }
             else
@@ -48,8 +52,8 @@ public class RangeWeapon : MonoBehaviour
             yield return null;
         }
 
-        //BulletPool.Instance.EnqueueBullet(this);
-        Destroy(gameObject);
+        EnemyWeaponPool.Instance.EnqueueWeapon(this);
+        gameObject.SetActive(false);
     }
 
     public void Shoot(Vector3 dir, float d, float lt, float ms)
@@ -64,6 +68,10 @@ public class RangeWeapon : MonoBehaviour
     {
         while(true)
         {
+            float delta = 720.0f * Time.deltaTime;
+
+            mySpin.Rotate(Vector3.up * delta, Space.World);
+
             yield return null;
         }
     }

@@ -15,10 +15,10 @@ public class RangeEnemy : Enemy
 
     public void Shooting()
     {
-        RangeWeapon myWeapon = Instantiate(weaponPrefab);
+        RangeWeapon myWeapon = EnemyWeaponPool.Instance.DequeueWeapon();
 
         myWeapon.transform.position = shootTr.position;
         myWeapon.Shoot(transform.forward, data.damage, 3, 4);
-        //bullet.gameObject.SetActive(true);
+        myWeapon.gameObject.SetActive(true);
     }
 }

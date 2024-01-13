@@ -51,7 +51,7 @@ public class IGEquipmentContainer : MonoBehaviour
                 }
                 for (int i = items.Count; i < showItems.Count; i++)
                 {
-                    items.Add(Instantiate(selectItem, transform.GetChild(0)));
+                    items.Add(Instantiate(selectItem));
                     items[i].setMyName(showItems[i]);
                     items[i].setMyType(ItemType.weapon);
                 }
@@ -82,7 +82,7 @@ public class IGEquipmentContainer : MonoBehaviour
                 }
                 for (int i = items.Count; i < showItems.Count; i++)
                 {
-                    items.Add(Instantiate(selectItem, transform.GetChild(0)));
+                    items.Add(Instantiate(selectItem));
                     items[i].setMyName(showItems[i]);
                     items[i].setMyType(ItemType.armor);
                 }
@@ -113,7 +113,7 @@ public class IGEquipmentContainer : MonoBehaviour
                 }
                 for (int i = items.Count; i < showItems.Count; i++)
                 {
-                    items.Add(Instantiate(selectItem, transform.GetChild(0)));
+                    items.Add(Instantiate(selectItem));
                     items[i].setMyName(showItems[i]);
                     items[i].setMyType(ItemType.helmet);
                 }
