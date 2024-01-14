@@ -14,7 +14,8 @@ public class MeleeWeapon : Weapon
         {
             foreach (Collider col in list)
             {
-                col.GetComponent<IBattle>().OnDamage(stat.meleeDamage);
+                IBattle ib = col.GetComponent<IBattle>();
+                ib?.OnDamage(stat.meleeDamage);
             }
         }
     }

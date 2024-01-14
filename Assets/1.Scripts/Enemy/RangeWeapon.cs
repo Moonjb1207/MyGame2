@@ -13,7 +13,7 @@ public class RangeWeapon : MonoBehaviour
 
     Vector3 direction = Vector3.forward;
 
-    private void Start()
+    private void OnEnable()
     {
         mySpin = transform.GetChild(0);
         StartCoroutine(movingWeapon());

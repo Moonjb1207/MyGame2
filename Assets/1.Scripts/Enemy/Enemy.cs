@@ -14,17 +14,24 @@ public class Enemy : MonoBehaviour, IBattle
     [SerializeField] protected EnemyState curEnemyState;
     public EnemyMovementState movementState;
     public EnemyAttackState attackState;
+    public EnemyDeadState deadState;
 
     public LayerMask myEnemy;
+
+    public EnemyQueueNum myNum;
 
     private void Awake()
     {
         movementState = GetComponentInChildren<EnemyMovementState>();
         attackState = GetComponentInChildren<EnemyAttackState>();
+        deadState = GetComponentInChildren<EnemyDeadState>();
     }
 
     private void OnEnable()
     {
+        //gameObject.SetActive(true);
+        //GetComponent<Collider>().enabled = true;
+
         curHP = data.hp;
         target = Player.Instance?.transform;
         curDelay = 0;
@@ -50,9 +57,15 @@ public class Enemy : MonoBehaviour, IBattle
     {
         curEnemyState?.UpdateState();
     }
+
     public void OnDamage(float dmg)
     {
         curHP -= dmg;
+        if (curHP <= 0)
+        {
+            curEnemyState.myAnim.SetTrigger("IsDying");
+            NextState(deadState);
+        }
     }
 
     public bool IsLive
@@ -65,5 +78,10 @@ public class Enemy : MonoBehaviour, IBattle
         //IBattle ib = Player.Instance.GetComponent<IBattle>();
         //ib?.OnDamage(attackDamage);
         //enemyMovement.myAnim.SetTrigger("Attacking");
+    }
+    
+    public void Dead()
+    {
+        curEnemyState.myAnim.SetBool("DyingEnd", true);
     }
 }

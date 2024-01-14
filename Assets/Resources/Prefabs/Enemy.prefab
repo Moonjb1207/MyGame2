@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 14361788862224634}
   - component: {fileID: 14361788862224628}
   - component: {fileID: 14361788862224629}
+  - component: {fileID: 5022199669029218904}
   - component: {fileID: 14361788862224633}
   - component: {fileID: 14361788862224632}
   - component: {fileID: 14361788862224630}
@@ -57,9 +58,11 @@ MonoBehaviour:
   curEnemyState: {fileID: 0}
   movementState: {fileID: 0}
   attackState: {fileID: 0}
+  deadState: {fileID: 0}
   myEnemy:
     serializedVersion: 2
     m_Bits: 512
+  myNum: 0
 --- !u!114 &14361788862224628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,6 +96,22 @@ MonoBehaviour:
   myAnim: {fileID: 0}
   curDelay: 0
   agent: {fileID: 0}
+--- !u!114 &5022199669029218904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14361788862224636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0064dc81f7028144bb30ea56891b0611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  bodyTr: {fileID: 0}
+  myAnim: {fileID: 0}
+  curDelay: 0
 --- !u!136 &14361788862224633
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -454,6 +473,7 @@ GameObject:
   m_Component:
   - component: {fileID: 14361789282442500}
   - component: {fileID: 14361789274971786}
+  - component: {fileID: 8935215393890468608}
   m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
@@ -519,6 +539,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8935215393890468608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14361789282191010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c334410eee5a7449109c7234dbdbda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bomb:
+    m_PersistentCalls:
+      m_Calls: []
+  Death:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 14361788862224634}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: Dead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &14361789282191478
 GameObject:
   m_ObjectHideFlags: 0

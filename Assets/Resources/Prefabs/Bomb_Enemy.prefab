@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1008042641311427823}
   - component: {fileID: 1008042641311427816}
   - component: {fileID: 1008042641311427817}
+  - component: {fileID: -3028935013429986033}
   - component: {fileID: 1008042641311427818}
   - component: {fileID: 1008042641311427822}
   - component: {fileID: 1008042641311427821}
@@ -57,9 +58,11 @@ MonoBehaviour:
   curEnemyState: {fileID: 0}
   movementState: {fileID: 0}
   attackState: {fileID: 0}
+  deadState: {fileID: 0}
   myEnemy:
     serializedVersion: 2
     m_Bits: 512
+  myNum: 2
   myBombEffect: {fileID: 4593184484909914552, guid: be88c3cd78a4a324fa7ad82f4e278d03, type: 3}
 --- !u!114 &1008042641311427816
 MonoBehaviour:
@@ -94,6 +97,22 @@ MonoBehaviour:
   myAnim: {fileID: 0}
   curDelay: 0
   agent: {fileID: 0}
+--- !u!114 &-3028935013429986033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008042641311427812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0064dc81f7028144bb30ea56891b0611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  bodyTr: {fileID: 0}
+  myAnim: {fileID: 0}
+  curDelay: 0
 --- !u!195 &1008042641311427818
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2875,6 +2894,21 @@ MonoBehaviour:
       - m_Target: {fileID: 1008042641311427823}
         m_TargetAssemblyTypeName: BombEnemy, Assembly-CSharp
         m_MethodName: BombAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Death:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1008042641311427823}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: Dead
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -11,6 +11,9 @@ public class EnemyMovementState : EnemyState
     {
         base.Awake();
         agent = GetComponent<NavMeshAgent>();
+
+        agent.updateRotation = false;
+
         agent.speed = enemy.data.moveSpeed;
     }
 
@@ -26,13 +29,13 @@ public class EnemyMovementState : EnemyState
         if (enemy.target == null)
             return;
 
-        Vector3 lookPoint = new Vector3(enemy.target.position.x, this.transform.position.y, enemy.target.position.z);
-        transform.LookAt(lookPoint);
-
         float distance = (enemy.target.position - transform.position).magnitude;
         //공격 범위보다 가까우면
         if (distance <= enemy.data.attackRange)
         {
+            Vector3 lookPoint = new Vector3(enemy.target.position.x, this.transform.position.y, enemy.target.position.z);
+            transform.LookAt(lookPoint);
+
             myAnim.SetBool("IsMoving", false);
             agent.velocity = Vector3.zero;
             agent.isStopped = true;
@@ -40,8 +43,18 @@ public class EnemyMovementState : EnemyState
             enemy.NextState(enemy.attackState);
             return;
         }
-        else //공격 범위보다 멂
+        else if(distance > enemy.data.attackRange && !myAnim.GetBool("IsAttacking"))//공격 범위보다 멂
         {
+            Vector2 forward = new Vector2(transform.position.z, transform.position.x);
+            Vector2 steeringTarget = new Vector2(agent.steeringTarget.z, agent.steeringTarget.x);
+
+            //방향을 구한 뒤, 역함수로 각을 구한다.
+            Vector2 dir = steeringTarget - forward;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+            //방향 적용
+            transform.eulerAngles = Vector3.up * angle;
+
             if (agent.SetDestination(enemy.target.position))
             {
                 myAnim.SetBool("IsMoving", true);

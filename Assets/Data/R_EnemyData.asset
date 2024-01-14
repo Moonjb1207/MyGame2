@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f586587467106234e8ec745424052c55, type: 3}
   m_Name: R_EnemyData
   m_EditorClassIdentifier: 
-  hp: 100
+  hp: 10
   moveSpeed: 2
   damage: 3
   attackRange: 10

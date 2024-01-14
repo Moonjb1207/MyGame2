@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6589496253860346785}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1643519369436185356
 MeshFilter:
@@ -1750,7 +1750,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6589496253860346785}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6589496253861191067
 MeshFilter:
@@ -2165,7 +2165,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6589496253860346785}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6589496253861099809
 MeshFilter:
@@ -2510,6 +2510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6589496253860411511}
   - component: {fileID: 6589496253867573305}
+  - component: {fileID: 2893906965081055343}
   m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
@@ -2575,6 +2576,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2893906965081055343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6589496253860054883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c334410eee5a7449109c7234dbdbda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bomb:
+    m_PersistentCalls:
+      m_Calls: []
+  Death:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6589496255196540672}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: Dead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6589496253860059269
 GameObject:
   m_ObjectHideFlags: 0
@@ -3300,7 +3331,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6589496253860346785}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6589496253861188019
 MeshFilter:
@@ -3860,11 +3891,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6589496253860400861}
+  - {fileID: 6612847271563140383}
   - {fileID: 6589496253860342105}
   - {fileID: 6589496253860406149}
   - {fileID: 6589496253860386739}
   - {fileID: 6589496253860393887}
-  - {fileID: 6612847271563140383}
   m_Father: {fileID: 6589496253860318711}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5152,7 +5183,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6589496253860346785}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6589496253861196461
 MeshFilter:
@@ -5482,6 +5513,7 @@ GameObject:
   - component: {fileID: 6589496255196540672}
   - component: {fileID: 6589496255196540700}
   - component: {fileID: 6589496255196540701}
+  - component: {fileID: -6851876398703580530}
   - component: {fileID: 6589496255196540703}
   - component: {fileID: 6589496255196540702}
   - component: {fileID: 6589496255196540699}
@@ -5527,10 +5559,12 @@ MonoBehaviour:
   curEnemyState: {fileID: 0}
   movementState: {fileID: 0}
   attackState: {fileID: 0}
+  deadState: {fileID: 0}
   myEnemy:
     serializedVersion: 2
     m_Bits: 512
-  weaponPrefab: {fileID: 0}
+  myNum: 1
+  weaponPrefab: {fileID: 4943655089499265963, guid: 2e98f70bf59d9a14cb9502a893d5bbde, type: 3}
   shootTr: {fileID: 6589496253860346785}
 --- !u!114 &6589496255196540700
 MonoBehaviour:
@@ -5559,6 +5593,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd897984fc1e3fe458fa1ffeb0757de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  bodyTr: {fileID: 0}
+  myAnim: {fileID: 0}
+  curDelay: 0
+--- !u!114 &-6851876398703580530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6589496255196540674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0064dc81f7028144bb30ea56891b0611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}

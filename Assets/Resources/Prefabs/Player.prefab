@@ -7434,7 +7434,7 @@ MonoBehaviour:
   attackPos: {fileID: 1172624079154348384}
   myEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!1 &1172624079278430148
 GameObject:
   m_ObjectHideFlags: 0
@@ -7989,7 +7989,7 @@ MonoBehaviour:
   attackPos: {fileID: 1172624079828173268}
   myEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!1 &1172624079986923876
 GameObject:
   m_ObjectHideFlags: 0
@@ -8110,6 +8110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1172624080518992113}
   - component: {fileID: 1172624080528064183}
+  - component: {fileID: 3246600156516943387}
   m_Layer: 9
   m_Name: P_Jungle_Charc
   m_TagString: Untagged
@@ -8157,6 +8158,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3246600156516943387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172624080518565009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b80ff51c6f9a3b498f84303c4a2bb59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeAttacking:
+    m_PersistentCalls:
+      m_Calls: []
+  gameOver:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9169660828624317464}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: GameOver
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1172624080518565011
 GameObject:
   m_ObjectHideFlags: 0

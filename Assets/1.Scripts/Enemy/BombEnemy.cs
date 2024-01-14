@@ -9,6 +9,7 @@ public class BombEnemy : Enemy
     public override void OnAttack()
     {
         curEnemyState.myAnim.SetTrigger("Attacking");
+        curEnemyState.myAnim.SetBool("IsAttacking", true);
     }
 
     public void BombAttack()

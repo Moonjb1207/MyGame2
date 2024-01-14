@@ -44,7 +44,11 @@ public class Player : MonoBehaviour, IBattle
         bodyTr = transform.Find("P_Jungle_Charc");
 
         myAnim = bodyTr.GetComponent<Animator>();
+    }
 
+    // Start is called before the first frame update
+    void Start()
+    {
         if (InventoryManager.Instance == null)
         {
             EquipWeapon("colt");
@@ -57,13 +61,6 @@ public class Player : MonoBehaviour, IBattle
             EquipArmor(InventoryManager.Instance.loadInven.myArmor);
             EquipHelmet(InventoryManager.Instance.loadInven.myHelmet);
         }
-
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
     }
 
     // Update is called once per frame
@@ -75,18 +72,21 @@ public class Player : MonoBehaviour, IBattle
         //    MoveTo(Vector3.forward);
         //}
 
-        if (joystick.Direction.magnitude > 0)
+        if (!myAnim.GetBool("Dying"))
         {
-            Vector3 dir = new Vector3(joystick.Direction.x, 0, joystick.Direction.y);
+            if (joystick.Direction.magnitude > 0)
+            {
+                Vector3 dir = new Vector3(joystick.Direction.x, 0, joystick.Direction.y);
 
-            MoveTo(dir);
+                MoveTo(dir);
 
-            myAnim.SetBool("IsMoving", true);
-        }
-        else
-        {
-            rg.velocity = Vector3.zero;
-            myAnim.SetBool("IsMoving", false);
+                myAnim.SetBool("IsMoving", true);
+            }
+            else
+            {
+                rg.velocity = Vector3.zero;
+                myAnim.SetBool("IsMoving", false);
+            }
         }
     }
 
@@ -99,6 +99,11 @@ public class Player : MonoBehaviour, IBattle
     public void OnDamage(float dmg)
     {
         curHP -= dmg * curArmor.stat.Damage * curHelmet.stat.Damage;
+        
+        if(curHP <= 0)
+        {
+            myAnim.SetTrigger("IsDying");
+        }
     }
 
     public bool IsLive
@@ -112,7 +117,10 @@ public class Player : MonoBehaviour, IBattle
             return;
 
         if (curWeapon.stat.Damage == 0)
+        {
+            curWeapon.Attack();
             myAnim.SetTrigger("MK_Attacking");
+        }
     }
 
     public void OnRangedAttack()
@@ -193,4 +201,9 @@ public class Player : MonoBehaviour, IBattle
         joystick.gameObject.SetActive(true);
     }
 
+    public void GameOver()
+    {
+        myAnim.speed = 0.0f;
+        Time.timeScale = 0.0f;
+    }
 }
