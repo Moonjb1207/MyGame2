@@ -25,7 +25,10 @@ public class BombEnemy : Enemy
 
         GameObject temp = Instantiate(myBombEffect);
         temp.transform.position = transform.position;
-        Destroy(gameObject);
+
+        gameObject.SetActive(false);
+        mySpawn.MyEnemyDead();
+        EnemyPool.Instance.EnqueueEnemy(this, myNum);
     }
 
     private void OnDrawGizmos()

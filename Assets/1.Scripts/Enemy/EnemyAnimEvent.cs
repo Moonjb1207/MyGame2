@@ -7,6 +7,12 @@ public class EnemyAnimEvent : MonoBehaviour
 {
     public UnityEvent Bomb = null;
     public UnityEvent Death = null;
+    public UnityEvent ThrowWeapon = null;
+
+    public void Throwing()
+    {
+        ThrowWeapon?.Invoke();
+    }
 
     public void Dying()
     {

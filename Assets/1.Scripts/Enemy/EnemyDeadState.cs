@@ -30,7 +30,10 @@ public class EnemyDeadState : EnemyState
         }
         if(eraseTime < 0)
         {
+            myAnim.SetBool("DyingEnd", false);
+            enemy.mySpawn.MyEnemyDead();
             gameObject.SetActive(false);
+            EnemyPool.Instance.EnqueueEnemy(enemy, enemy.myNum);
         }
     }
 }

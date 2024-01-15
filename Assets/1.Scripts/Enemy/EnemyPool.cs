@@ -53,7 +53,7 @@ public class EnemyPool : MonoBehaviour
         }
     }
 
-    public Enemy DequeueEnemy(EnemyQueueNum num)
+    public Enemy DequeueEnemy(EnemyQueueNum num, EnemyRespawn myspawn)
     {
         Enemy myEnemy;
 
@@ -62,21 +62,25 @@ public class EnemyPool : MonoBehaviour
             if (meleeQueue.Count == 0)
             {
                 myEnemy = Instantiate(meleePrefab);
+                myEnemy.SaveMySpawn(myspawn);
             }
             else
             {
                 myEnemy = meleeQueue.Dequeue();
+                myEnemy.SaveMySpawn(myspawn);
             }
         }
-        else if(num == EnemyQueueNum.Range)
+        else if (num == EnemyQueueNum.Range)
         {
             if (rangeQueue.Count == 0)
             {
                 myEnemy = Instantiate(rangePrefab);
+                myEnemy.SaveMySpawn(myspawn);
             }
             else
             {
                 myEnemy = rangeQueue.Dequeue();
+                myEnemy.SaveMySpawn(myspawn);
             }
         }
         else
@@ -84,12 +88,15 @@ public class EnemyPool : MonoBehaviour
             if (bombQueue.Count == 0)
             {
                 myEnemy = Instantiate(bombPrefab);
+                myEnemy.SaveMySpawn(myspawn);
             }
             else
             {
                 myEnemy = bombQueue.Dequeue();
+                myEnemy.SaveMySpawn(myspawn);
             }
-        }    
+        }
+        
 
         myEnemy.transform.SetParent(null);
         return myEnemy;

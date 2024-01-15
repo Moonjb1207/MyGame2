@@ -9,7 +9,6 @@ public class RangeEnemy : Enemy
 
     public override void OnAttack()
     {
-        Shooting();
         curEnemyState.myAnim.SetTrigger("Attacking");
     }
 

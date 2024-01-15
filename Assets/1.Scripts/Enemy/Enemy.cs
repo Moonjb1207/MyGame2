@@ -20,6 +20,8 @@ public class Enemy : MonoBehaviour, IBattle
 
     public EnemyQueueNum myNum;
 
+    public EnemyRespawn mySpawn;
+
     private void Awake()
     {
         movementState = GetComponentInChildren<EnemyMovementState>();
@@ -29,7 +31,6 @@ public class Enemy : MonoBehaviour, IBattle
 
     private void OnEnable()
     {
-        //gameObject.SetActive(true);
         //GetComponent<Collider>().enabled = true;
 
         curHP = data.hp;
@@ -83,5 +84,10 @@ public class Enemy : MonoBehaviour, IBattle
     public void Dead()
     {
         curEnemyState.myAnim.SetBool("DyingEnd", true);
+    }
+
+    public void SaveMySpawn(EnemyRespawn myspawn)
+    {
+        mySpawn = myspawn;
     }
 }
