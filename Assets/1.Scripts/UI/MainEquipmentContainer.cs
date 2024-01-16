@@ -21,102 +21,45 @@ public class MainEquipmentContainer : MonoBehaviour
 
     private void OnEnable()
     {
-        LoadEquipment(itemType);
+        LoadEquipment();
     }
 
-    public void LoadEquipment(ItemType curindex)
+    private void Start()
     {
-        if (curindex == ItemType.weapon)
-        {
-            List<string> showItems = InventoryManager.Instance.myInven.showWeapons();
+        LoadEquipment();
+    }
 
-            if (showItems.Count < items.Count)
+    public void LoadEquipment()
+    {
+        //Q. 아래 코드가 필요한 이유는 무엇인가요?	
+        if (InventoryManager.Instance == null)
+            return;
+
+        List<string> showItems = InventoryManager.Instance.ShowEquipments(itemType);
+
+        if (showItems.Count < items.Count)
+        {
+            for (int i = 0; i < showItems.Count; i++)
             {
-                for (int i = 0; i < showItems.Count; i++)
-                {
-                    items[i].setMyName(showItems[i]);
-                    items[i].gameObject.SetActive(true);
-                }
-                for (int i = showItems.Count; i < items.Count; i++)
-                {
-                    items[i].gameObject.SetActive(false);
-                }
+                items[i].setMyItem(showItems[i], itemType);
+                items[i].gameObject.SetActive(true);
             }
-            else
+            for (int i = showItems.Count; i < items.Count; i++)
             {
-                for (int i = 0; i < items.Count; i++)
-                {
-                    items[i].setMyName(showItems[i]);
-                    items[i].gameObject.SetActive(true);
-                }
-                for (int i = items.Count; i < showItems.Count; i++)
-                {
-                    items.Add(Instantiate(selectItem));
-                    items[i].setMyName(showItems[i]);
-                    items[i].setMyType(ItemType.weapon);
-                }
+                items[i].gameObject.SetActive(false);
             }
         }
-        else if (curindex == ItemType.armor)
+        else
         {
-            List<string> showItems = InventoryManager.Instance.myInven.showArmors();
-
-            if (showItems.Count < items.Count)
+            for (int i = 0; i < items.Count; i++)
             {
-                for (int i = 0; i < showItems.Count; i++)
-                {
-                    items[i].setMyName(showItems[i]);
-                    items[i].gameObject.SetActive(true);
-                }
-                for (int i = showItems.Count; i < items.Count; i++)
-                {
-                    items[i].gameObject.SetActive(false);
-                }
+                items[i].setMyItem(showItems[i], itemType);
+                items[i].gameObject.SetActive(true);
             }
-            else
+            for (int i = items.Count; i < showItems.Count; i++)
             {
-                for (int i = 0; i < items.Count; i++)
-                {
-                    items[i].setMyName(showItems[i]);
-                    items[i].gameObject.SetActive(true);
-                }
-                for (int i = items.Count; i < showItems.Count; i++)
-                {
-                    items.Add(Instantiate(selectItem));
-                    items[i].setMyName(showItems[i]);
-                    items[i].setMyType(ItemType.armor);
-                }
-            }
-        }
-        else if (curindex == ItemType.helmet)
-        {
-            List<string> showItems = InventoryManager.Instance.myInven.showHelmets();
-
-            if (showItems.Count < items.Count)
-            {
-                for (int i = 0; i < showItems.Count; i++)
-                {
-                    items[i].setMyName(showItems[i]);
-                    items[i].gameObject.SetActive(true);
-                }
-                for (int i = showItems.Count; i < items.Count; i++)
-                {
-                    items[i].gameObject.SetActive(false);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < items.Count; i++)
-                {
-                    items[i].setMyName(showItems[i]);
-                    items[i].gameObject.SetActive(true);
-                }
-                for (int i = items.Count; i < showItems.Count; i++)
-                {
-                    items.Add(Instantiate(selectItem));
-                    items[i].setMyName(showItems[i]);
-                    items[i].setMyType(ItemType.helmet);
-                }
+                items.Add(Instantiate(selectItem));
+                items[i].setMyItem(showItems[i], itemType);
             }
         }
     }

@@ -13,43 +13,41 @@ public class Bullet : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(movingBullet());
+        
     }
 
-    IEnumerator movingBullet()
+    private void Update()
     {
-        transform.forward = direction;
+        LifeTime -= Time.deltaTime;
 
-        while(LifeTime >= 0)
+        if(LifeTime < 0)
         {
-            LifeTime -= Time.deltaTime;
-
-            Ray ray = new Ray();
-            ray.origin = transform.position;
-            ray.direction = transform.forward;
-
-            float delta = moveSpeed * Time.deltaTime;
-
-            if (Physics.Raycast(ray, out RaycastHit hit, delta, myEnemy))
-            {
-                if ((myEnemy & 1 << hit.transform.gameObject.layer) != 0)
-                {
-                    IBattle ib = hit.transform.GetComponent<IBattle>();
-                    ib?.OnDamage(Damage);
-
-                    BulletPool.Instance.EnqueueBullet(this);
-                    gameObject.SetActive(false);
-                }
-            }
-            else
-            {
-                transform.Translate(transform.forward.normalized * delta, Space.World);
-            }
-            yield return null;
+            BulletPool.Instance.EnqueueBullet(this);
+            gameObject.SetActive(false);
+            return;
         }
 
-        BulletPool.Instance.EnqueueBullet(this);
-        gameObject.SetActive(false);
+        Ray ray = new Ray();
+        ray.origin = transform.position;
+        ray.direction = transform.forward;
+
+        float delta = moveSpeed * Time.deltaTime;
+
+        if (Physics.Raycast(ray, out RaycastHit hit, delta, myEnemy))
+        {
+            if ((myEnemy & 1 << hit.transform.gameObject.layer) != 0)
+            {
+                IBattle ib = hit.transform.GetComponent<IBattle>();
+                ib?.OnDamage(Damage);
+
+                BulletPool.Instance.EnqueueBullet(this);
+                gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            transform.Translate(transform.forward.normalized * delta, Space.World);
+        }
     }
 
     public void Shoot(Vector3 dir, float d, float lt, float ms)
@@ -58,5 +56,7 @@ public class Bullet : MonoBehaviour
         Damage = d;
         LifeTime = lt;
         moveSpeed = ms;
+
+        transform.forward = direction;
     }
 }

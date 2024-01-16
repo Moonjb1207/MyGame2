@@ -6,18 +6,18 @@ using UnityEngine.UI;
 
 public class StageImage : MonoBehaviour
 {
-    public Image[] stageIMG;
+    public Sprite[] stageIMG;
     public Image curIMG;
 
 
     private void Awake()
     {
         curIMG = GetComponent<Image>();
-        curIMG = stageIMG[StageManager.Instance.stage];
+        curIMG.sprite = stageIMG[StageManager.Instance.stage];
     }
 
     public void ChangeStageIMG()
     {
-        curIMG = stageIMG[StageManager.Instance.stage];
+        curIMG.sprite = stageIMG[StageManager.Instance.stage];
     }
 }

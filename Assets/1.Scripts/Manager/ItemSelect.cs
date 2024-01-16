@@ -16,30 +16,13 @@ public class ItemSelect : MonoBehaviour
 
     public void SelectItem()
     {
-        if (myType == ItemType.weapon)
-        {
-            InventoryManager.Instance.myInven.EquipWeapon_I(myName);
-            MainPlayer.Instance?.EquipWeapon(myName);
-        }
-        else if(myType == ItemType.armor)
-        {
-            InventoryManager.Instance.myInven.EquipArmor_I(myName);
-            MainPlayer.Instance?.EquipArmor(myName);
-        }
-        else if(myType == ItemType.helmet)
-        {
-            InventoryManager.Instance.myInven.EquipHelmet_I(myName);
-            MainPlayer.Instance?.EquipHelmet(myName);
-        }
+        InventoryManager.Instance.Equip(myType, myName);
+        Player.Instance?.EquipItem(myType, myName);
     }
 
-    public void setMyName(string itemName)
+    public void setMyItem(string itemName, ItemType itemType)
     {
         myName = itemName;
-    }
-
-    public void setMyType(ItemType itemType)
-    {
         myType = itemType;
     }
 }

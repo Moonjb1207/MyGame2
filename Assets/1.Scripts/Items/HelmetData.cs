@@ -42,9 +42,4 @@ public class HelmetData : ScriptableObject
 
         return null;
     }
-
-    public string getEquipName(int i)
-    {
-        return helmetStat[i].equipName;
-    }
 }

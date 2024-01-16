@@ -21,103 +21,103 @@ public class IGEquipmentContainer : MonoBehaviour
 
     private void OnEnable()
     {
-        LoadEquipment(itemType);
+        //LoadEquipment(itemType);
     }
 
-    public void LoadEquipment(ItemType curindex)
-    {
-        if (curindex == ItemType.weapon)
-        {
-            List<string> showItems = InventoryManager.Instance.myInven.showWeapons();
+    //public void LoadEquipment(ItemType curindex)
+    //{
+    //    if (curindex == ItemType.weapon)
+    //    {
+    //        List<string> showItems = InventoryManager.Instance.showWeapons();
 
-            if (showItems.Count < items.Count)
-            {
-                for (int i = 0; i < showItems.Count; i++)
-                {
-                    items[i].setMyName(showItems[i]);
-                    items[i].gameObject.SetActive(true);
-                }
-                for (int i = showItems.Count; i < items.Count; i++)
-                {
-                    items[i].gameObject.SetActive(false);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < items.Count; i++)
-                {
-                    items[i].setMyName(showItems[i]);
-                    items[i].gameObject.SetActive(true);
-                }
-                for (int i = items.Count; i < showItems.Count; i++)
-                {
-                    items.Add(Instantiate(selectItem));
-                    items[i].setMyName(showItems[i]);
-                    items[i].setMyType(ItemType.weapon);
-                }
-            }
-        }
-        else if (curindex == ItemType.armor)
-        {
-            List<string> showItems = InventoryManager.Instance.myInven.showArmors();
+    //        if (showItems.Count < items.Count)
+    //        {
+    //            for (int i = 0; i < showItems.Count; i++)
+    //            {
+    //                items[i].setMyName(showItems[i]);
+    //                items[i].gameObject.SetActive(true);
+    //            }
+    //            for (int i = showItems.Count; i < items.Count; i++)
+    //            {
+    //                items[i].gameObject.SetActive(false);
+    //            }
+    //        }
+    //        else
+    //        {
+    //            for (int i = 0; i < items.Count; i++)
+    //            {
+    //                items[i].setMyName(showItems[i]);
+    //                items[i].gameObject.SetActive(true);
+    //            }
+    //            for (int i = items.Count; i < showItems.Count; i++)
+    //            {
+    //                items.Add(Instantiate(selectItem));
+    //                items[i].setMyName(showItems[i]);
+    //                items[i].setMyType(ItemType.weapon);
+    //            }
+    //        }
+    //    }
+    //    else if (curindex == ItemType.armor)
+    //    {
+    //        List<string> showItems = InventoryManager.Instance.showArmors();
 
-            if (showItems.Count < items.Count)
-            {
-                for (int i = 0; i < showItems.Count; i++)
-                {
-                    items[i].setMyName(showItems[i]);
-                    items[i].gameObject.SetActive(true);
-                }
-                for (int i = showItems.Count; i < items.Count; i++)
-                {
-                    items[i].gameObject.SetActive(false);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < items.Count; i++)
-                {
-                    items[i].setMyName(showItems[i]);
-                    items[i].gameObject.SetActive(true);
-                }
-                for (int i = items.Count; i < showItems.Count; i++)
-                {
-                    items.Add(Instantiate(selectItem));
-                    items[i].setMyName(showItems[i]);
-                    items[i].setMyType(ItemType.armor);
-                }
-            }
-        }
-        else if (curindex == ItemType.helmet)
-        {
-            List<string> showItems = InventoryManager.Instance.myInven.showHelmets();
+    //        if (showItems.Count < items.Count)
+    //        {
+    //            for (int i = 0; i < showItems.Count; i++)
+    //            {
+    //                items[i].setMyName(showItems[i]);
+    //                items[i].gameObject.SetActive(true);
+    //            }
+    //            for (int i = showItems.Count; i < items.Count; i++)
+    //            {
+    //                items[i].gameObject.SetActive(false);
+    //            }
+    //        }
+    //        else
+    //        {
+    //            for (int i = 0; i < items.Count; i++)
+    //            {
+    //                items[i].setMyName(showItems[i]);
+    //                items[i].gameObject.SetActive(true);
+    //            }
+    //            for (int i = items.Count; i < showItems.Count; i++)
+    //            {
+    //                items.Add(Instantiate(selectItem));
+    //                items[i].setMyName(showItems[i]);
+    //                items[i].setMyType(ItemType.armor);
+    //            }
+    //        }
+    //    }
+    //    else if (curindex == ItemType.helmet)
+    //    {
+    //        List<string> showItems = InventoryManager.Instance.showHelmets();
 
-            if (showItems.Count < items.Count)
-            {
-                for (int i = 0; i < showItems.Count; i++)
-                {
-                    items[i].setMyName(showItems[i]);
-                    items[i].gameObject.SetActive(true);
-                }
-                for (int i = showItems.Count; i < items.Count; i++)
-                {
-                    items[i].gameObject.SetActive(false);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < items.Count; i++)
-                {
-                    items[i].setMyName(showItems[i]);
-                    items[i].gameObject.SetActive(true);
-                }
-                for (int i = items.Count; i < showItems.Count; i++)
-                {
-                    items.Add(Instantiate(selectItem));
-                    items[i].setMyName(showItems[i]);
-                    items[i].setMyType(ItemType.helmet);
-                }
-            }
-        }
-    }
+    //        if (showItems.Count < items.Count)
+    //        {
+    //            for (int i = 0; i < showItems.Count; i++)
+    //            {
+    //                items[i].setMyName(showItems[i]);
+    //                items[i].gameObject.SetActive(true);
+    //            }
+    //            for (int i = showItems.Count; i < items.Count; i++)
+    //            {
+    //                items[i].gameObject.SetActive(false);
+    //            }
+    //        }
+    //        else
+    //        {
+    //            for (int i = 0; i < items.Count; i++)
+    //            {
+    //                items[i].setMyName(showItems[i]);
+    //                items[i].gameObject.SetActive(true);
+    //            }
+    //            for (int i = items.Count; i < showItems.Count; i++)
+    //            {
+    //                items.Add(Instantiate(selectItem));
+    //                items[i].setMyName(showItems[i]);
+    //                items[i].setMyType(ItemType.helmet);
+    //            }
+    //        }
+    //    }
+    //}
 }

@@ -14,24 +14,24 @@ public class IGItemSelect : MonoBehaviour
         //Img = 
     }
 
-    public void SelectItem()
-    {
-        if (myType == ItemType.weapon)
-        {
-            InventoryManager.Instance.myInven.EquipWeapon_I(myName);
-            Player.Instance?.EquipWeapon(myName);
-        }
-        else if (myType == ItemType.armor)
-        {
-            InventoryManager.Instance.myInven.EquipArmor_I(myName);
-            Player.Instance?.EquipArmor(myName);
-        }
-        else if (myType == ItemType.helmet)
-        {
-            InventoryManager.Instance.myInven.EquipHelmet_I(myName);
-            Player.Instance?.EquipHelmet(myName);
-        }
-    }
+    //public void SelectItem()
+    //{
+    //    if (myType == ItemType.weapon)
+    //    {
+    //        InventoryManager.Instance.EquipWeapon_I(myName);
+    //        Player.Instance?.EquipWeapon(myName);
+    //    }
+    //    else if (myType == ItemType.armor)
+    //    {
+    //        InventoryManager.Instance.EquipArmor_I(myName);
+    //        Player.Instance?.EquipArmor(myName);
+    //    }
+    //    else if (myType == ItemType.helmet)
+    //    {
+    //        InventoryManager.Instance.EquipHelmet_I(myName);
+    //        Player.Instance?.EquipHelmet(myName);
+    //    }
+    //}
 
     public void setMyName(string itemName)
     {

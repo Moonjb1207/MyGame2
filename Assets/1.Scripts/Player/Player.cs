@@ -49,23 +49,16 @@ public class Player : MonoBehaviour, IBattle
     // Start is called before the first frame update
     void Start()
     {
-        if (InventoryManager.Instance == null)
-        {
-            EquipWeapon("colt");
-            EquipArmor("none_armor");
-            EquipHelmet("none_helmet");
-        }
-        else
-        {
-            EquipWeapon(InventoryManager.Instance.loadInven.myWeapon);
-            EquipArmor(InventoryManager.Instance.loadInven.myArmor);
-            EquipHelmet(InventoryManager.Instance.loadInven.myHelmet);
-        }
+        EquipItem(ItemType.weapon, InventoryManager.Instance.myWeapon);
+        EquipItem(ItemType.armor, InventoryManager.Instance.myArmor);
+        EquipItem(ItemType.helmet, InventoryManager.Instance.myHelmet);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (joystick == null) return;
+
         //if(Input.GetKey(KeyCode.W))
         //{
         //    //transform.position += Vector3.forward * Time.deltaTime * moveSpeed;
@@ -100,9 +93,10 @@ public class Player : MonoBehaviour, IBattle
     {
         curHP -= dmg * curArmor.stat.Damage * curHelmet.stat.Damage;
         
-        if(curHP <= 0)
+        if(curHP <= 0 && !myAnim.GetBool("Dying"))
         {
             myAnim.SetTrigger("IsDying");
+            rg.velocity = Vector3.zero;
         }
     }
 
@@ -132,63 +126,66 @@ public class Player : MonoBehaviour, IBattle
         myAnim.SetTrigger("R_Attacking");
     }
 
-    public void EquipWeapon(string weaponName)
+    public void EquipItem(ItemType type, string equipName)
     {
-        if (curWeapon != null)
-            curWeapon.gameObject.SetActive(false);
-
-        for(int i = 0; i < weapons.Length; i++)
+        switch(type)
         {
-            if(weapons[i].stat.weaponName.Equals(weaponName))
-            {
-                curWeapon = weapons[i];
-                curWeapon.gameObject.SetActive(true);
-                meleeDamage = curWeapon.stat.meleeDamage;
+            case ItemType.weapon:
+                if (curWeapon != null)
+                    curWeapon.gameObject.SetActive(false);
+
+                for (int i = 0; i < weapons.Length; i++)
+                {
+                    if (weapons[i].stat.weaponName.Equals(equipName))
+                    {
+                        curWeapon = weapons[i];
+                        curWeapon.gameObject.SetActive(true);
+                        meleeDamage = curWeapon.stat.meleeDamage;
+                        break;
+                    }
+                }
                 break;
-            }
-        }
-    }
+            case ItemType.armor:
+                if (curArmor != null)
+                    curArmor.gameObject.SetActive(false);
 
-    public void EquipArmor(string equipname)
-    {
-        if (curArmor != null)
-            curArmor.gameObject.SetActive(false);
-
-        for (int i = 0; i < armors.Length; i++)
-        {
-            if (armors[i].stat.equipName.Equals(equipname))
-            {
-                curArmor = armors[i];
-                curArmor.gameObject.SetActive(true);
+                for (int i = 0; i < armors.Length; i++)
+                {
+                    if (armors[i].stat.equipName.Equals(equipName))
+                    {
+                        curArmor = armors[i];
+                        curArmor.gameObject.SetActive(true);
+                        break;
+                    }
+                }
                 break;
-            }
-        }
-    }
+            case ItemType.helmet:
+                if (curHelmet != null)
+                    curHelmet.gameObject.SetActive(false);
 
-    public void EquipHelmet(string equipname)
-    {
-        if (curHelmet != null)
-            curHelmet.gameObject.SetActive(false);
-
-        for (int i = 0; i < helmets.Length; i++)
-        {
-            if (helmets[i].stat.equipName.Equals(equipname))
-            {
-                curHelmet = helmets[i];
-                curHelmet.gameObject.SetActive(true);
+                for (int i = 0; i < helmets.Length; i++)
+                {
+                    if (helmets[i].stat.equipName.Equals(equipName))
+                    {
+                        curHelmet = helmets[i];
+                        curHelmet.gameObject.SetActive(true);
+                        break;
+                    }
+                }
                 break;
-            }
         }
     }
 
     public void OpenInven()
     {
         InvenUI.SetActive(true);
+        Time.timeScale = 0.0f;
     }
 
     public void CloseInven()
     {
         InvenUI.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 
     public void falseJoystick()

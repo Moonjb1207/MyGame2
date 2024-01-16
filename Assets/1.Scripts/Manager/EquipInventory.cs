@@ -6,7 +6,6 @@ public class EquipInventory : MonoBehaviour
 {
     public void GameStart()
     {
-        InventoryManager.Instance.LoadScene();
-        LoadManager.Instance.ChangeScene("PlayGame");
+        LoadManager.Instance.ChangeScene("PlayGame" + StageManager.Instance.stage);
     }
 }

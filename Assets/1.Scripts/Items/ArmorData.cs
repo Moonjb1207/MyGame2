@@ -42,9 +42,4 @@ public class ArmorData : ScriptableObject
 
         return null;
     }
-
-    public string getEquipName(int i)
-    {
-        return armorStat[i].equipName;
-    }
 }

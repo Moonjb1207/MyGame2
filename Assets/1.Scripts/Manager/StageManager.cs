@@ -16,7 +16,7 @@ public class StageManager : MonoBehaviour
     {
         instance = this;
 
-        stageMinMax = new Vector2(1, 1);
+        stageMinMax = new Vector2(1, data.stageStats.Length);
 
         stage = 1;
     }
@@ -24,9 +24,9 @@ public class StageManager : MonoBehaviour
     public void UpStage()
     {
         stage++;
-        if(stage > stageMinMax.y)
+        if(stage == stageMinMax.y)
         {
-            stage = (int)stageMinMax.y;
+            stage--;
         }
     }
 

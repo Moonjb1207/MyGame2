@@ -61,7 +61,9 @@ public class Enemy : MonoBehaviour, IBattle
 
     public void OnDamage(float dmg)
     {
-        curHP -= dmg;
+        if(curHP > 0)
+            curHP -= dmg;
+
         if (curHP <= 0)
         {
             curEnemyState.myAnim.SetTrigger("IsDying");

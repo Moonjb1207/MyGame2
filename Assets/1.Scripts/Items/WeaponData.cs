@@ -40,19 +40,15 @@ public class WeaponData : ScriptableObject
 
     public WeaponStat getWeaponStat(string weaponName)
     {
-        for(int i = 0; i < weaponStat.Length; i++)
-        {
-            if (weaponStat[i].weaponName.Equals(weaponName))
-            {
-                return weaponStat[i];
-            }
-        }
+        return EquipmentManager.Instance.GetWeaponStat(weaponName);
+        //for(int i = 0; i < weaponStat.Length; i++)
+        //{
+        //    if (weaponStat[i].weaponName.Equals(weaponName))
+        //    {
+        //        return weaponStat[i];
+        //    }
+        //}
 
-        return null;
-    }
-
-    public string getEquipName(int i)
-    {
-        return weaponStat[i].weaponName;
+        //return null;
     }
 }
