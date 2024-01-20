@@ -24,11 +24,10 @@ public class Player : MonoBehaviour, IBattle
     public EquipArmor curArmor;
     public EquipHelmet curHelmet;
 
-    public GameObject InvenUI;
-
     public int myLevel;
     public int myExp;
 
+    public LvExpData lvexpData;
 
     Joystick joystick;
 
@@ -41,6 +40,8 @@ public class Player : MonoBehaviour, IBattle
         rg = GetComponent<Rigidbody>();
         curHP = 10;
         moveSpeed = 7;
+        myLevel = 1;
+        myExp = 0;
 
         joystick = FindObjectOfType<Joystick>();
 
@@ -88,7 +89,7 @@ public class Player : MonoBehaviour, IBattle
 
     public void MoveTo(Vector3 dir)
     {
-        rg.velocity = dir * moveSpeed * curArmor.stat.equipmentSpeed * curHelmet.stat.equipmentSpeed;
+        rg.velocity = dir * moveSpeed * curArmor.stat.equipmentSpeed;
         bodyTr.forward = dir.normalized;
     }
 
@@ -172,6 +173,7 @@ public class Player : MonoBehaviour, IBattle
                     {
                         curHelmet = helmets[i];
                         curHelmet.gameObject.SetActive(true);
+                        ChangeHelmet();
                         break;
                     }
                 }
@@ -179,16 +181,9 @@ public class Player : MonoBehaviour, IBattle
         }
     }
 
-    public void OpenInven()
+    public void ChangeHelmet()
     {
-        InvenUI.SetActive(true);
-        Time.timeScale = 0.0f;
-    }
-
-    public void CloseInven()
-    {
-        InvenUI.SetActive(false);
-        Time.timeScale = 1.0f;
+        CameraFollow.Instance.transform.position = new Vector3(0, curHelmet.stat.equipmentSight.x, curHelmet.stat.equipmentSight.y);
     }
 
     public void falseJoystick()
@@ -205,5 +200,29 @@ public class Player : MonoBehaviour, IBattle
     {
         myAnim.speed = 0.0f;
         Time.timeScale = 0.0f;
+    }
+    
+    public void AddExp(int exp)
+    {
+        myExp += exp;
+
+        if (myExp >= lvexpData.LvExpDatas[myLevel].needExp)
+        {
+            if (myLevel == lvexpData.LvExpDatas.Length - 1)
+            {
+                return;
+            }
+
+            int remain = myExp - lvexpData.LvExpDatas[myLevel].needExp;
+            myExp = 0;
+            myExp += remain;
+
+            myLevel++;
+        }
+    }
+
+    public void AddGold(int gold)
+    {
+        InventoryManager.Instance.AddGold(gold);
     }
 }

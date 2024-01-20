@@ -100,4 +100,13 @@ public class Enemy : MonoBehaviour, IBattle
     {
         mySpawn = myspawn;
     }
+
+    public void AddExp(int exp)
+    {
+
+    }
+    public void AddGold(int gold)
+    {
+
+    }
 }

@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    private static CameraFollow instance;
+    public static CameraFollow Instance => instance;
+
     // Start is called before the first frame update
     void Start()
     {
+        if (instance == null)
+            instance = this;
+
         Player player = Player.Instance;
 
         playerTr = player.transform;

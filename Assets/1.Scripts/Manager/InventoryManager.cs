@@ -84,4 +84,20 @@ public class InventoryManager : MonoBehaviour
 
         return myItemDic[itemType];
     }
+    
+    public void AddGold(int add)
+    {
+        myGold += add;
+    }
+
+    public bool UseGold(int use)
+    {
+        if (myGold < use)
+        {
+            return false;
+        }
+
+        myGold -= use;
+        return true;
+    }
 }

@@ -14,7 +14,8 @@ public class StageManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+            instance = this;
 
         stageMinMax = new Vector2(1, data.stageStats.Length);
 

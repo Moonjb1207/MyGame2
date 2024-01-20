@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   helmetStat:
   - equipName: none_helmet
-    equipmentSpeed: 1
+    equipmentSight: {x: 16, y: -3}
     Damage: 1
     helNum: 0
   - equipName: lv1_helmet
-    equipmentSpeed: 0.9
+    equipmentSight: {x: 14, y: -2}
     Damage: 0.9
     helNum: 1
   - equipName: lv2_helmet
-    equipmentSpeed: 0.8
+    equipmentSight: {x: 12, y: -2}
     Damage: 0.8
     helNum: 2
   - equipName: lv3_helmet
-    equipmentSpeed: 0.7
+    equipmentSight: {x: 10, y: -1}
     Damage: 0.7
     helNum: 3

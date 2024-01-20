@@ -7,14 +7,14 @@ using System;
 public class HelmetStat
 {
     public string equipName;
-    public float equipmentSpeed;
+    public Vector2 equipmentSight;
     public float Damage;
     public int helNum;
 
-    public HelmetStat(string en, float asd, float dmg, int hnm)
+    public HelmetStat(string en, Vector2 asd, float dmg, int hnm)
     {
         equipName = en;
-        equipmentSpeed = asd;
+        equipmentSight = asd;
         Damage = dmg;
         helNum = hnm;
     }
