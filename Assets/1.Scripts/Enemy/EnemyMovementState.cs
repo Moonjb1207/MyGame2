@@ -34,7 +34,7 @@ public class EnemyMovementState : EnemyState
         if (distance <= enemy.data.attackRange)
         {
             Vector3 lookPoint = new Vector3(enemy.target.position.x, this.transform.position.y, enemy.target.position.z);
-            transform.LookAt(lookPoint);
+            bodyTr.transform.LookAt(lookPoint);
 
             myAnim.SetBool("IsMoving", false);
             agent.velocity = Vector3.zero;
@@ -53,7 +53,7 @@ public class EnemyMovementState : EnemyState
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
             //방향 적용
-            transform.eulerAngles = Vector3.up * angle;
+            bodyTr.transform.eulerAngles = Vector3.up * angle;
 
             if (agent.SetDestination(enemy.target.position))
             {

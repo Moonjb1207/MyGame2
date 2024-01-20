@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour, IBattle
 {
@@ -22,6 +23,9 @@ public class Enemy : MonoBehaviour, IBattle
 
     public EnemyRespawn mySpawn;
 
+
+    public Image hpBar;
+
     private void Awake()
     {
         movementState = GetComponentInChildren<EnemyMovementState>();
@@ -34,6 +38,8 @@ public class Enemy : MonoBehaviour, IBattle
         //GetComponent<Collider>().enabled = true;
 
         curHP = data.hp;
+        hpBar.fillAmount = curHP / data.hp;
+        
         target = Player.Instance?.transform;
         curDelay = 0;
 
@@ -63,6 +69,8 @@ public class Enemy : MonoBehaviour, IBattle
     {
         if(curHP > 0)
             curHP -= dmg;
+
+        hpBar.fillAmount = curHP / data.hp;
 
         if (curHP <= 0)
         {

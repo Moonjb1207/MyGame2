@@ -14,6 +14,8 @@ public class InventoryManager : MonoBehaviour
     public string myArmor;
     public string myWeapon;
 
+    public int myGold;
+
     private void Awake()
     {
         if (instance == null)
@@ -32,6 +34,8 @@ public class InventoryManager : MonoBehaviour
         myItemDic[ItemType.weapon].Add(myWeapon);
         myItemDic[ItemType.armor].Add(myArmor);
         myItemDic[ItemType.helmet].Add(myHelmet);
+
+        myGold = 0;
     }
 
     //public void EquipWeapon_I(string weaponName)

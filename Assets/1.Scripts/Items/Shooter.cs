@@ -11,7 +11,7 @@ public class Shooter : Weapon
         StartCoroutine(shootingBullets(stat.shootingCount, stat.shootingDelay));
     }
 
-    IEnumerator shootingBullets(int count, float delay)
+    public virtual IEnumerator shootingBullets(int count, float delay)
     {
         IsAttacking = true;
         while (count != 0)
@@ -23,7 +23,7 @@ public class Shooter : Weapon
         IsAttacking = false;
     }
 
-    public void Shooting()
+    public virtual void Shooting()
     {
         Bullet bullet = BulletPool.Instance.DequeueBullet();
 

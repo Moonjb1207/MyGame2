@@ -26,6 +26,9 @@ public class Player : MonoBehaviour, IBattle
 
     public GameObject InvenUI;
 
+    public int myLevel;
+    public int myExp;
+
 
     Joystick joystick;
 
