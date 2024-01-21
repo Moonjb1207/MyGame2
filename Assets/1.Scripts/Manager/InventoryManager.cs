@@ -9,6 +9,7 @@ public class InventoryManager : MonoBehaviour
 
     //public Dictionary<string, ItemType> myItems = new Dictionary<string, ItemType>();
     public Dictionary<ItemType, List<string>> myItemDic = new Dictionary<ItemType, List<string>>();
+    public Dictionary<string, int> mybuildingDic = new Dictionary<string, int>();
 
     public string myHelmet;
     public string myArmor;
@@ -76,6 +77,16 @@ public class InventoryManager : MonoBehaviour
         }
 
         myItemDic[itemType].Add(itemName);
+    }
+
+    public void AddBuildings(string buildingName)
+    {
+        if (mybuildingDic.ContainsKey(buildingName))
+        {
+            return;
+        }
+
+        mybuildingDic[buildingName] = 1;
     }
 
     public List<string> ShowEquipments(ItemType itemType)

@@ -48,7 +48,6 @@ public class Enemy : MonoBehaviour, IBattle
 
     public void NextState(EnemyState state)
     {
-        
         curEnemyState = state;
         curEnemyState.EnterState();
     }

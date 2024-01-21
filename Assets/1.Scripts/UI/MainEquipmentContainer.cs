@@ -31,7 +31,6 @@ public class MainEquipmentContainer : MonoBehaviour
 
     public void LoadEquipment()
     {
-        //Q. 아래 코드가 필요한 이유는 무엇인가요?	
         if (InventoryManager.Instance == null)
             return;
 

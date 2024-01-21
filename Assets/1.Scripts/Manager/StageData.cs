@@ -12,8 +12,9 @@ public class StageStat
     public int curCount;
     public float respawnDelay;
     public float curDelay;
+    public int wave;
 
-    public StageStat(int s, int rc, int mc, int cc, float rd, float cd)
+    public StageStat(int s, int rc, int mc, int cc, float rd, float cd, int w)
     {
         stage = s;
         respawnCount = rc;
@@ -21,6 +22,7 @@ public class StageStat
         curCount = cc;
         respawnDelay = rd;
         curDelay = cd;
+        wave = w;
     }
 }
 

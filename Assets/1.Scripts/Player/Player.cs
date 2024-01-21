@@ -183,6 +183,8 @@ public class Player : MonoBehaviour, IBattle
 
     public void ChangeHelmet()
     {
+        if (CameraFollow.Instance == null) return;
+
         CameraFollow.Instance.transform.position = new Vector3(0, curHelmet.stat.equipmentSight.x, curHelmet.stat.equipmentSight.y);
     }
 

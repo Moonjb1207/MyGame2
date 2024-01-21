@@ -32,14 +32,16 @@ public class ArmorData : ScriptableObject
 
     public ArmorStat getArmorStat(string equipName)
     {
-        for (int i = 0; i < armorStat.Length; i++)
-        {
-            if (armorStat[i].equipName.Equals(equipName))
-            {
-                return armorStat[i];
-            }
-        }
+        return EquipmentManager.Instance.GetArmorStat(equipName);
 
-        return null;
+        //for (int i = 0; i < armorStat.Length; i++)
+        //{
+        //    if (armorStat[i].equipName.Equals(equipName))
+        //    {
+        //        return armorStat[i];
+        //    }
+        //}
+
+        //return null;
     }
 }

@@ -32,14 +32,16 @@ public class HelmetData : ScriptableObject
 
     public HelmetStat getHelmetStat(string equipName)
     {
-        for (int i = 0; i < helmetStat.Length; i++)
-        {
-            if (helmetStat[i].equipName.Equals(equipName))
-            {
-                return helmetStat[i];
-            }
-        }
+        return EquipmentManager.Instance.GetHelmetStat(equipName);
 
-        return null;
+        //for (int i = 0; i < helmetStat.Length; i++)
+        //{
+        //    if (helmetStat[i].equipName.Equals(equipName))
+        //    {
+        //        return helmetStat[i];
+        //    }
+        //}
+
+        //return null;
     }
 }

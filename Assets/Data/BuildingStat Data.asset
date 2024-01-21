@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f39d480ec9573994dbaaa2c7b4e0229c, type: 3}
+  m_Name: BuildingStat Data
+  m_EditorClassIdentifier: 
+  buildingStat:
+  - buildingName: Box
+    buildingHP: 100
+    speedDown: 0
+    delay: 0
+    cost: 0
+    upgradeCost: 50
+  - buildingName: HalfBox
+    buildingHP: 80
+    speedDown: 0
+    delay: 0
+    cost: 50
+    upgradeCost: 70

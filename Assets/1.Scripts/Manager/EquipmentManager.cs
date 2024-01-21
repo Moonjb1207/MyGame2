@@ -10,6 +10,7 @@ public class EquipmentManager : MonoBehaviour
     public ArmorData armorData;
     public HelmetData helmetData;
     public WeaponData weaponData;
+    public BuildingData buildingData;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class EquipmentManager : MonoBehaviour
     Dictionary<string, ArmorStat> armorStatDic = new Dictionary<string, ArmorStat>();
     Dictionary<string, HelmetStat> helmetStatDic = new Dictionary<string, HelmetStat>();
     Dictionary<string, WeaponStat> weaponStatDic = new Dictionary<string, WeaponStat>();
+    Dictionary<string, BuildingStat> buildingStatDic = new Dictionary<string, BuildingStat>();
 
     void InitData()
     {
@@ -40,6 +42,11 @@ public class EquipmentManager : MonoBehaviour
         for (int i = 0; i < weaponData.weaponStats.Length; i++)
         {
             weaponStatDic.Add(weaponData.weaponStats[i].weaponName, weaponData.weaponStats[i]);
+        }
+
+        for (int i = 0; i < buildingData.buildingStats.Length; i++)
+        {
+            buildingStatDic.Add(buildingData.buildingStats[i].buildingName, buildingData.buildingStats[i]);
         }
     }
 
@@ -62,5 +69,12 @@ public class EquipmentManager : MonoBehaviour
         if (!weaponStatDic.ContainsKey(ename)) return null;
 
         return weaponStatDic[ename];
+    }
+
+    public BuildingStat GetBuildingStat(string ename)
+    {
+        if (!buildingStatDic.ContainsKey(ename)) return null;
+
+        return buildingStatDic[ename];
     }
 }

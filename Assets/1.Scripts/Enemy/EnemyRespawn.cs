@@ -13,14 +13,7 @@ public class EnemyRespawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int stage = StageManager.Instance.stage;
-
-        respawnCount = StageManager.Instance.data.getStageStat(stage).respawnCount;
-        maxCount = StageManager.Instance.data.getStageStat(stage).maxCount;
-        respawnDelay = StageManager.Instance.data.getStageStat(stage).respawnDelay;
-
-        curCount = 0;
-        curDelay = 0;
+        
     }
 
     // Update is called once per frame
@@ -53,10 +46,29 @@ public class EnemyRespawn : MonoBehaviour
                 myEnemy.gameObject.SetActive(true);
             }
         }
+        if (respawnCount == 0 && curCount == 0)
+        {
+            EndSpawn();
+        }
+    }
+
+    public void WaveStart(int stage)
+    {
+        respawnCount = StageManager.Instance.data.getStageStat(stage).respawnCount;
+        maxCount = StageManager.Instance.data.getStageStat(stage).maxCount;
+        respawnDelay = StageManager.Instance.data.getStageStat(stage).respawnDelay;
+
+        curCount = 0;
+        curDelay = 0;
     }
 
     public void MyEnemyDead()
     {
         curCount--;
+    }
+
+    public void EndSpawn()
+    {
+        GetComponentInParent<InGameManager>().spawnerCount--;
     }
 }
