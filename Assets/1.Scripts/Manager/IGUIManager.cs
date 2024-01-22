@@ -9,6 +9,7 @@ public class IGUIManager : MonoBehaviour
     public static IGUIManager Instance => instance;
 
     public GameObject InvenUI;
+    public GameObject BInvenUI;
     public TMPro.TMP_Text coin;
     public TMPro.TMP_Text myExp;
     public TMPro.TMP_Text needExp;
@@ -42,6 +43,18 @@ public class IGUIManager : MonoBehaviour
     public void CloseInven()
     {
         InvenUI.SetActive(false);
+        Time.timeScale = 1.0f;
+    }
+
+    public void OpenBInven()
+    {
+        BInvenUI.SetActive(true);
+        Time.timeScale = 0.0f;
+    }
+
+    public void CloseBInven()
+    {
+        BInvenUI.SetActive(false);
         Time.timeScale = 1.0f;
     }
 }

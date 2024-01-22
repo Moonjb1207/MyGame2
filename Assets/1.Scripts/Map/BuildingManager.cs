@@ -91,7 +91,7 @@ public class BuildingManager : MonoBehaviour
     {
         if (EventSystem.current.IsPointerOverGameObject()) return;
 
-        myBox = Instantiate(myBoxPrefab);
+        myBox = Instantiate(Resources.Load("Prefabs/MapPlayer" + InventoryManager.Instance.myBuilding) as Building);
 
         myBox.GetComponentInChildren<Collider>().enabled = false;
         myBox.canPlaceIndicator.gameObject.SetActive(true);

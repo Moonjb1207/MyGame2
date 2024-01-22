@@ -220,11 +220,17 @@ public class Player : MonoBehaviour, IBattle
             myExp += remain;
 
             myLevel++;
+            LevelUp();
         }
     }
 
     public void AddGold(int gold)
     {
         InventoryManager.Instance.AddGold(gold);
+    }
+
+    public void LevelUp()
+    {
+        InventoryManager.Instance.AddItems(EquipmentManager.Instance.weaponData.weaponStats[myLevel].weaponName, ItemType.weapon);
     }
 }

@@ -14,6 +14,7 @@ public class InventoryManager : MonoBehaviour
     public string myHelmet;
     public string myArmor;
     public string myWeapon;
+    public string myBuilding;
 
     public int myGold;
 
@@ -31,10 +32,12 @@ public class InventoryManager : MonoBehaviour
         myHelmet = "none_helmet";
         myArmor = "none_armor";
         myWeapon = "knife";
+        myBuilding = "Box";
 
         myItemDic[ItemType.weapon].Add(myWeapon);
         myItemDic[ItemType.armor].Add(myArmor);
         myItemDic[ItemType.helmet].Add(myHelmet);
+        mybuildingDic.Add("Box", 1);
 
         myGold = 0;
     }
@@ -69,6 +72,11 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public void EquipBuilding(string buildingName)
+    {
+        myBuilding = buildingName;
+    }
+
     public void AddItems(string itemName, ItemType itemType)
     {
         if (myItemDic[itemType].Contains(itemName))
@@ -94,6 +102,22 @@ public class InventoryManager : MonoBehaviour
         if (!myItemDic.ContainsKey(itemType)) return null;
 
         return myItemDic[itemType];
+    }
+
+    public List<string> ShowBuildings()
+    {
+        List<string> buildings = new List<string>();
+
+        for (int i = 0; i < EquipmentManager.Instance.buildingData.buildingStats.Length; i++)
+        {
+            if (mybuildingDic.ContainsKey
+                (EquipmentManager.Instance.buildingData.buildingStats[i].buildingName))
+            {
+                buildings.Add(EquipmentManager.Instance.buildingData.buildingStats[i].buildingName);
+            }
+        }
+
+        return buildings;
     }
     
     public void AddGold(int add)
