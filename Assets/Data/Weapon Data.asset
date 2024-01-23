@@ -13,14 +13,6 @@ MonoBehaviour:
   m_Name: Weapon Data
   m_EditorClassIdentifier: 
   weaponStat:
-  - weaponName: knife
-    LifeTime: 0.5
-    moveSpeed: 0
-    Damage: 0
-    shootingDelay: 0
-    shootingCount: 0
-    meleeDamage: 5
-    weaponNum: 0
   - weaponName: machete
     LifeTime: 0.7
     moveSpeed: 0
@@ -28,7 +20,6 @@ MonoBehaviour:
     shootingDelay: 0
     shootingCount: 0
     meleeDamage: 7
-    weaponNum: 1
   - weaponName: colt
     LifeTime: 4
     moveSpeed: 15
@@ -36,7 +27,6 @@ MonoBehaviour:
     shootingDelay: 0.3
     shootingCount: 2
     meleeDamage: 4
-    weaponNum: 2
   - weaponName: shotgun
     LifeTime: 3
     moveSpeed: 15
@@ -44,7 +34,6 @@ MonoBehaviour:
     shootingDelay: 0.5
     shootingCount: 2
     meleeDamage: 4
-    weaponNum: 3
   - weaponName: m4a1
     LifeTime: 3
     moveSpeed: 20
@@ -52,7 +41,6 @@ MonoBehaviour:
     shootingDelay: 0.2
     shootingCount: 3
     meleeDamage: 4
-    weaponNum: 4
   - weaponName: ak47
     LifeTime: 3
     moveSpeed: 15
@@ -60,7 +48,6 @@ MonoBehaviour:
     shootingDelay: 0.4
     shootingCount: 2
     meleeDamage: 4
-    weaponNum: 5
   - weaponName: aug
     LifeTime: 3
     moveSpeed: 20
@@ -68,7 +55,6 @@ MonoBehaviour:
     shootingDelay: 0.15
     shootingCount: 4
     meleeDamage: 4
-    weaponNum: 6
   - weaponName: famas
     LifeTime: 2
     moveSpeed: 25
@@ -76,7 +62,6 @@ MonoBehaviour:
     shootingDelay: 0.4
     shootingCount: 3
     meleeDamage: 4
-    weaponNum: 7
   - weaponName: awp
     LifeTime: 2
     moveSpeed: 40
@@ -84,7 +69,6 @@ MonoBehaviour:
     shootingDelay: 1
     shootingCount: 1
     meleeDamage: 4
-    weaponNum: 8
   - weaponName: rpg
     LifeTime: 2
     moveSpeed: 5
@@ -92,4 +76,3 @@ MonoBehaviour:
     shootingDelay: 1
     shootingCount: 1
     meleeDamage: 4
-    weaponNum: 9

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvexpData:
   - needExp: 0
-  - needExp: 20
+  - needExp: 10
   - needExp: 40
-  - needExp: 80
-  - needExp: 120
+  - needExp: 100
+  - needExp: 200

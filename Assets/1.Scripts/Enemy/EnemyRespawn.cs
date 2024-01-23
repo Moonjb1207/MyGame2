@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyRespawn : MonoBehaviour
 {
@@ -10,10 +11,12 @@ public class EnemyRespawn : MonoBehaviour
     public float respawnDelay;
     public float curDelay;
 
+    NavMeshPath checkPath = null;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        checkPath = new NavMeshPath();
     }
 
     // Update is called once per frame
@@ -70,5 +73,16 @@ public class EnemyRespawn : MonoBehaviour
     public void EndSpawn()
     {
         GetComponentInParent<InGameManager>().spawnerCount--;
+    }
+
+    public bool CheckPath()
+    {
+        NavMesh.CalculatePath(transform.position, Player.Instance.transform.position, NavMesh.AllAreas, checkPath);
+
+        if (checkPath.status == NavMeshPathStatus.PathPartial
+            || checkPath.status == NavMeshPathStatus.PathInvalid)
+            return false;
+
+        return true;
     }
 }

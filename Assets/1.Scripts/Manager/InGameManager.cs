@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class InGameManager : MonoBehaviour
 {
+    private static InGameManager instance;
+    public static InGameManager Instance => instance;
+
     public EnemyRespawn[] mySpawner;
     public int spawnerCount;
 
@@ -25,6 +28,9 @@ public class InGameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+            instance = this;
+
         mySpawner = GetComponentsInChildren<EnemyRespawn>();
 
         wave = StageManager.Instance.data.stageStats[stage].wave;

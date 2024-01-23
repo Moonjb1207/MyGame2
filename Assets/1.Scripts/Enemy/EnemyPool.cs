@@ -96,7 +96,6 @@ public class EnemyPool : MonoBehaviour
                 myEnemy.SaveMySpawn(myspawn);
             }
         }
-        
 
         myEnemy.transform.SetParent(null);
         return myEnemy;

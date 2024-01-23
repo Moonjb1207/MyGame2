@@ -31,7 +31,7 @@ public class InventoryManager : MonoBehaviour
 
         myHelmet = "none_helmet";
         myArmor = "none_armor";
-        myWeapon = "knife";
+        myWeapon = "machete";
         myBuilding = "Box";
 
         myItemDic[ItemType.weapon].Add(myWeapon);

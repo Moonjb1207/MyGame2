@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 public class BuildingManager : MonoBehaviour
 {
     public Building myBox;
-    public Building myBoxPrefab;
     public LayerMask Block;
 
     public Material canPlaceMaterial;
@@ -14,10 +13,13 @@ public class BuildingManager : MonoBehaviour
 
     public bool BuildState;
 
+    public bool canBuild;
+
     // Start is called before the first frame update
     void Start()
     {
         BuildState = false;
+        canBuild = true;
     }
 
     // Update is called once per frame
@@ -65,7 +67,7 @@ public class BuildingManager : MonoBehaviour
         Vector3 point = GetPointOnGround();
         Collider[] cols = Physics.OverlapBox(point, myBox.size, Quaternion.identity, Block);
 
-        if(cols.Length > 0)
+        if(cols.Length > 0 || !canBuild)
         {
             Destroy(myBox.gameObject);
             return;
@@ -91,7 +93,9 @@ public class BuildingManager : MonoBehaviour
     {
         if (EventSystem.current.IsPointerOverGameObject()) return;
 
-        myBox = Instantiate(Resources.Load("Prefabs/MapPlayer" + InventoryManager.Instance.myBuilding) as Building);
+        GameObject myBoxGb = Instantiate(Resources.Load("Prefabs/MapPlayer" + InventoryManager.Instance.myBuilding) as GameObject);
+
+        myBox = myBoxGb.GetComponent<Building>();
 
         myBox.GetComponentInChildren<Collider>().enabled = false;
         myBox.canPlaceIndicator.gameObject.SetActive(true);
@@ -106,7 +110,15 @@ public class BuildingManager : MonoBehaviour
     {
         Collider[] cols = Physics.OverlapBox(point, myBox.size, Quaternion.identity, Block);
 
-        if (cols.Length > 0)
+        canBuild = true;
+
+        for (int i = 0; i < InGameManager.Instance.mySpawner.Length; i++)
+        {
+            if (!InGameManager.Instance.mySpawner[i].CheckPath())
+                canBuild = false;
+        }
+
+        if (cols.Length > 0 || !canBuild)
         {
             myBox.canPlaceIndicator.material = cantPlaceMaterial;
         }
@@ -122,10 +134,10 @@ public class BuildingManager : MonoBehaviour
         {
             BuildState = !BuildState;
 
-            Camera.main.transform.SetParent(Player.Instance.transform);
+            //Camera.main.transform.SetParent(Player.Instance.transform);
 
-            Player.Instance.trueJoystick();
-            Player.Instance.gameObject.SetActive(true);
+            //Player.Instance.trueJoystick();
+            //Player.Instance.gameObject.SetActive(true);
             Time.timeScale = 1.0f;
 
             gameObject.SetActive(false);
@@ -134,10 +146,10 @@ public class BuildingManager : MonoBehaviour
         {
             BuildState = !BuildState;
 
-            Camera.main.transform.SetParent(null);
+            //Camera.main.transform.SetParent(null);
 
-            Player.Instance.falseJoystick();
-            Player.Instance.gameObject.SetActive(false);
+            //Player.Instance.falseJoystick();
+            //Player.Instance.gameObject.SetActive(false);
             Time.timeScale = 0.0f;
 
             gameObject.SetActive(true);

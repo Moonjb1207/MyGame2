@@ -29,7 +29,8 @@ public class Player : MonoBehaviour, IBattle
 
     public LvExpData lvexpData;
 
-    Joystick joystick;
+    public Joystick moveJoystick;
+    public Joystick rotJoystick;
 
     Animator myAnim;
 
@@ -43,9 +44,10 @@ public class Player : MonoBehaviour, IBattle
         myLevel = 1;
         myExp = 0;
 
-        joystick = FindObjectOfType<Joystick>();
-
         bodyTr = transform.Find("P_Jungle_Charc");
+
+        moveJoystick = GameObject.Find("moveJoystick")?.GetComponent<Joystick>();
+        rotJoystick = GameObject.Find("rotJoystick")?.GetComponent<Joystick>();
 
         myAnim = bodyTr.GetComponent<Animator>();
     }
@@ -61,7 +63,7 @@ public class Player : MonoBehaviour, IBattle
     // Update is called once per frame
     void Update()
     {
-        if (joystick == null) return;
+        if (moveJoystick == null || rotJoystick == null) return;
 
         //if(Input.GetKey(KeyCode.W))
         //{
@@ -69,11 +71,13 @@ public class Player : MonoBehaviour, IBattle
         //    MoveTo(Vector3.forward);
         //}
 
+        OnAttack();
+
         if (!myAnim.GetBool("Dying"))
         {
-            if (joystick.Direction.magnitude > 0)
+            if (moveJoystick.Direction.magnitude > 0)
             {
-                Vector3 dir = new Vector3(joystick.Direction.x, 0, joystick.Direction.y);
+                Vector3 dir = new Vector3(moveJoystick.Direction.x, 0, moveJoystick.Direction.y);
 
                 MoveTo(dir);
 
@@ -84,12 +88,23 @@ public class Player : MonoBehaviour, IBattle
                 rg.velocity = Vector3.zero;
                 myAnim.SetBool("IsMoving", false);
             }
+
+            if (rotJoystick.Direction.magnitude > 0)
+            {
+                Vector3 dir = new Vector3(rotJoystick.Direction.x, 0, rotJoystick.Direction.y);
+
+                RotTo(dir);
+            }
         }
     }
 
     public void MoveTo(Vector3 dir)
     {
         rg.velocity = dir * moveSpeed * curArmor.stat.equipmentSpeed;
+    }
+
+    public void RotTo(Vector3 dir)
+    {
         bodyTr.forward = dir.normalized;
     }
 
@@ -109,26 +124,61 @@ public class Player : MonoBehaviour, IBattle
         get => true;
     }
 
-    public void OnMeleeAttack()
+    //public void OnMeleeAttack()
+    //{
+    //    if(myAnim.GetBool("IsAttacking"))
+    //        return;
+
+    //    if (curWeapon.stat.Damage == 0)
+    //    {
+    //        curWeapon.Attack();
+    //        myAnim.SetTrigger("MK_Attacking");
+    //    }
+    //}
+
+    //public void OnRangedAttack()
+    //{
+    //    if (myAnim.GetBool("IsAttacking") || curWeapon.stat.Damage == 0 || curWeapon.IsAttacking)
+    //        return;
+
+    //    curWeapon.Attack();
+    //    myAnim.SetTrigger("R_Attacking");
+    //}
+    
+    public void OnAttack()
     {
-        if(myAnim.GetBool("IsAttacking"))
-            return;
+        if (myAnim.GetBool("IsAttacking") || curWeapon.IsAttacking) return;
 
         if (curWeapon.stat.Damage == 0)
         {
             curWeapon.Attack();
             myAnim.SetTrigger("MK_Attacking");
         }
+        else
+        {
+            curWeapon.Attack();
+            myAnim.SetTrigger("R_Attacking");
+        }
     }
 
-    public void OnRangedAttack()
-    {
-        if (myAnim.GetBool("IsAttacking") || curWeapon.stat.Damage == 0 || curWeapon.IsAttacking)
-            return;
+    //IEnumerator Attacking()
+    //{
+    //    while (!myAnim.GetBool("IsAttacking") && !curWeapon.IsAttacking)
+    //    {
+    //        if (curWeapon.stat.Damage == 0)
+    //        {
+    //            curWeapon.Attack();
+    //            myAnim.SetTrigger("MK_Attacking");
+    //        }
+    //        else
+    //        {
+    //            curWeapon.Attack();
+    //            myAnim.SetTrigger("R_Attacking");
+    //        }
 
-        curWeapon.Attack();
-        myAnim.SetTrigger("R_Attacking");
-    }
+    //        yield return null;
+    //    }
+    //}
 
     public void EquipItem(ItemType type, string equipName)
     {
@@ -190,12 +240,14 @@ public class Player : MonoBehaviour, IBattle
 
     public void falseJoystick()
     {
-        joystick.gameObject.SetActive(false);
+        moveJoystick.gameObject.SetActive(false);
+        rotJoystick.gameObject.SetActive(false);
     }
 
     public void trueJoystick()
     {
-        joystick.gameObject.SetActive(true);
+        moveJoystick.gameObject.SetActive(true);
+        rotJoystick.gameObject.SetActive(false);
     }
 
     public void GameOver()
