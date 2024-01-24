@@ -10,13 +10,15 @@ public class HelmetStat
     public Vector2 equipmentSight;
     public float Damage;
     public int helNum;
+    public Sprite myImg;
 
-    public HelmetStat(string en, Vector2 asd, float dmg, int hnm)
+    public HelmetStat(string en, Vector2 asd, float dmg, int hnm, Sprite i)
     {
         equipName = en;
         equipmentSight = asd;
         Damage = dmg;
         helNum = hnm;
+        myImg = i;
     }
 }
 

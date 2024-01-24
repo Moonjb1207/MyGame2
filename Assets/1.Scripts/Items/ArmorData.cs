@@ -10,14 +10,16 @@ public class ArmorStat
     public float equipmentSpeed;
     public float Damage;
     public int armorNum;
+    public Sprite myImg;
 
-    public ArmorStat(string en, float asd, float dmg, int anm)
+    public ArmorStat(string en, float asd, float dmg, int anm, Sprite i)
     {
         equipName = en;
         equipmentSpeed = asd;
         Damage = dmg;
         armorNum = anm;
-}
+        myImg = i;
+    }
 }
 
 [CreateAssetMenu(fileName = "ArmorStat Data", menuName = "ScriptableObject/ArmorStat Data", order = -1)]

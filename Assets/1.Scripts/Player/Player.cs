@@ -34,6 +34,9 @@ public class Player : MonoBehaviour, IBattle
 
     Animator myAnim;
 
+    public int myGold;
+
+
     private void Awake()
     {
         instance = this;
@@ -43,6 +46,7 @@ public class Player : MonoBehaviour, IBattle
         moveSpeed = 7;
         myLevel = 1;
         myExp = 0;
+        myGold = 0;
 
         bodyTr = transform.Find("P_Jungle_Charc");
 
@@ -71,7 +75,8 @@ public class Player : MonoBehaviour, IBattle
         //    MoveTo(Vector3.forward);
         //}
 
-        OnAttack();
+        if (!BuildingManager.Instance.BuildState)
+            OnAttack();
 
         if (!myAnim.GetBool("Dying"))
         {
@@ -278,7 +283,7 @@ public class Player : MonoBehaviour, IBattle
 
     public void AddGold(int gold)
     {
-        InventoryManager.Instance.AddGold(gold);
+        myGold += gold;
     }
 
     public void LevelUp()

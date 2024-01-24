@@ -40,6 +40,7 @@ public class BuildingEquipContainer : MonoBehaviour
             for (int i = 0; i < showBuildings.Count; i++)
             {
                 buildings[i].setMyBuilding(showBuildings[i]);
+                buildings[i].setMyImg();
                 buildings[i].gameObject.SetActive(true);
             }
             for (int i = showBuildings.Count; i < buildings.Count; i++)
@@ -52,12 +53,14 @@ public class BuildingEquipContainer : MonoBehaviour
             for (int i = 0; i < buildings.Count; i++)
             {
                 buildings[i].setMyBuilding(showBuildings[i]);
+                buildings[i].setMyImg();
                 buildings[i].gameObject.SetActive(true);
             }
             for (int i = buildings.Count; i < showBuildings.Count; i++)
             {
                 buildings.Add(Instantiate(buildingEquip));
                 buildings[i].setMyBuilding(showBuildings[i]);
+                buildings[i].setMyImg();
             }
         }
     }

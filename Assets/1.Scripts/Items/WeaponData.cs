@@ -13,8 +13,9 @@ public class WeaponStat
     public float shootingDelay;
     public int shootingCount;
     public float meleeDamage;
+    public Sprite myImg;
 
-    public WeaponStat(string wn, float lt, float ms, float dmg, float shd, int shc, float md)
+    public WeaponStat(string wn, float lt, float ms, float dmg, float shd, int shc, float md, Sprite i)
     {
         weaponName = wn;
         LifeTime = lt;
@@ -23,6 +24,7 @@ public class WeaponStat
         shootingDelay = shd;
         shootingCount = shc;
         meleeDamage = md;
+        myImg = i;
     }
 }
 

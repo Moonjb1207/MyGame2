@@ -13,6 +13,11 @@ public class BuildingEquip : MonoBehaviour
         //Img = 
     }
 
+    private void OnEnable()
+    {
+        Img.sprite = EquipmentManager.Instance.GetBuildingStat(myName).myImg;
+    }
+
     public void EquipBuilding()
     {
         InventoryManager.Instance.EquipBuilding(myName);
@@ -21,5 +26,10 @@ public class BuildingEquip : MonoBehaviour
     public void setMyBuilding(string itemName)
     {
         myName = itemName;
+    }
+
+    public void setMyImg()
+    {
+        Img.sprite = EquipmentManager.Instance.GetBuildingStat(myName).myImg;
     }
 }

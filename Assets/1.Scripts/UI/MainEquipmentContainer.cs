@@ -41,6 +41,7 @@ public class MainEquipmentContainer : MonoBehaviour
             for (int i = 0; i < showItems.Count; i++)
             {
                 items[i].setMyItem(showItems[i], itemType);
+                items[i].setImg();
                 items[i].gameObject.SetActive(true);
             }
             for (int i = showItems.Count; i < items.Count; i++)
@@ -53,12 +54,14 @@ public class MainEquipmentContainer : MonoBehaviour
             for (int i = 0; i < items.Count; i++)
             {
                 items[i].setMyItem(showItems[i], itemType);
+                items[i].setImg();
                 items[i].gameObject.SetActive(true);
             }
             for (int i = items.Count; i < showItems.Count; i++)
             {
                 items.Add(Instantiate(selectItem));
                 items[i].setMyItem(showItems[i], itemType);
+                items[i].setImg();
             }
         }
     }

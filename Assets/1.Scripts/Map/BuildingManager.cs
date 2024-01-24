@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.AI;
 
 public class BuildingManager : MonoBehaviour
 {
+    private static BuildingManager instance;
+    public static BuildingManager Instance => instance;
+
     public Building myBox;
     public LayerMask Block;
 
@@ -14,6 +18,12 @@ public class BuildingManager : MonoBehaviour
     public bool BuildState;
 
     public bool canBuild;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -138,7 +148,7 @@ public class BuildingManager : MonoBehaviour
 
             //Player.Instance.trueJoystick();
             //Player.Instance.gameObject.SetActive(true);
-            Time.timeScale = 1.0f;
+            //Time.timeScale = 1.0f;
 
             gameObject.SetActive(false);
         }
@@ -150,7 +160,7 @@ public class BuildingManager : MonoBehaviour
 
             //Player.Instance.falseJoystick();
             //Player.Instance.gameObject.SetActive(false);
-            Time.timeScale = 0.0f;
+            //Time.timeScale = 0.0f;
 
             gameObject.SetActive(true);
         }

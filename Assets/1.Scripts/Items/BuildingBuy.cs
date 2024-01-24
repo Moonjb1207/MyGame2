@@ -10,9 +10,14 @@ public class BuildingBuy : MonoBehaviour
 
     private void Awake()
     {
-        //Img = 
+        
     }
-    
+
+    private void OnEnable()
+    {
+        Img.sprite = EquipmentManager.Instance.GetBuildingStat(myName).myImg;
+    }
+
     public void BuyBuilding()
     {
         InventoryManager.Instance.AddBuildings(myName);
@@ -21,5 +26,10 @@ public class BuildingBuy : MonoBehaviour
     public void setMyBuilding(string itemName)
     {
         myName = itemName;
+    }
+
+    public void setMyImg()
+    {
+        Img.sprite = EquipmentManager.Instance.GetBuildingStat(myName).myImg;
     }
 }

@@ -11,7 +11,23 @@ public class ItemSelect : MonoBehaviour
 
     private void Awake()
     {
-        //Img = 
+        
+    }
+
+    private void OnEnable()
+    {
+        if(myType == ItemType.weapon)
+        {
+            Img.sprite = EquipmentManager.Instance.GetWeaponStat(myName).myImg;
+        }
+        else if(myType == ItemType.armor)
+        {
+            Img.sprite = EquipmentManager.Instance.GetArmorStat(myName).myImg;
+        }
+        else if(myType == ItemType.helmet)
+        {
+            Img.sprite = EquipmentManager.Instance.GetHelmetStat(myName).myImg;
+        }
     }
 
     public void SelectItem()
@@ -24,5 +40,21 @@ public class ItemSelect : MonoBehaviour
     {
         myName = itemName;
         myType = itemType;
+    }
+
+    public void setImg()
+    {
+        if (myType == ItemType.weapon)
+        {
+            Img.sprite = EquipmentManager.Instance.GetWeaponStat(myName).myImg;
+        }
+        else if (myType == ItemType.armor)
+        {
+            Img.sprite = EquipmentManager.Instance.GetArmorStat(myName).myImg;
+        }
+        else if (myType == ItemType.helmet)
+        {
+            Img.sprite = EquipmentManager.Instance.GetHelmetStat(myName).myImg;
+        }
     }
 }

@@ -6,6 +6,8 @@ public class IGMDefenseState : IGMState
 {
     public override void EnterState()
     {
+        manager.spawnerCount = 0;
+
         for (int i = 0; i < manager.mySpawner.Length; i++)
         {
             manager.mySpawner[i].WaveStart(manager.stage);
