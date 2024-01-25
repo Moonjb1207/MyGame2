@@ -17,15 +17,19 @@ MonoBehaviour:
     equipmentSpeed: 1
     Damage: 1
     armorNum: 0
+    myImg: {fileID: 21300000, guid: 9d306573366c73942ae1e3112f243e77, type: 3}
   - equipName: lv1_armor
     equipmentSpeed: 0.9
     Damage: 0.9
     armorNum: 1
+    myImg: {fileID: 21300000, guid: f61eb2d843755b946823c1bcb986c880, type: 3}
   - equipName: lv2_armor
     equipmentSpeed: 0.7
     Damage: 0.7
     armorNum: 2
+    myImg: {fileID: 21300000, guid: 2a1ee7b9645264340b65b382943fde6c, type: 3}
   - equipName: lv3_armor
     equipmentSpeed: 0.5
     Damage: 0.5
     armorNum: 3
+    myImg: {fileID: 21300000, guid: 1a69dc6c3883828498f5d65db4fcef55, type: 3}

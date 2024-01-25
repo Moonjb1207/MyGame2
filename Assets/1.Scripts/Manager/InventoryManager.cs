@@ -35,11 +35,23 @@ public class InventoryManager : MonoBehaviour
         myBuilding = "Box";
 
         myItemDic[ItemType.weapon].Add(myWeapon);
-        myItemDic[ItemType.armor].Add(myArmor);
-        myItemDic[ItemType.helmet].Add(myHelmet);
+
         mybuildingDic.Add("Box", 1);
 
         myGold = 0;
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < EquipmentManager.Instance.armorData.armorStats.Length; i++)
+        {
+            myItemDic[ItemType.armor].Add(EquipmentManager.Instance.armorData.armorStats[i].equipName);
+        }
+
+        for (int i = 0; i < EquipmentManager.Instance.helmetData.helmetStats.Length; i++)
+        {
+            myItemDic[ItemType.helmet].Add(EquipmentManager.Instance.helmetData.helmetStats[i].equipName);
+        }
     }
 
     //public void EquipWeapon_I(string weaponName)

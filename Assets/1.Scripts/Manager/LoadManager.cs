@@ -21,4 +21,10 @@ public class LoadManager : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(scene);
     }
+
+    public void Change_to_MainScene()
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadSceneAsync("Main");
+    }
 }

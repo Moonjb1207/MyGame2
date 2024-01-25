@@ -10,9 +10,12 @@ public class IGUIManager : MonoBehaviour
 
     public GameObject InvenUI;
     public GameObject BInvenUI;
+    public GameObject ClearUI;
+    public GameObject PauseUI;
     public TMPro.TMP_Text coin;
     public TMPro.TMP_Text myExp;
     public TMPro.TMP_Text needExp;
+    public Button ClearButton;
 
     private void Awake()
     {
@@ -26,6 +29,8 @@ public class IGUIManager : MonoBehaviour
         coin.text = InventoryManager.Instance.myGold.ToString();
         myExp.text = Player.Instance.myExp.ToString();
         needExp.text = Player.Instance.lvexpData.LvExpDatas[Player.Instance.myLevel].needExp.ToString();
+
+        ClearButton.onClick.AddListener(LoadManager.Instance.Change_to_MainScene);
     }
 
     // Update is called once per frame

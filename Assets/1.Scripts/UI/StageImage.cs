@@ -20,4 +20,9 @@ public class StageImage : MonoBehaviour
     {
         curIMG.sprite = stageIMG[StageManager.Instance.stage];
     }
+
+    public void GameStart()
+    {
+        LoadManager.Instance.ChangeScene("PlayGame" + StageManager.Instance.stage);
+    }
 }

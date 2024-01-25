@@ -6,6 +6,7 @@ public class MainMenuManager : MonoBehaviour
 {
     public GameObject[] Menus;
 
+
     public MenuName curMenu;
 
     private void Awake()

@@ -42,7 +42,7 @@ public class Player : MonoBehaviour, IBattle
         instance = this;
 
         rg = GetComponent<Rigidbody>();
-        curHP = 10;
+        curHP = 100;
         moveSpeed = 7;
         myLevel = 1;
         myExp = 0;
