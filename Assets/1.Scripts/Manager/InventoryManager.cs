@@ -137,14 +137,16 @@ public class InventoryManager : MonoBehaviour
         myGold += add;
     }
 
-    public bool UseGold(int use)
+    public bool CheckGold(int use)
     {
         if (myGold < use)
-        {
             return false;
-        }
 
-        myGold -= use;
         return true;
+    }
+
+    public void UseGold(int use)
+    {
+        myGold -= use;
     }
 }

@@ -51,6 +51,18 @@ public class IGUIManager : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
+    public void OpenPause()
+    {
+        PauseUI.SetActive(true);
+        Time.timeScale = 0.0f;
+    }
+
+    public void ClosePause()
+    {
+        PauseUI.SetActive(false);
+        Time.timeScale = 1.0f;
+    }
+
     public void OpenBInven()
     {
         BInvenUI.SetActive(true);
@@ -61,5 +73,11 @@ public class IGUIManager : MonoBehaviour
     {
         BInvenUI.SetActive(false);
         Time.timeScale = 1.0f;
+    }
+
+    public void GotoMain()
+    {
+        Time.timeScale = 1.0f;
+        LoadManager.Instance.ChangeScene("Main");
     }
 }

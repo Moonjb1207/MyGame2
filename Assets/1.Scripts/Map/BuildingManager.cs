@@ -85,6 +85,7 @@ public class BuildingManager : MonoBehaviour
 
         myBox.canPlaceIndicator.gameObject.SetActive(false);
         myBox.GetComponentInChildren<Collider>().enabled = true;
+        myBox.GetComponent<IGBuilding>().SetStat(InventoryManager.Instance.myBuilding);
         myBox = null;
     }
 

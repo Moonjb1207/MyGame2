@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Player : MonoBehaviour, IBattle
 {
@@ -10,6 +12,7 @@ public class Player : MonoBehaviour, IBattle
     public float moveSpeed;
     public Rigidbody rg;
     public float curHP;
+    public float maxHP;
 
     public Transform bodyTr;
     public LayerMask myEnemy;
@@ -36,13 +39,15 @@ public class Player : MonoBehaviour, IBattle
 
     public int myGold;
 
+    public Image hpBar;
+    public GameObject hpBarCanvas;
 
     private void Awake()
     {
         instance = this;
 
         rg = GetComponent<Rigidbody>();
-        curHP = 100;
+        curHP = maxHP = 100;
         moveSpeed = 7;
         myLevel = 1;
         myExp = 0;
@@ -52,6 +57,14 @@ public class Player : MonoBehaviour, IBattle
 
         moveJoystick = GameObject.Find("moveJoystick")?.GetComponent<Joystick>();
         rotJoystick = GameObject.Find("rotJoystick")?.GetComponent<Joystick>();
+
+        if (moveJoystick == null || rotJoystick == null)
+            hpBarCanvas.SetActive(false);
+        else
+        {
+            hpBarCanvas.SetActive(true);
+            hpBar.fillAmount = curHP / maxHP;
+        }
 
         myAnim = bodyTr.GetComponent<Animator>();
     }
@@ -116,8 +129,10 @@ public class Player : MonoBehaviour, IBattle
     public void OnDamage(float dmg)
     {
         curHP -= dmg * curArmor.stat.Damage * curHelmet.stat.Damage;
-        
-        if(curHP <= 0 && !myAnim.GetBool("Dying"))
+
+        hpBar.fillAmount = curHP / maxHP;
+
+        if (curHP <= 0 && !myAnim.GetBool("Dying"))
         {
             myAnim.SetTrigger("IsDying");
             rg.velocity = Vector3.zero;
@@ -289,5 +304,8 @@ public class Player : MonoBehaviour, IBattle
     public void LevelUp()
     {
         InventoryManager.Instance.AddItems(EquipmentManager.Instance.weaponData.weaponStats[myLevel].weaponName, ItemType.weapon);
+
+        curHP = maxHP;
+        hpBar.fillAmount = curHP / maxHP;
     }
 }

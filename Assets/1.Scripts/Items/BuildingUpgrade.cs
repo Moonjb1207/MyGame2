@@ -8,10 +8,6 @@ public class BuildingUpgrade : MonoBehaviour
     public Image Img;
     public string myName;
 
-    private void Awake()
-    {
-        //Img = 
-    }
 
     private void OnEnable()
     {
@@ -21,7 +17,29 @@ public class BuildingUpgrade : MonoBehaviour
     public void UpgradeBuilding()
     {
         //Upgrade
+        int UpgradeCost = InventoryManager.Instance.mybuildingDic[myName] * 
+            EquipmentManager.Instance.GetBuildingStat(myName).upgradeCost / 10;
 
+        if(InventoryManager.Instance.CheckGold(UpgradeCost))
+        {
+            //추후에 확인UI 띄우고 구매로 변경
+            WarningManager.Instance.ShowWarning(transform, 1);
+            WarningManager.Instance.myEvent.AddListener(Upgrade);
+        }
+        else
+        {
+            //재화 부족 경고 생성
+            WarningManager.Instance.ShowWarning(transform, 0);
+        }
+    }
+
+    public void Upgrade()
+    {
+        int UpgradeCost = InventoryManager.Instance.mybuildingDic[myName] *
+            EquipmentManager.Instance.GetBuildingStat(myName).upgradeCost / 10;
+
+        InventoryManager.Instance.UseGold(UpgradeCost);
+        InventoryManager.Instance.mybuildingDic[myName]++;
     }
 
     public void setMyBuilding(string itemName)
