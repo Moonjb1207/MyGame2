@@ -122,9 +122,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7013741203970284725}
-        m_TargetAssemblyTypeName: BuildingBuy, Assembly-CSharp
-        m_MethodName: BuyBuilding
+      - m_Target: {fileID: -828983171985763758}
+        m_TargetAssemblyTypeName: BuildingUpgrade, Assembly-CSharp
+        m_MethodName: UpgradeBuilding
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7013741203970284720}
   - component: {fileID: 7013741203970284722}
-  - component: {fileID: 7013741203970284725}
+  - component: {fileID: -828983171985763758}
   m_Layer: 5
   m_Name: UpgradeBuilding
   m_TagString: Untagged
@@ -411,7 +411,7 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &7013741203970284725
+--- !u!114 &-828983171985763758
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7013741203970284735}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b603bf88387e94da0d84951d71de41, type: 3}
+  m_Script: {fileID: 11500000, guid: 5438d216e8ce240499d5e354fd907734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Img: {fileID: 7013741203924660811}

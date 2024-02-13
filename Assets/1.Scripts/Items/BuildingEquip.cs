@@ -32,4 +32,9 @@ public class BuildingEquip : MonoBehaviour
     {
         Img.sprite = EquipmentManager.Instance.GetBuildingStat(myName).myImg;
     }
+
+    public void ShowInfo()
+    {
+        
+    }
 }
