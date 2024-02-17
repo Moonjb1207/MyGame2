@@ -22,6 +22,11 @@ public class EnemyMovementState : EnemyState
 
     }
 
+    public void ChangeMoveSpeed(float v)
+    {
+        agent.speed = enemy.data.moveSpeed * v;
+    }
+
     public override void UpdateState()
     {
         curDelay += Time.deltaTime;

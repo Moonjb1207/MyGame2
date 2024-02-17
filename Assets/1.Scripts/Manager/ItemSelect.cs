@@ -57,4 +57,28 @@ public class ItemSelect : MonoBehaviour
             Img.sprite = EquipmentManager.Instance.GetHelmetStat(myName).myImg;
         }
     }
+
+    public void ShowInfo()
+    {
+        string name = myName;
+
+        string ability = "";
+        if (myType == ItemType.weapon)
+        {
+            ability = "Atk : " + EquipmentManager.Instance.GetWeaponStat(myName).Damage.ToString();
+        }
+        else if (myType == ItemType.armor)
+        {
+            ability = "Dmg Reduce : " + EquipmentManager.Instance.GetArmorStat(myName).Damage.ToString();
+        }
+        else if (myType == ItemType.helmet)
+        {
+            ability = "Dmg Reduce : " + EquipmentManager.Instance.GetHelmetStat(myName).Damage.ToString();
+        }
+
+
+        string aE = "";
+
+        InfoUI.Instance.setMyInfo(name, ability, aE);
+    }
 }

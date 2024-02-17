@@ -15,7 +15,7 @@ public class BuildingBuy : MonoBehaviour
 
     private void OnEnable()
     {
-        Img.sprite = EquipmentManager.Instance.GetBuildingStat(myName).myImg;
+        //Img.sprite = EquipmentManager.Instance.GetBuildingStat(myName).myImg;
     }
 
     public void BuyBuilding()
@@ -52,5 +52,16 @@ public class BuildingBuy : MonoBehaviour
     public void setMyImg()
     {
         Img.sprite = EquipmentManager.Instance.GetBuildingStat(myName).myImg;
+    }
+
+    public void ShowInfo()
+    {
+        //InfoUI myinfo = Instantiate(myInfo);
+
+        string name = myName;
+        string ability = "HP : " + EquipmentManager.Instance.GetBuildingStat(myName).buildingHP.ToString();
+        string aE = "";
+
+        InfoUI.Instance.setMyInfo(name, ability, aE);
     }
 }

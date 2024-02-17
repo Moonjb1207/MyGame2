@@ -42,6 +42,8 @@ public class Player : MonoBehaviour, IBattle
     public Image hpBar;
     public GameObject hpBarCanvas;
 
+    [SerializeField] List<DeBuff> debuffList = new List<DeBuff>();
+
     private void Awake()
     {
         instance = this;
@@ -114,6 +116,46 @@ public class Player : MonoBehaviour, IBattle
                 RotTo(dir);
             }
         }
+
+        for (int i = 0; i < debuffList.Count;)
+        {
+            DeBuff deb = debuffList[i];
+            deb.keepTime -= Time.deltaTime;
+
+            if (deb.keepTime < 0.0f)
+            {
+                switch (deb.type)
+                {
+                    case DeBuffType.Slow:
+
+                        break;
+                    case DeBuffType.Burn:
+
+                        break;
+                }
+
+                debuffList.RemoveAt(i);
+                continue;
+            }
+
+            switch (deb.type)
+            {
+                case DeBuffType.Slow:
+
+                    break;
+                case DeBuffType.Burn:
+                    deb.curDamageTime -= Time.deltaTime;
+                    if (deb.curDamageTime <= 0.0f)
+                    {
+                        OnDamage(deb.value);
+                        deb.curDamageTime = deb.maxDamageTime;
+                    }
+                    break;
+            }
+
+            debuffList[i] = deb;
+            i++;
+        }
     }
 
     public void MoveTo(Vector3 dir)
@@ -124,6 +166,32 @@ public class Player : MonoBehaviour, IBattle
     public void RotTo(Vector3 dir)
     {
         bodyTr.forward = dir.normalized;
+    }
+
+    public void AddDeBuff(DeBuff deb)
+    {
+        for (int i = 0; i < debuffList.Count; i++)
+        {
+            if (debuffList[i].type == deb.type)
+            {
+                DeBuff temp = debuffList[i];
+                temp.keepTime = deb.keepTime;
+                debuffList[i] = temp;
+                return;
+            }
+        }
+
+        switch (deb.type)
+        {
+            case DeBuffType.Slow:
+
+                break;
+
+            case DeBuffType.Burn:
+
+                break;
+        }
+        debuffList.Add(deb);
     }
 
     public void OnDamage(float dmg)

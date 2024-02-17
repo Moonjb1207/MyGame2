@@ -22,8 +22,10 @@ public class Missile : MonoBehaviour
                 foreach (Collider col in list)
                 {
                     col.GetComponent<IBattle>().OnDamage(Damage);
+                    col.GetComponent<Enemy>().AddDeBuff(new DeBuff(DeBuffType.Burn, 3.0f, 0.5f, 1.0f));
                 }
             }
+
             GameObject temp = Instantiate(expEffect);
             temp.transform.position = transform.position;
             MissilePool.Instance.EnqueueMissile(this);

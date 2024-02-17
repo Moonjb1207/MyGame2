@@ -11,6 +11,7 @@ public class TapContainer : MonoBehaviour
     {
         tapBtns = GetComponentsInChildren<TapBtn>(); //하위의 활성화된 오브젝트의 모든 TapBtn 컴포넌트 찾아 배열로 반환
         tapPanels = GetComponentsInChildren<TapPanel>(true);//하위의 모든 TapPanel 컴포넌트 배열 찾기 - 비활성화된 오브젝트 포함
+        
         curIdx = 0;
 
         for(int i = 0; i < tapBtns.Length; i++)

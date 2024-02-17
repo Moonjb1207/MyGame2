@@ -23,8 +23,24 @@ public class Enemy : MonoBehaviour, IBattle
 
     public EnemyRespawn mySpawn;
 
+    [SerializeField] List<DeBuff> debuffList = new List<DeBuff>();
 
     public Image hpBar;
+
+    Renderer[] _allRenderer = null;
+
+    protected Renderer[] allRenderer
+    {
+        get
+        {
+            if (_allRenderer == null)
+            {
+                _allRenderer = GetComponentsInChildren<Renderer>();
+            }
+
+            return _allRenderer;
+        }
+    }
 
     private void Awake()
     {
@@ -62,6 +78,86 @@ public class Enemy : MonoBehaviour, IBattle
     void Update()
     {
         curEnemyState?.UpdateState();
+
+        for (int i = 0; i < debuffList.Count;)
+        {
+            DeBuff deb = debuffList[i];
+            deb.keepTime -= Time.deltaTime;
+
+            if (deb.keepTime < 0.0f)
+            {
+                switch (deb.type)
+                {
+                    case DeBuffType.Slow:
+                        movementState.ChangeMoveSpeed(1 / deb.value);
+                        foreach (Renderer ren in allRenderer)
+                        {
+                            ren.material.SetColor("_Color", Color.white);
+                        }
+                        break;
+                    case DeBuffType.Burn:
+                        foreach (Renderer ren in allRenderer)
+                        {
+                            ren.material.SetColor("_Color", Color.white);
+                        }
+                        break;
+                }
+
+                debuffList.RemoveAt(i);
+                continue;
+            }
+
+            switch (deb.type)
+            {
+                case DeBuffType.Slow:
+
+                    break;
+                case DeBuffType.Burn:
+                    deb.curDamageTime -= Time.deltaTime;
+                    if (deb.curDamageTime <= 0.0f)
+                    {
+                        OnDamage(deb.value);
+                        deb.curDamageTime = deb.maxDamageTime;
+                    }
+                    break;
+            }
+
+            debuffList[i] = deb;
+            i++;
+        }
+    }
+
+    public void AddDeBuff(DeBuff deb)
+    {
+        for (int i = 0; i < debuffList.Count; i++)
+        {
+            if (debuffList[i].type == deb.type)
+            {
+                DeBuff temp = debuffList[i];
+                temp.keepTime = deb.keepTime;
+                debuffList[i] = temp;
+                return;
+            }
+        }
+
+        switch (deb.type)
+        {
+            case DeBuffType.Slow:
+                movementState.ChangeMoveSpeed(deb.value);
+                foreach (Renderer ren in allRenderer)
+                {
+                    ren.material.SetColor("_Color", Color.blue);
+                }
+                break;
+
+            case DeBuffType.Burn:
+                foreach (Renderer ren in allRenderer)
+                {
+                    ren.material.SetColor("_Color", Color.red);
+                }
+                break;
+        }
+        debuffList.Add(deb);
     }
 
     public void OnDamage(float dmg)

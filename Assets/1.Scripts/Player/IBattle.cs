@@ -13,3 +13,28 @@ public interface IBattle
         get;
     }
 }
+
+public enum DeBuffType
+{
+    Slow,
+    Burn,
+
+}
+
+public struct DeBuff
+{
+    public DeBuff(DeBuffType t, float keep, float v, float dt)
+    {
+        type = t;
+        keepTime = keep;
+        value = v;
+        maxDamageTime = dt;
+        curDamageTime = 0.0f;
+    }
+
+    public DeBuffType type;
+    public float keepTime;
+    public float value;
+    public float maxDamageTime;
+    public float curDamageTime;
+}

@@ -22,6 +22,8 @@ public class MainMenuManager : MonoBehaviour
         }
 
         Menus[menu].SetActive(true);
+        WarningManager.Instance.transform.SetParent(Menus[menu].transform.GetChild(0));
+        InfoUI.Instance.transform.SetParent(Menus[menu].transform.GetChild(0));
     }
 }
 

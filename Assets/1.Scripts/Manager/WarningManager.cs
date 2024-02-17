@@ -19,8 +19,6 @@ public class WarningManager : MonoBehaviour
 
     public void ShowWarning(Transform parent, int index)
     {
-        transform.SetParent(parent);
-
         for(int i = 0; i < warnings.Length; i++)
         {
             warnings[i].gameObject.SetActive(false);

@@ -7,7 +7,8 @@ public class IGBuilding : MonoBehaviour, IBattle
     public string myName;
     public float curHP;
     public float Delay;
-    public float SpeedDown;
+    public float Value;
+    public float KeepTime;
 
     public void SetStat(string name)
     {
@@ -15,7 +16,8 @@ public class IGBuilding : MonoBehaviour, IBattle
         curHP = EquipmentManager.Instance.GetBuildingStat(myName).buildingHP
             + (InventoryManager.Instance.mybuildingDic[myName] - 1) * EquipmentManager.Instance.GetBuildingStat(myName).buildingHP / 10;
         Delay = EquipmentManager.Instance.GetBuildingStat(myName).delay;
-        SpeedDown = EquipmentManager.Instance.GetBuildingStat(myName).speedDown;
+        Value = EquipmentManager.Instance.GetBuildingStat(myName).value;
+        KeepTime = EquipmentManager.Instance.GetBuildingStat(myName).keepTime;
     }
 
     public void OnDamage(float dmg)

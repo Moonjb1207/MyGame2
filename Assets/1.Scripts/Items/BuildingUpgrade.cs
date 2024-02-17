@@ -8,10 +8,9 @@ public class BuildingUpgrade : MonoBehaviour
     public Image Img;
     public string myName;
 
-
     private void OnEnable()
     {
-        Img.sprite = EquipmentManager.Instance.GetBuildingStat(myName).myImg;
+        //Img.sprite = EquipmentManager.Instance.GetBuildingStat(myName).myImg;
     }
 
     public void UpgradeBuilding()
@@ -50,5 +49,14 @@ public class BuildingUpgrade : MonoBehaviour
     public void setMyImg()
     {
         Img.sprite = EquipmentManager.Instance.GetBuildingStat(myName).myImg;
+    }
+
+    public void ShowInfo()
+    {
+        string name = myName;
+        string ability = "HP : " + EquipmentManager.Instance.GetBuildingStat(myName).buildingHP.ToString();
+        string aE = "";
+
+        InfoUI.Instance.setMyInfo(name, ability, aE);
     }
 }

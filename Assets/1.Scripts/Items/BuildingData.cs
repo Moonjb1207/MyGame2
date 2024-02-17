@@ -8,18 +8,20 @@ public class BuildingStat
 {
     public string buildingName;
     public float buildingHP;
-    public float speedDown;
+    public float value;
     public float delay;
+    public float keepTime;
     public int cost;
     public int upgradeCost;
     public Sprite myImg;
 
-    public BuildingStat(string bn, float hp, float sd, float d, int c, int uc, Sprite i)
+    public BuildingStat(string bn, float hp, float v, float d, float kt, int c, int uc, Sprite i)
     {
         buildingName = bn;
         buildingHP = hp;
-        speedDown = sd;
+        value = v;
         delay = d;
+        keepTime = kt;
         cost = c;
         upgradeCost = uc;
         myImg = i;
