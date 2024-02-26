@@ -9,7 +9,18 @@ public class Missile : MonoBehaviour
     public float moveSpeed;
     public float Damage;
 
+    public float DamageTime;
+    public float KeepTime;
+    public float Value;
+
     public GameObject expEffect;
+
+    private void OnEnable()
+    {
+        DamageTime = 1.0f;
+        Value = 0.5f;
+        KeepTime = 3.0f;
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -22,7 +33,7 @@ public class Missile : MonoBehaviour
                 foreach (Collider col in list)
                 {
                     col.GetComponent<IBattle>().OnDamage(Damage);
-                    col.GetComponent<Enemy>().AddDeBuff(new DeBuff(DeBuffType.Burn, 3.0f, 0.5f, 1.0f));
+                    col.GetComponent<Enemy>().AddDeBuff(new DeBuff(DeBuffType.Burn, KeepTime, Value, DamageTime));
                 }
             }
 

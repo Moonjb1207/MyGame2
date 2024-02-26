@@ -9,6 +9,10 @@ public class RangeWeapon : MonoBehaviour
     public float moveSpeed;
     public float Damage;
 
+    public float KeepTime;
+    public float Value;
+    public float DamageTime;
+
     public Transform mySpin;
 
     Vector3 direction = Vector3.forward;
@@ -17,6 +21,10 @@ public class RangeWeapon : MonoBehaviour
     {
         mySpin = transform.GetChild(0);
         StartCoroutine(movingWeapon());
+
+        KeepTime = 2.0f;
+        Value = 0.5f;
+        DamageTime = 1.0f;
     }
 
     IEnumerator movingWeapon()
@@ -40,6 +48,9 @@ public class RangeWeapon : MonoBehaviour
                 {
                     IBattle ib = hit.transform.GetComponent<IBattle>();
                     ib?.OnDamage(Damage);
+
+                    Player enemy = hit.transform.GetComponent<Player>();
+                    enemy.AddDeBuff(new DeBuff(DeBuffType.Bleeding, KeepTime, Value, DamageTime));
 
                     EnemyWeaponPool.Instance.EnqueueWeapon(this);
                     gameObject.SetActive(false);

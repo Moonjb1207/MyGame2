@@ -18,6 +18,7 @@ public enum DeBuffType
 {
     Slow,
     Burn,
+    Bleeding,
 
 }
 

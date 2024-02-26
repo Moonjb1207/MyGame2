@@ -11,17 +11,19 @@ public class BuildingStat
     public float value;
     public float delay;
     public float keepTime;
+    public float damageTime;
     public int cost;
     public int upgradeCost;
     public Sprite myImg;
 
-    public BuildingStat(string bn, float hp, float v, float d, float kt, int c, int uc, Sprite i)
+    public BuildingStat(string bn, float hp, float v, float d, float kt, float dt, int c, int uc, Sprite i)
     {
         buildingName = bn;
         buildingHP = hp;
         value = v;
         delay = d;
         keepTime = kt;
+        damageTime = dt;
         cost = c;
         upgradeCost = uc;
         myImg = i;

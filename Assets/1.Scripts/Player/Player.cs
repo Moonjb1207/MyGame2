@@ -44,6 +44,21 @@ public class Player : MonoBehaviour, IBattle
 
     [SerializeField] List<DeBuff> debuffList = new List<DeBuff>();
 
+    Renderer[] _allRenderer = null;
+
+    protected Renderer[] allRenderer
+    {
+        get
+        {
+            if (_allRenderer == null)
+            {
+                _allRenderer = GetComponentsInChildren<Renderer>();
+            }
+
+            return _allRenderer;
+        }
+    }
+
     private void Awake()
     {
         instance = this;
@@ -132,6 +147,12 @@ public class Player : MonoBehaviour, IBattle
                     case DeBuffType.Burn:
 
                         break;
+                    case DeBuffType.Bleeding:
+                        foreach (Renderer ren in allRenderer)
+                        {
+                            ren.material.SetColor("_Color", Color.white);
+                        }
+                        break;
                 }
 
                 debuffList.RemoveAt(i);
@@ -144,6 +165,14 @@ public class Player : MonoBehaviour, IBattle
 
                     break;
                 case DeBuffType.Burn:
+                    deb.curDamageTime -= Time.deltaTime;
+                    if (deb.curDamageTime <= 0.0f)
+                    {
+                        OnDamage(deb.value);
+                        deb.curDamageTime = deb.maxDamageTime;
+                    }
+                    break;
+                case DeBuffType.Bleeding:
                     deb.curDamageTime -= Time.deltaTime;
                     if (deb.curDamageTime <= 0.0f)
                     {
@@ -189,6 +218,13 @@ public class Player : MonoBehaviour, IBattle
 
             case DeBuffType.Burn:
 
+                break;
+
+            case DeBuffType.Bleeding:
+                foreach (Renderer ren in allRenderer)
+                {
+                    ren.material.SetColor("_Color", Color.red);
+                }
                 break;
         }
         debuffList.Add(deb);

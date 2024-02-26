@@ -101,6 +101,12 @@ public class Enemy : MonoBehaviour, IBattle
                             ren.material.SetColor("_Color", Color.white);
                         }
                         break;
+                    case DeBuffType.Bleeding:
+                        foreach (Renderer ren in allRenderer)
+                        {
+                            ren.material.SetColor("_Color", Color.white);
+                        }
+                        break;
                 }
 
                 debuffList.RemoveAt(i);
@@ -113,6 +119,14 @@ public class Enemy : MonoBehaviour, IBattle
 
                     break;
                 case DeBuffType.Burn:
+                    deb.curDamageTime -= Time.deltaTime;
+                    if (deb.curDamageTime <= 0.0f)
+                    {
+                        OnDamage(deb.value);
+                        deb.curDamageTime = deb.maxDamageTime;
+                    }
+                    break;
+                case DeBuffType.Bleeding:
                     deb.curDamageTime -= Time.deltaTime;
                     if (deb.curDamageTime <= 0.0f)
                     {
@@ -146,11 +160,19 @@ public class Enemy : MonoBehaviour, IBattle
                 movementState.ChangeMoveSpeed(deb.value);
                 foreach (Renderer ren in allRenderer)
                 {
+                    movementState.ChangeMoveSpeed(deb.value);
                     ren.material.SetColor("_Color", Color.blue);
                 }
                 break;
 
             case DeBuffType.Burn:
+                foreach (Renderer ren in allRenderer)
+                {
+                    ren.material.SetColor("_Color", new Color(255f, 165f, 0f));
+                }
+                break;
+
+            case DeBuffType.Bleeding:
                 foreach (Renderer ren in allRenderer)
                 {
                     ren.material.SetColor("_Color", Color.red);

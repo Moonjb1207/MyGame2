@@ -9,6 +9,7 @@ public class IGBuilding : MonoBehaviour, IBattle
     public float Delay;
     public float Value;
     public float KeepTime;
+    public float DamageTime;
 
     public void SetStat(string name)
     {
@@ -18,6 +19,7 @@ public class IGBuilding : MonoBehaviour, IBattle
         Delay = EquipmentManager.Instance.GetBuildingStat(myName).delay;
         Value = EquipmentManager.Instance.GetBuildingStat(myName).value;
         KeepTime = EquipmentManager.Instance.GetBuildingStat(myName).keepTime;
+        DamageTime = EquipmentManager.Instance.GetBuildingStat(myName).damageTime;
     }
 
     public void OnDamage(float dmg)
