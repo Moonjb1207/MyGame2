@@ -5,6 +5,7 @@ using UnityEngine;
 public class Shooter : Weapon
 {
     public Bullet bulletPrefab;
+    public AudioClip shootSound;
 
     public override void Attack()
     {
@@ -30,5 +31,7 @@ public class Shooter : Weapon
         bullet.transform.position = shootTr.position;
         bullet.Shoot(transform.forward, stat.Damage, stat.LifeTime, stat.moveSpeed);
         bullet.gameObject.SetActive(true);
+
+        SoundManager.Instance.PlayEfSound(shootTr.position, shootSound);
     }
 }

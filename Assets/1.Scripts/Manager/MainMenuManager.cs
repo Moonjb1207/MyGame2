@@ -6,11 +6,15 @@ public class MainMenuManager : MonoBehaviour
 {
     public GameObject[] Menus;
 
+    public GameObject SettingMenu;
+
 
     public MenuName curMenu;
 
     private void Awake()
     {
+        SoundManager.Instance.PlayMainBGSound();
+
         curMenu = MenuName.Main;
     }
 
@@ -25,6 +29,16 @@ public class MainMenuManager : MonoBehaviour
         WarningManager.Instance.transform.SetParent(Menus[menu].transform.GetChild(0));
         InfoUI.Instance.transform.SetParent(Menus[menu].transform.GetChild(0));
     }
+
+    public void OpenSettingMenu()
+    {
+        SettingMenu.SetActive(true);
+    }
+
+    public void CloseSettingMenu()
+    {
+        SettingMenu.SetActive(false);
+    }
 }
 
 
@@ -34,5 +48,4 @@ public enum MenuName
     Inventory,
     Store,
     StoreResult,
-
 }

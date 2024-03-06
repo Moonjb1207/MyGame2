@@ -8,9 +8,13 @@ public class Hitscaner : Weapon
 
     public LayerMask layerMask;
 
+    public AudioClip shootSound;
+
     public override void Attack()
     {
-        if(Physics.Raycast(shootTr.position, transform.forward, out RaycastHit hit, atkRange, layerMask))
+        SoundManager.Instance.PlayEfSound(shootTr.position, shootSound);
+
+        if (Physics.Raycast(shootTr.position, transform.forward, out RaycastHit hit, atkRange, layerMask))
         {
             hit.collider.GetComponent<IBattle>().OnDamage(stat.Damage);
         }

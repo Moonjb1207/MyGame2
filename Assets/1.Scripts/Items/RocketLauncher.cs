@@ -7,6 +7,8 @@ public class RocketLauncher : Weapon
     public Missile missilePrefab;
     public Missile myMissile;
 
+    public AudioClip shootSound;
+
     private void Awake()
     {
         CreateMissile();
@@ -17,6 +19,7 @@ public class RocketLauncher : Weapon
         if (myMissile == null) return;
 
         StartCoroutine(shootingMissile(stat.shootingCount, stat.shootingDelay));
+        SoundManager.Instance.PlayEfSound(shootTr.position, shootSound);
     }
 
     IEnumerator shootingMissile(int count, float delay)
