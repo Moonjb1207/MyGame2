@@ -13,9 +13,12 @@ public class MainMenuManager : MonoBehaviour
 
     private void Awake()
     {
-        SoundManager.Instance.PlayMainBGSound();
-
         curMenu = MenuName.Main;
+    }
+
+    private void Start()
+    {
+        SoundManager.Instance.PlayMainBGSound();
     }
 
     public void ChangeMenu(int menu)

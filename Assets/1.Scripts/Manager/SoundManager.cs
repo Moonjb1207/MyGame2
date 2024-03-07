@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
     public float effectVolume;
     public float backgroundVolume;
 
-    public AudioSource myBG = null;
+    public AudioSource myBG;
 
     public AudioClip MainBG;
     public AudioClip PlayBG;
@@ -79,7 +79,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayEfSound(Vector3 pos, AudioClip efs)
     {
-        GameObject obj;
+        GameObject obj = null;
 
         if (efSoundQueue.Count == 0)
         {

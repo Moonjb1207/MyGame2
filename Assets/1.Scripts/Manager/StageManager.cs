@@ -22,15 +22,19 @@ public class StageManager : MonoBehaviour
         if (instance == null)
             instance = this;
 
+    }
+
+    private void Start()
+    {
         saveData = SaveManager.Instance.LoadFile<StageClearData>(SaveManager.Instance.StageSavefp);
 
-        if(!SaveManager.Instance.IsExist)
+        if (!SaveManager.Instance.IsExist)
         {
             StageClearData data = new StageClearData();
             data.isUnlock[0] = true;
-            data.isUnlock[1] = true;data.Gold = 0;
+            data.isUnlock[1] = true; data.Gold = 0;
 
-            for(int i = 2; i < data.isUnlock.Length; i++)
+            for (int i = 2; i < data.isUnlock.Length; i++)
             {
                 data.isUnlock[i] = false;
             }

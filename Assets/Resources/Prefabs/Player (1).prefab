@@ -15171,6 +15171,7 @@ MonoBehaviour:
   shootTr: {fileID: 4980494326429024287}
   missilePrefab: {fileID: 242979449746317142, guid: 9faddfcae5249034fa6997ef3bca45c8, type: 3}
   myMissile: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 2737900bb0cd3ba4a95f4c0e67e5d08c, type: 3}
 --- !u!1 &2526989708848426390
 GameObject:
   m_ObjectHideFlags: 0
@@ -50297,6 +50298,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 256
+  shootSound: {fileID: 8300000, guid: 0e2277d5bd487194ea8f19007765e655, type: 3}
 --- !u!1 &8569127146437426611
 GameObject:
   m_ObjectHideFlags: 0
@@ -50407,6 +50409,7 @@ MonoBehaviour:
   IsAttacking: 0
   shootTr: {fileID: 1868841214443964823}
   bulletPrefab: {fileID: -8776923074991913517, guid: 84f31ff2376e75744a5beaf9bcc0ee55, type: 3}
+  shootSound: {fileID: 8300000, guid: e89f7b6742b29d6409188dcb7590446d, type: 3}
 --- !u!1 &8569127146581348946
 GameObject:
   m_ObjectHideFlags: 0
@@ -50517,6 +50520,7 @@ MonoBehaviour:
   IsAttacking: 0
   shootTr: {fileID: 1868841214340422640}
   bulletPrefab: {fileID: -8776923074991913517, guid: 84f31ff2376e75744a5beaf9bcc0ee55, type: 3}
+  shootSound: {fileID: 8300000, guid: e89f7b6742b29d6409188dcb7590446d, type: 3}
 --- !u!1 &8569127147005310273
 GameObject:
   m_ObjectHideFlags: 0
@@ -50627,6 +50631,7 @@ MonoBehaviour:
   IsAttacking: 0
   shootTr: {fileID: 1868841213221993351}
   bulletPrefab: {fileID: -8776923074991913517, guid: 84f31ff2376e75744a5beaf9bcc0ee55, type: 3}
+  shootSound: {fileID: 8300000, guid: 360f49715479c95499bc0fc14a810bdd, type: 3}
 --- !u!1 &8569127147169146465
 GameObject:
   m_ObjectHideFlags: 0
@@ -50737,6 +50742,7 @@ MonoBehaviour:
   IsAttacking: 0
   shootTr: {fileID: 1868841213817462896}
   bulletPrefab: {fileID: -8776923074991913517, guid: 84f31ff2376e75744a5beaf9bcc0ee55, type: 3}
+  shootSound: {fileID: 8300000, guid: e89f7b6742b29d6409188dcb7590446d, type: 3}
 --- !u!1 &8569127147344111330
 GameObject:
   m_ObjectHideFlags: 0
@@ -51743,6 +51749,7 @@ MonoBehaviour:
   IsAttacking: 0
   shootTr: {fileID: 1868841214094561521}
   bulletPrefab: {fileID: -8776923074991913517, guid: 84f31ff2376e75744a5beaf9bcc0ee55, type: 3}
+  shootSound: {fileID: 8300000, guid: d1b35ac821812c840ac66b91c3ed9f35, type: 3}
   angle: 0
   dirCount: 3
 --- !u!1 &8569127148043772732
@@ -51855,6 +51862,7 @@ MonoBehaviour:
   IsAttacking: 0
   shootTr: {fileID: 1868841214625914645}
   bulletPrefab: {fileID: -8776923074991913517, guid: 84f31ff2376e75744a5beaf9bcc0ee55, type: 3}
+  shootSound: {fileID: 8300000, guid: e89f7b6742b29d6409188dcb7590446d, type: 3}
 --- !u!1 &8569127148068484995
 GameObject:
   m_ObjectHideFlags: 0
@@ -51967,6 +51975,7 @@ MonoBehaviour:
   myEnemy:
     serializedVersion: 2
     m_Bits: 256
+  shootSound: {fileID: 8300000, guid: 898fcde63bb7ed44fb6f2cef9b4c77d8, type: 3}
 --- !u!1 &8628846406888677867
 GameObject:
   m_ObjectHideFlags: 0

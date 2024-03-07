@@ -6,9 +6,12 @@ public class MeleeWeapon : Weapon
 {
     public Transform attackPos;
     public LayerMask myEnemy;
+    public AudioClip shootSound;
 
     public override void Attack()
     {
+        SoundManager.Instance.PlayEfSound(attackPos.position, shootSound);
+
         Collider[] list = Physics.OverlapSphere(attackPos.position + new Vector3(0, 0, 0.5f), stat.LifeTime, myEnemy);
         if (list != null)
         {
