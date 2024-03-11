@@ -12,6 +12,7 @@ public class InGameManager : MonoBehaviour
     public int spawnerCount;
 
     public bool gameClear;
+    public bool tutoClear;
 
     [SerializeField] IGMState curIGState;
 
@@ -36,11 +37,21 @@ public class InGameManager : MonoBehaviour
         wave = StageManager.Instance.data.stageStats[stage].wave;
         spawnerCount = 0;
         gameClear = false;
+        tutoClear = false;
 
         buildingState = GetComponent<IGMBuildingState>();
         defenseState = GetComponent<IGMDefenseState>();
         finishState = GetComponent<IGMFinishState>();
         clearState = GetComponent<IGMClearState>();
+
+        if (buildingState == null)
+            GetComponent<IGMBuildingState_T>();
+        if (defenseState == null)
+            GetComponent<IGMDefenseState_T>();
+        if (finishState == null)
+            GetComponent<IGMFinishState_T>();
+        if (clearState == null)
+            GetComponent<IGMClearState_T>();
     }
 
     // Start is called before the first frame update

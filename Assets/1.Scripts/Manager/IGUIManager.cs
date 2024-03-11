@@ -12,6 +12,8 @@ public class IGUIManager : MonoBehaviour
     public GameObject BInvenUI;
     public GameObject ClearUI;
     public GameObject PauseUI;
+    public GameObject GameoverUI;
+
     public TMPro.TMP_Text coin;
     public TMPro.TMP_Text myExp;
     public TMPro.TMP_Text needExp;

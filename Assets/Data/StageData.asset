@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageStat:
   - stage: 0
-    respawnCount: 0
-    maxCount: 0
+    respawnCount: 10
+    maxCount: 5
     curCount: 0
-    respawnDelay: 0
+    respawnDelay: 2
     curDelay: 0
-    wave: 0
+    wave: 2
   - stage: 1
     respawnCount: 30
     maxCount: 10
