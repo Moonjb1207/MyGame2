@@ -2,39 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IGMClearState_T : IGMState
+public class IGMClearState_T : IGMClearState
 {
-    //건물 짓기
-    GameObject[] tutorial_0 = new GameObject[5];
-    //건물 교체
-    GameObject[] tutorial_1 = new GameObject[5];
-    int curTutorial;
+    public GameObject tutorial;
 
     public override void EnterState()
     {
-        manager.buildButton.interactable = true;
-        //building start
+        Player.Instance.AddGold(500);
+        InventoryManager.Instance.myGold += Player.Instance.myGold;
+
+        Time.timeScale = 0.0f;
+
+        tutorial.SetActive(true);
     }
 
     public override void UpdateState()
     {
-        switch (curTutorial)
-        {
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-        }
-    }
-
-    void Tutorial_0()
-    {
-
+        
     }
 }

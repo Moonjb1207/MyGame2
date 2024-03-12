@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class TutorialInfo : MonoBehaviour
 {
-    GameObject[] mytuto;
+    public TutoPage[] mytuto;
     int curtuto;
 
     private void Awake()
     {
-        mytuto = GetComponentsInChildren<GameObject>(true);
+        mytuto = GetComponentsInChildren<TutoPage>(true);
         curtuto = 0;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        mytuto[curtuto].SetActive(true);
+        mytuto[curtuto].gameObject.SetActive(true);
     }
 
     public void NextTuto()
     {
-        mytuto[curtuto].SetActive(false);
+        mytuto[curtuto].gameObject.SetActive(false);
         if(++curtuto >= mytuto.Length)
         {
             InGameManager.Instance.tutoClear = true;
             return;
         }
-        mytuto[curtuto].SetActive(true);
+        mytuto[curtuto].gameObject.SetActive(true);
     }
 }

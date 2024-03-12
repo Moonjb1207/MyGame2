@@ -77,7 +77,11 @@ public class BuildingManager : MonoBehaviour
         Vector3 point = GetPointOnGround();
         Collider[] cols = Physics.OverlapBox(point, myBox.size, Quaternion.identity, Block);
 
-        if(cols.Length > 0 || !canBuild)
+        if(cols.Length > 0 
+            || !canBuild 
+            || !Player.Instance.CheckGold
+            (EquipmentManager.Instance.GetBuildingStat(InventoryManager.Instance.myBuilding).buildingCost)
+            )
         {
             Destroy(myBox.gameObject);
             return;
@@ -86,6 +90,8 @@ public class BuildingManager : MonoBehaviour
         myBox.canPlaceIndicator.gameObject.SetActive(false);
         myBox.GetComponentInChildren<Collider>().enabled = true;
         myBox.GetComponent<IGBuilding>().SetStat(InventoryManager.Instance.myBuilding);
+        Player.Instance.UseGold
+            (EquipmentManager.Instance.GetBuildingStat(InventoryManager.Instance.myBuilding).buildingCost);
         myBox = null;
     }
 

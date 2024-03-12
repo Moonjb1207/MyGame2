@@ -2,36 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IGMBuildingState_T : IGMState
+public class IGMBuildingState_T : IGMBuildingState
 {
     public List<GameObject> tutorials = new List<GameObject>();
+    public GameObject tutorial_2;
     int curTutorial;
-
-    [System.NonSerialized]
-    bool firstBuild = false;
-
-    float myTime = 30.0f;
 
     public override void EnterState()
     {
-        if (!firstBuild)
+        manager.buildButton.interactable = true;
+
+        if (manager.wave == 2)
         {
             curTutorial = 0;
-            manager.buildButton.interactable = true;
             tutorials[curTutorial].SetActive(true);
 
-            InventoryManager.Instance.AddGold(100);
+            Player.Instance.AddGold(100);
         }
-        else
+        else if (manager.wave == 1)
         {
+            tutorial_2.SetActive(true);
+
             remainTime = myTime;
-            manager.buildButton.interactable = true;
+
+            Player.Instance.AddGold(100);
         }
     }
 
     public override void UpdateState()
     {
-        if (!firstBuild)
+        if (manager.wave == 2)
         {
             switch (curTutorial)
             {
@@ -54,7 +54,7 @@ public class IGMBuildingState_T : IGMState
                     }
                     break;
                 case 3:
-                    if (InventoryManager.Instance.myGold <= 0)
+                    if (Player.Instance.myGold <= 0)
                     {
                         NextTutorial();
                     }
@@ -65,20 +65,15 @@ public class IGMBuildingState_T : IGMState
                         NextTutorial();
                     }
                     break;
-                case 5:
-                    if (manager.tutoClear)
-                    {
-                        NextTutorial();
-                    }
-                    break;
             }
         }
-        else
+        else if (manager.wave == 1)
         {
             remainTime -= Time.deltaTime;
 
             if (remainTime < 0)
             {
+                tutorial_2.SetActive(false);
                 manager.NextState(manager.defenseState);
             }
         }
@@ -91,11 +86,10 @@ public class IGMBuildingState_T : IGMState
 
         if (++curTutorial >= tutorials.Count)
         {
-            firstBuild = true;
             manager.NextState(manager.defenseState);
             return;
         }
 
-        tutorials[curTutorial].SetActive(true);
+        tutorials[curTutorial]?.SetActive(true);
     }
 }

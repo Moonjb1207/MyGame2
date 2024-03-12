@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IGMFinishState : IGMState
 {
-    float myTime = 10.0f;
+    protected float myTime = 10.0f;
 
     public override void EnterState()
     {

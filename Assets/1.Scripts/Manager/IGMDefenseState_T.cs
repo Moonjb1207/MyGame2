@@ -2,63 +2,90 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IGMDefenseState_T : IGMState
+public class IGMDefenseState_T : IGMDefenseState
 {
     public List<GameObject> tutorials = new List<GameObject>();
-    int curTutorial;
+    public GameObject tutorial_2;
 
-    [System.NonSerialized]
-    bool firstBuild = false;
+    int curTutorial;
 
     public override void EnterState()
     {
-        curTutorial = 0;
         manager.spawnerCount = 0;
 
-        //for (int i = 0; i < manager.mySpawner.Length; i++)
-        //{
-        //    manager.mySpawner[i].WaveStart(manager.stage);
-        //    manager.spawnerCount++;
-        //}
-
         manager.buildButton.interactable = false;
-
         if (manager.buildManagner.BuildState)
         {
             manager.buildManagner.ChangeBuildState();
+        }
+
+
+        if (manager.wave == 2)
+        {
+            curTutorial = 0;
+            tutorials[curTutorial].SetActive(true);
+        }
+        else if (manager.wave == 1)
+        {
+            for (int i = 0; i < manager.mySpawner.Length; i++)
+            {
+                manager.mySpawner[i].WaveStart(manager.stage);
+                manager.spawnerCount++;
+            }
+
+            tutorial_2.SetActive(true);
         }
     }
 
     public override void UpdateState()
     {
-        switch (curTutorial)
+        if (manager.wave == 2)
         {
-            case 0:
-                if (manager.tutoClear)
+            switch (curTutorial)
+            {
+                case 0:
+                    if (manager.tutoClear)
+                    {
+                        NextTutorial();
+                    }
+                    break;
+                case 1:
+                    if (manager.tutoClear)
+                    {
+                        for (int i = 0; i < manager.mySpawner.Length; i++)
+                        {
+                            manager.mySpawner[i].WaveStart(manager.stage);
+                            manager.spawnerCount++;
+                        }
+                        NextTutorial();
+                    }
+                    break;
+                case 2:
+                    if (manager.spawnerCount == 0)
+                    {
+                        NextTutorial();
+                    }
+                    break;
+                case 3:
+                    if (manager.tutoClear)
+                    {
+                        NextTutorial();
+                    }
+                    break;
+            }
+        }
+        else if (manager.wave == 1)
+        {
+            if (manager.spawnerCount == 0)
+            {
+                if (--manager.wave == 0)
                 {
-                    NextTutorial();
+                    manager.gameClear = true;
                 }
-                break;
-            case 1:
-                if (manager.tutoClear)
-                {
-                    NextTutorial();
-                }
-                break;
-            case 2:
-                if (manager.tutoClear)
-                {
-                    NextTutorial();
-                }
-                break;
-            case 3:
-                if (manager.tutoClear)
-                {
-                    NextTutorial();
-                }
-                break;
-            case 4:
-                break;
+
+                tutorial_2.SetActive(false);
+                manager.NextState(manager.finishState);
+            }
         }
     }
 
@@ -69,7 +96,7 @@ public class IGMDefenseState_T : IGMState
 
         if (++curTutorial >= tutorials.Count)
         {
-            manager.NextState(manager.defenseState);
+            manager.NextState(manager.finishState);
             return;
         }
 

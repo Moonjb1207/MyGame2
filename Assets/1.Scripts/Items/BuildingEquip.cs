@@ -39,6 +39,6 @@ public class BuildingEquip : MonoBehaviour
         string ability = "HP : " + EquipmentManager.Instance.GetBuildingStat(myName).buildingHP.ToString();
         string aE = "";
 
-        InfoUI.Instance.setMyInfo(name, ability, aE);
+        InfoUI.Instance?.setMyInfo(name, ability, aE);
     }
 }

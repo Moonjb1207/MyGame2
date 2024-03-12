@@ -21,6 +21,7 @@ MonoBehaviour:
     damageTime: 0
     cost: 0
     upgradeCost: 50
+    buildingCost: 10
     myImg: {fileID: 21300000, guid: 37f780c79b43d6c479947367af64a638, type: 3}
   - buildingName: HalfBox
     buildingHP: 80
@@ -30,6 +31,7 @@ MonoBehaviour:
     damageTime: 0
     cost: 50
     upgradeCost: 70
+    buildingCost: 15
     myImg: {fileID: 21300000, guid: d9b24513edfd9a24c95fb89e165c4380, type: 3}
   - buildingName: IceBox
     buildingHP: 50
@@ -39,4 +41,5 @@ MonoBehaviour:
     damageTime: 0
     cost: 50
     upgradeCost: 60
+    buildingCost: 20
     myImg: {fileID: 21300000, guid: 55c4ef4b02a48ac45933480ea8b4b662, type: 3}

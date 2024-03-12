@@ -6,6 +6,8 @@ public class IGMClearState : IGMState
 {
     public override void EnterState()
     {
+        Player.Instance.AddGold(100 * InGameManager.Instance.stage);
+
         InventoryManager.Instance.myGold += Player.Instance.myGold;
 
         Time.timeScale = 0.0f;

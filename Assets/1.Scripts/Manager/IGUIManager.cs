@@ -18,6 +18,8 @@ public class IGUIManager : MonoBehaviour
     public TMPro.TMP_Text myExp;
     public TMPro.TMP_Text needExp;
     public Button ClearButton;
+    public Button GameoverButton;
+    public Button PauseButton;
 
     private void Awake()
     {
@@ -28,11 +30,13 @@ public class IGUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        coin.text = InventoryManager.Instance.myGold.ToString();
+        coin.text = Player.Instance.myGold.ToString();
         myExp.text = Player.Instance.myExp.ToString();
         needExp.text = Player.Instance.lvexpData.LvExpDatas[Player.Instance.myLevel].needExp.ToString();
 
         ClearButton.onClick.AddListener(LoadManager.Instance.Change_to_MainScene);
+        GameoverButton.onClick.AddListener(LoadManager.Instance.Change_to_MainScene);
+        PauseButton.onClick.AddListener(LoadManager.Instance.Change_to_MainScene);
     }
 
     // Update is called once per frame

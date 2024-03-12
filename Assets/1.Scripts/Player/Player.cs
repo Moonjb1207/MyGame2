@@ -92,6 +92,8 @@ public class Player : MonoBehaviour, IBattle
         EquipItem(ItemType.weapon, InventoryManager.Instance.myWeapon);
         EquipItem(ItemType.armor, InventoryManager.Instance.myArmor);
         EquipItem(ItemType.helmet, InventoryManager.Instance.myHelmet);
+
+        myGold = InventoryManager.Instance.myGold;
     }
 
     // Update is called once per frame
@@ -245,7 +247,14 @@ public class Player : MonoBehaviour, IBattle
 
     public bool IsLive
     {
-        get => true;
+        get
+        {
+            if (curHP <= 0.0f)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 
     //public void OnMeleeAttack()
@@ -268,7 +277,7 @@ public class Player : MonoBehaviour, IBattle
     //    curWeapon.Attack();
     //    myAnim.SetTrigger("R_Attacking");
     //}
-    
+
     public void OnAttack()
     {
         if (myAnim.GetBool("IsAttacking") || curWeapon.IsAttacking) return;
@@ -398,11 +407,29 @@ public class Player : MonoBehaviour, IBattle
             myLevel++;
             LevelUp();
         }
+
+        IGUIManager.Instance.myExp.text = myExp.ToString();
+        IGUIManager.Instance.needExp.text = lvexpData.LvExpDatas[myLevel].needExp.ToString();
     }
 
     public void AddGold(int gold)
     {
         myGold += gold;
+        IGUIManager.Instance.coin.text = myGold.ToString();
+    }
+
+    public void UseGold(int use)
+    {
+        myGold -= use;
+        IGUIManager.Instance.coin.text = myGold.ToString();
+    }
+
+    public bool CheckGold(int use)
+    {
+        if (myGold < use)
+            return false;
+
+        return true;
     }
 
     public void LevelUp()

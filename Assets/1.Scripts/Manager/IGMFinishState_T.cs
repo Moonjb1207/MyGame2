@@ -2,39 +2,75 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IGMFinishState_T : IGMState
+public class IGMFinishState_T : IGMFinishState
 {
     //건물 짓기
-    GameObject[] tutorial_0 = new GameObject[5];
-    //건물 교체
-    GameObject[] tutorial_1 = new GameObject[5];
+    public List<GameObject> tutorials = new List<GameObject>();
+    public GameObject tutorial_2;
+
     int curTutorial;
 
     public override void EnterState()
     {
-        manager.buildButton.interactable = true;
-        //building start
+        if (manager.wave == 1)
+        {
+            curTutorial = 0;
+            tutorials[curTutorial].SetActive(true);
+            remainTime = myTime;
+        }
+        else if (manager.wave == 0)
+        {
+            remainTime = myTime;
+            tutorial_2.SetActive(true);
+        }
     }
 
     public override void UpdateState()
     {
-        switch (curTutorial)
+        if (manager.wave == 1)
         {
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
+            switch (curTutorial)
+            {
+                case 0:
+                    if (manager.tutoClear)
+                    {
+                        NextTutorial();
+                    }
+                    break;
+                case 1:
+                    remainTime -= Time.deltaTime;
+                    if (remainTime < 0)
+                    {
+                        NextTutorial();
+                    }
+                    break;
+            }
+        }
+        else if (manager.wave == 0)
+        {
+            remainTime -= Time.deltaTime;
+
+            if (remainTime < 0)
+            {
+                if (manager.gameClear)
+                {
+                    manager.NextState(manager.clearState);
+                }
+            }
         }
     }
 
-    void Tutorial_0()
+    public void NextTutorial()
     {
+        tutorials[curTutorial].SetActive(false);
+        manager.tutoClear = false;
 
+        if (++curTutorial >= tutorials.Count)
+        {
+            manager.NextState(manager.buildingState);
+            return;
+        }
+
+        tutorials[curTutorial].SetActive(true);
     }
 }

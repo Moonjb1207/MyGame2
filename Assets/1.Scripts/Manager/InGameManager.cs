@@ -20,6 +20,7 @@ public class InGameManager : MonoBehaviour
     public IGMDefenseState defenseState;
     public IGMFinishState finishState;
     public IGMClearState clearState;
+    public IGMGameoverState gameoverState;
 
     public BuildingManager buildManagner;
     public Button buildButton;
@@ -34,7 +35,6 @@ public class InGameManager : MonoBehaviour
 
         mySpawner = GetComponentsInChildren<EnemyRespawn>();
 
-        wave = StageManager.Instance.data.stageStats[stage].wave;
         spawnerCount = 0;
         gameClear = false;
         tutoClear = false;
@@ -43,15 +43,16 @@ public class InGameManager : MonoBehaviour
         defenseState = GetComponent<IGMDefenseState>();
         finishState = GetComponent<IGMFinishState>();
         clearState = GetComponent<IGMClearState>();
+        gameoverState = GetComponent<IGMGameoverState>();
 
         if (buildingState == null)
-            GetComponent<IGMBuildingState_T>();
+            buildingState = GetComponent<IGMBuildingState_T>();
         if (defenseState == null)
-            GetComponent<IGMDefenseState_T>();
+            defenseState = GetComponent<IGMDefenseState_T>();
         if (finishState == null)
-            GetComponent<IGMFinishState_T>();
+            finishState = GetComponent<IGMFinishState_T>();
         if (clearState == null)
-            GetComponent<IGMClearState_T>();
+            clearState = GetComponent<IGMClearState_T>();
     }
 
     // Start is called before the first frame update
@@ -60,12 +61,18 @@ public class InGameManager : MonoBehaviour
         SoundManager.Instance.PlayPlayBGSound();
 
         stage = StageManager.Instance.stage;
+        wave = StageManager.Instance.data.stageStats[stage].wave;
+
         NextState(buildingState);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!Player.Instance.IsLive)
+        {
+            NextState(gameoverState);
+        }
         curIGState?.UpdateState();
     }
 

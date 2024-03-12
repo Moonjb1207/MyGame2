@@ -10,6 +10,7 @@ public class EnemyRespawn : MonoBehaviour
     public int curCount;
     public float respawnDelay;
     public float curDelay;
+    public bool isStart;
 
     NavMeshPath checkPath = null;
 
@@ -17,6 +18,7 @@ public class EnemyRespawn : MonoBehaviour
     void Start()
     {
         checkPath = new NavMeshPath();
+        isStart = false;
     }
 
     // Update is called once per frame
@@ -49,9 +51,11 @@ public class EnemyRespawn : MonoBehaviour
                 myEnemy.gameObject.SetActive(true);
             }
         }
-        if (respawnCount == 0 && curCount == 0)
+
+        if (respawnCount == 0 && curCount == 0 && isStart)
         {
             EndSpawn();
+            isStart = false;
         }
     }
 
@@ -63,6 +67,7 @@ public class EnemyRespawn : MonoBehaviour
 
         curCount = 0;
         curDelay = 0;
+        isStart = true;
     }
 
     public void MyEnemyDead()

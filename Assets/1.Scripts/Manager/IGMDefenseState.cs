@@ -28,12 +28,11 @@ public class IGMDefenseState : IGMState
     {
         if(manager.spawnerCount == 0)
         {
-            if(manager.wave == 0)
+            if(--manager.wave == 0)
             {
                 manager.gameClear = true;
             }
 
-            manager.wave--;
             manager.NextState(manager.finishState);
         }
     }

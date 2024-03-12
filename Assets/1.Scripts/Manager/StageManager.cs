@@ -32,7 +32,8 @@ public class StageManager : MonoBehaviour
         {
             StageClearData data = new StageClearData();
             data.isUnlock[0] = true;
-            data.isUnlock[1] = true; data.Gold = 0;
+            data.isUnlock[1] = true; 
+            data.Gold = 0;
 
             for (int i = 2; i < data.isUnlock.Length; i++)
             {
@@ -45,9 +46,9 @@ public class StageManager : MonoBehaviour
         }
         InventoryManager.Instance.myGold = saveData.Gold;
 
-        stageMinMax = new Vector2(1, data.stageStats.Length);
+        stageMinMax = new Vector2(0, data.stageStats.Length);
 
-        stage = 1;
+        stage = 0;
     }
 
     void isCanPlay()
