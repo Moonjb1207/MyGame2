@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
     public GameObject[] Menus;
 
     public GameObject SettingMenu;
+
+    public Button ResetScene;
 
 
     public MenuName curMenu;
@@ -19,6 +22,7 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         SoundManager.Instance.PlayMainBGSound();
+        ResetScene.onClick.AddListener(LoadManager.Instance.Change_to_ResetScene);
     }
 
     public void ChangeMenu(int menu)

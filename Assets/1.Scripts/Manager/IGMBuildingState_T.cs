@@ -10,8 +10,6 @@ public class IGMBuildingState_T : IGMBuildingState
 
     public override void EnterState()
     {
-        manager.buildButton.interactable = true;
-
         if (manager.wave == 2)
         {
             curTutorial = 0;
@@ -21,6 +19,7 @@ public class IGMBuildingState_T : IGMBuildingState
         }
         else if (manager.wave == 1)
         {
+            manager.buildButton.interactable = true;
             tutorial_2.SetActive(true);
 
             remainTime = myTime;

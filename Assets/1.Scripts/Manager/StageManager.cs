@@ -28,11 +28,22 @@ public class StageManager : MonoBehaviour
     {
         saveData = SaveManager.Instance.LoadFile<StageClearData>(SaveManager.Instance.StageSavefp);
 
+        CreateSaveFile();
+
+        InventoryManager.Instance.myGold = saveData.Gold;
+
+        stageMinMax = new Vector2(0, data.stageStats.Length);
+
+        stage = 0;
+    }
+
+    public void CreateSaveFile()
+    {
         if (!SaveManager.Instance.IsExist)
         {
             StageClearData data = new StageClearData();
             data.isUnlock[0] = true;
-            data.isUnlock[1] = true; 
+            data.isUnlock[1] = true;
             data.Gold = 0;
 
             for (int i = 2; i < data.isUnlock.Length; i++)
@@ -44,11 +55,6 @@ public class StageManager : MonoBehaviour
 
             saveData = SaveManager.Instance.LoadFile<StageClearData>(SaveManager.Instance.StageSavefp);
         }
-        InventoryManager.Instance.myGold = saveData.Gold;
-
-        stageMinMax = new Vector2(0, data.stageStats.Length);
-
-        stage = 0;
     }
 
     void isCanPlay()

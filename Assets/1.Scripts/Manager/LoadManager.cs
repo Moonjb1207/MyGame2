@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class LoadManager : MonoBehaviour
 {
@@ -26,5 +27,24 @@ public class LoadManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         SceneManager.LoadSceneAsync("Main");
+    }
+
+    public void ResetDataYes()
+    {
+        File.Delete(SaveManager.Instance.StageSavefp);
+        StageManager.Instance.CreateSaveFile();
+        File.Delete(SettingManager.Instance.settingDataPath);
+        SettingManager.Instance.CreateSaveFile();
+
+        SceneManager.LoadSceneAsync("Main");
+    }
+    public void ResetDataNo()
+    {
+        SceneManager.LoadSceneAsync("Main");
+    }
+
+    public void Change_to_ResetScene()
+    {
+        SceneManager.LoadSceneAsync("Reset");
     }
 }

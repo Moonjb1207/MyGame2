@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour, IBattle
 
     public float curHP;
     public float curDelay;
+    bool dead;
     
     public Transform target;
 
@@ -58,6 +59,7 @@ public class Enemy : MonoBehaviour, IBattle
         
         target = Player.Instance?.transform;
         curDelay = 0;
+        dead = false;
 
         NextState(movementState);
     }
@@ -189,10 +191,11 @@ public class Enemy : MonoBehaviour, IBattle
 
         hpBar.fillAmount = curHP / data.hp;
 
-        if (curHP <= 0)
+        if (curHP <= 0 && !dead)
         {
             curEnemyState.myAnim.SetTrigger("IsDying");
             NextState(deadState);
+            dead = true;
         }
     }
 

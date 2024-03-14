@@ -15,7 +15,7 @@ public class SettingManager : MonoBehaviour
     private static SettingManager instance;
     public static SettingManager Instance => instance;
 
-    [SerializeField] string settingDataPath = "";
+    public string settingDataPath = "";
 
     float defaultSound = 1.0f;
 
@@ -26,7 +26,12 @@ public class SettingManager : MonoBehaviour
 
         settingDataPath = Application.dataPath + @"gameSettingData.data";
 
-        if(!File.Exists(settingDataPath))
+        CreateSaveFile();
+    }
+
+    public void CreateSaveFile()
+    {
+        if (!File.Exists(settingDataPath))
         {
             mySettingData.msSound = defaultSound;
             mySettingData.bgSound = defaultSound;
@@ -42,6 +47,7 @@ public class SettingManager : MonoBehaviour
             SettingLoad(settingDataPath);
         }
     }
+
     public void SettingLoad(string path)
     {
         string data = File.ReadAllText(path);

@@ -423,7 +423,7 @@ public class Player : MonoBehaviour, IBattle
         myGold -= use;
         IGUIManager.Instance.coin.text = myGold.ToString();
     }
-
+    
     public bool CheckGold(int use)
     {
         if (myGold < use)
@@ -434,7 +434,7 @@ public class Player : MonoBehaviour, IBattle
 
     public void LevelUp()
     {
-        InventoryManager.Instance.AddItems(EquipmentManager.Instance.weaponData.weaponStats[myLevel].weaponName, ItemType.weapon);
+        InventoryManager.Instance.AddItems(EquipmentManager.Instance.weaponData.weaponStats[myLevel - 1].weaponName, ItemType.weapon);
 
         curHP = maxHP;
         hpBar.fillAmount = curHP / maxHP;

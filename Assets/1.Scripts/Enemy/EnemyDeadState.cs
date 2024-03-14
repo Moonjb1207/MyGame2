@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyDeadState : EnemyState
 {
-    float eraseTime = 3.0f;
+    float eraseTime = 1.0f;
 
     public override void EnterState()
     {

@@ -12,7 +12,7 @@ public class MeleeWeapon : Weapon
     {
         SoundManager.Instance.PlayEfSound(attackPos.position, shootSound);
 
-        Collider[] list = Physics.OverlapSphere(attackPos.position + new Vector3(0, 0, 0.5f), stat.LifeTime, myEnemy);
+        Collider[] list = Physics.OverlapSphere(attackPos.position, stat.LifeTime, myEnemy);
         if (list != null)
         {
             foreach (Collider col in list)
@@ -29,6 +29,6 @@ public class MeleeWeapon : Weapon
             return;
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPos.position + new Vector3(0, 0, 0.5f), stat.LifeTime);
+        Gizmos.DrawWireSphere(attackPos.position, stat.LifeTime);
     }
 }
