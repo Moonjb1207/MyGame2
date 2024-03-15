@@ -12,8 +12,7 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource myBG;
 
-    public AudioClip MainBG;
-    public AudioClip PlayBG;
+    public AudioClip BG;
 
     Queue<GameObject> efSoundQueue = new Queue<GameObject>();
 
@@ -22,12 +21,17 @@ public class SoundManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
+    }
 
+    private void Start()
+    {
         if (SettingManager.Instance != null)
         {
             effectVolume = SettingManager.Instance.EFSound;
             backgroundVolume = SettingManager.Instance.BGSound;
         }
+
+        PlayBGSound();
     }
 
     public void ChangeEFVolume()
@@ -55,18 +59,10 @@ public class SoundManager : MonoBehaviour
     //    return obj;
     //}
 
-    public void PlayMainBGSound()
+    public void PlayBGSound()
     {
         myBG.volume = backgroundVolume;
-        myBG.clip = MainBG;
-
-        myBG.Play();
-    }
-
-    public void PlayPlayBGSound()
-    {
-        myBG.volume = backgroundVolume;
-        myBG.clip = PlayBG;
+        myBG.clip = BG;
 
         myBG.Play();
     }

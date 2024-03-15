@@ -27,6 +27,7 @@ public class IGMBuildingState_T : IGMBuildingState
             tutorial_2.SetActive(true);
 
             remainTime = myTime;
+            IGUIManager.Instance.timeBar.fillAmount = remainTime / myTime;
 
             Player.Instance.AddGold(100);
         }
@@ -73,6 +74,7 @@ public class IGMBuildingState_T : IGMBuildingState
         else if (manager.wave == 1)
         {
             remainTime -= Time.deltaTime;
+            IGUIManager.Instance.timeBar.fillAmount = remainTime / myTime;
 
             if (remainTime < 0)
             {

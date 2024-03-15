@@ -37,6 +37,10 @@ public class SettingManager : MonoBehaviour
             mySettingData.bgSound = defaultSound;
             mySettingData.efSound = defaultSound;
 
+            MSSound = mySettingData.msSound;
+            BGSound = mySettingData.bgSound;
+            EFSound = mySettingData.efSound;
+
             string data = JsonUtility.ToJson(mySettingData);
 
             File.WriteAllText(settingDataPath, data);

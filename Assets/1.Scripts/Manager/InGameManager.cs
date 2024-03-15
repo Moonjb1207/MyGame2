@@ -58,7 +58,7 @@ public class InGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SoundManager.Instance.PlayPlayBGSound();
+        //SoundManager.Instance.PlayPlayBGSound();
 
         stage = StageManager.Instance.stage;
         wave = StageManager.Instance.data.stageStats[stage].wave;

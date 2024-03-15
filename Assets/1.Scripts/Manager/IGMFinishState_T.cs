@@ -16,11 +16,15 @@ public class IGMFinishState_T : IGMFinishState
         {
             curTutorial = 0;
             tutorials[curTutorial].SetActive(true);
+
             remainTime = myTime;
+            IGUIManager.Instance.timeBar.fillAmount = remainTime / myTime;
         }
         else if (manager.wave == 0)
         {
             remainTime = myTime;
+            IGUIManager.Instance.timeBar.fillAmount = remainTime / myTime;
+
             tutorial_2.SetActive(true);
         }
     }
@@ -39,6 +43,8 @@ public class IGMFinishState_T : IGMFinishState
                     break;
                 case 1:
                     remainTime -= Time.deltaTime;
+                    IGUIManager.Instance.timeBar.fillAmount = remainTime / myTime;
+
                     if (remainTime < 0)
                     {
                         NextTutorial();
@@ -49,6 +55,7 @@ public class IGMFinishState_T : IGMFinishState
         else if (manager.wave == 0)
         {
             remainTime -= Time.deltaTime;
+            IGUIManager.Instance.timeBar.fillAmount = remainTime / myTime;
 
             if (remainTime < 0)
             {

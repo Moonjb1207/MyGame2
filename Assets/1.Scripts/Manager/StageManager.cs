@@ -26,14 +26,7 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
-        saveData = SaveManager.Instance.LoadFile<StageClearData>(SaveManager.Instance.StageSavefp);
-
-        if (!SaveManager.Instance.IsExist)
-            CreateSaveFile();
-
-        InventoryManager.Instance.myGold = saveData.Gold;
-
-        stageMinMax = new Vector2(0, data.stageStats.Length);
+        CreateSaveFile();
 
         stage = 0;
     }
@@ -50,19 +43,33 @@ public class StageManager : MonoBehaviour
 
     public void CreateSaveFile()
     {
-        StageClearData data = new StageClearData();
-        data.isUnlock[0] = true;
-        data.isUnlock[1] = true;
-        data.Gold = 0;
+        saveData = SaveManager.Instance.LoadFile<StageClearData>(SaveManager.Instance.StageSavefp);
 
-        for (int i = 2; i < data.isUnlock.Length; i++)
+        if (!SaveManager.Instance.IsExist)
         {
-            data.isUnlock[i] = false;
+            StageClearData data = new StageClearData();
+            data.isUnlock[0] = true;
+            data.isUnlock[1] = true;
+            data.Gold = 0;
+
+            for (int i = 2; i < data.isUnlock.Length; i++)
+            {
+                data.isUnlock[i] = false;
+            }
+
+            SaveManager.Instance.SaveFile<StageClearData>(SaveManager.Instance.StageSavefp, data);
+
+            saveData = SaveManager.Instance.LoadFile<StageClearData>(SaveManager.Instance.StageSavefp);
         }
 
-        SaveManager.Instance.SaveFile<StageClearData>(SaveManager.Instance.StageSavefp, data);
+        InventoryManager.Instance.myGold = saveData.Gold;
 
-        saveData = SaveManager.Instance.LoadFile<StageClearData>(SaveManager.Instance.StageSavefp);
+        stageMinMax = new Vector2(0, data.stageStats.Length);
+
+        if(stage >= stageMinMax.y)
+        {
+            stage = 0;
+        }
     }
 
     public void isCanPlay()

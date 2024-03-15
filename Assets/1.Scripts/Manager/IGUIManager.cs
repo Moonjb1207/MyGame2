@@ -13,6 +13,7 @@ public class IGUIManager : MonoBehaviour
     public GameObject ClearUI;
     public GameObject PauseUI;
     public GameObject GameoverUI;
+    public GameObject SettingUI;
 
     public TMPro.TMP_Text coin;
     public TMPro.TMP_Text myExp;
@@ -20,6 +21,8 @@ public class IGUIManager : MonoBehaviour
     public Button ClearButton;
     public Button GameoverButton;
     public Button PauseButton;
+
+    public Image timeBar;
 
     private void Awake()
     {
@@ -85,5 +88,15 @@ public class IGUIManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         LoadManager.Instance.ChangeScene("Main");
+    }
+
+    public void OpenSetting()
+    {
+        SettingUI.SetActive(true);
+    }
+
+    public void CloseSetting()
+    {
+        SettingUI.SetActive(false);
     }
 }

@@ -9,15 +9,17 @@ public class IGMFinishState : IGMState
     public override void EnterState()
     {
         remainTime = myTime;
-        
+        IGUIManager.Instance.timeBar.fillAmount = remainTime / myTime;
+
         //attack end
     }
 
     public override void UpdateState()
     {
         remainTime -= Time.deltaTime;
+        IGUIManager.Instance.timeBar.fillAmount = remainTime / myTime;
 
-        if(remainTime < 0)
+        if (remainTime < 0)
         {
             if(manager.gameClear)
             {

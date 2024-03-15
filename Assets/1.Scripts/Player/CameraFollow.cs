@@ -48,8 +48,10 @@ public class CameraFollow : MonoBehaviour
     {
         Player player = Player.Instance;
 
-        gapX = newpos.x - player.transform.position.x;
+        playerTr = player.transform;
+
+        gapX = newpos.x;
         gapY = newpos.y - player.transform.position.y;
-        gapZ = newpos.z - player.transform.position.z;
+        gapZ = newpos.z;
     }
 }

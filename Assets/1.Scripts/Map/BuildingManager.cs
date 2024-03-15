@@ -19,15 +19,13 @@ public class BuildingManager : MonoBehaviour
 
     public bool canBuild;
 
+    Touch touch;
+
     private void Awake()
     {
         if (instance == null)
             instance = this;
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
         canBuild = true;
 
         BuildState = true;
@@ -35,9 +33,16 @@ public class BuildingManager : MonoBehaviour
         ChangeBuildState();
     }
 
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
     // Update is called once per frame
     void Update()
     {
+        /*
         if(Input.GetMouseButtonDown(0))
         {
             Down();
@@ -50,12 +55,31 @@ public class BuildingManager : MonoBehaviour
         {
             Up();
         }
+        */
 
+        if(Input.touchCount > 0)
+        {
+            touch = Input.GetTouch(0);
+
+            switch(touch.phase)
+            {
+                case TouchPhase.Began:
+                    Down();
+                    break;
+                case TouchPhase.Moved:
+                    Drag();
+                    break;
+                case TouchPhase.Ended:
+                    Up();
+                    break;
+            }
+        }
     }
 
     Vector3 GetPointOnGround()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(touch.position);
         bool hitted = Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, LayerMask.GetMask("Ground"));
 
         if (hitted)
@@ -111,7 +135,7 @@ public class BuildingManager : MonoBehaviour
 
     void Down()
     {
-        if (EventSystem.current.IsPointerOverGameObject()) return;
+        if (EventSystem.current.IsPointerOverGameObject(0)) return;
 
         GameObject myBoxGb = Instantiate(Resources.Load("Prefabs/MapPlayer" + InventoryManager.Instance.myBuilding) as GameObject);
 

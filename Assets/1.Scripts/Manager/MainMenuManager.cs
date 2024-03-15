@@ -21,7 +21,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
-        SoundManager.Instance.PlayMainBGSound();
+        //SoundManager.Instance.PlayMainBGSound();
         ResetScene.onClick.AddListener(LoadManager.Instance.Change_to_ResetScene);
     }
 
