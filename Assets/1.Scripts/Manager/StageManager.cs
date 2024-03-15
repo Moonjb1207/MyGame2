@@ -28,7 +28,8 @@ public class StageManager : MonoBehaviour
     {
         saveData = SaveManager.Instance.LoadFile<StageClearData>(SaveManager.Instance.StageSavefp);
 
-        CreateSaveFile();
+        if (!SaveManager.Instance.IsExist)
+            CreateSaveFile();
 
         InventoryManager.Instance.myGold = saveData.Gold;
 
@@ -36,29 +37,44 @@ public class StageManager : MonoBehaviour
 
         stage = 0;
     }
+    
+    public void StageClearSave()
+    {
+        saveData = SaveManager.Instance.LoadFile<StageClearData>(SaveManager.Instance.StageSavefp);
+
+        saveData.Gold = InventoryManager.Instance.myGold;
+        saveData.isUnlock[stage + 1] = true;
+
+        SaveManager.Instance.SaveFile(SaveManager.Instance.StageSavefp, saveData);
+    }
 
     public void CreateSaveFile()
     {
-        if (!SaveManager.Instance.IsExist)
+        StageClearData data = new StageClearData();
+        data.isUnlock[0] = true;
+        data.isUnlock[1] = true;
+        data.Gold = 0;
+
+        for (int i = 2; i < data.isUnlock.Length; i++)
         {
-            StageClearData data = new StageClearData();
-            data.isUnlock[0] = true;
-            data.isUnlock[1] = true;
-            data.Gold = 0;
-
-            for (int i = 2; i < data.isUnlock.Length; i++)
-            {
-                data.isUnlock[i] = false;
-            }
-
-            SaveManager.Instance.SaveFile<StageClearData>(SaveManager.Instance.StageSavefp, data);
-
-            saveData = SaveManager.Instance.LoadFile<StageClearData>(SaveManager.Instance.StageSavefp);
+            data.isUnlock[i] = false;
         }
+
+        SaveManager.Instance.SaveFile<StageClearData>(SaveManager.Instance.StageSavefp, data);
+
+        saveData = SaveManager.Instance.LoadFile<StageClearData>(SaveManager.Instance.StageSavefp);
     }
 
-    void isCanPlay()
+    public void isCanPlay()
     {
+        if(play == null)
+        {
+            GameObject obj = GameObject.Find("Play_Button");
+            play = obj.GetComponent<Button>();
+
+            play.onClick.AddListener(LoadManager.Instance.GameStart);
+        }
+
         if (saveData.isUnlock[stage])
         {
             play.interactable = true;

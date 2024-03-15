@@ -12,13 +12,16 @@ public class ArmorStat
     public int armorNum;
     public Sprite myImg;
 
-    public ArmorStat(string en, float asd, float dmg, int anm, Sprite i)
+    public string equipInfo;
+
+    public ArmorStat(string en, float asd, float dmg, int anm, Sprite i, string ei)
     {
         equipName = en;
         equipmentSpeed = asd;
         Damage = dmg;
         armorNum = anm;
         myImg = i;
+        equipInfo = ei;
     }
 }
 

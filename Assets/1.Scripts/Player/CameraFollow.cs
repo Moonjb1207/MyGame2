@@ -43,4 +43,13 @@ public class CameraFollow : MonoBehaviour
 
         transform.position = Vector3.SmoothDamp(transform.position, pos, ref velocity, smoothness);
     }
+
+    public void ChangeCamera(Vector3 newpos)
+    {
+        Player player = Player.Instance;
+
+        gapX = newpos.x - player.transform.position.x;
+        gapY = newpos.y - player.transform.position.y;
+        gapZ = newpos.z - player.transform.position.z;
+    }
 }

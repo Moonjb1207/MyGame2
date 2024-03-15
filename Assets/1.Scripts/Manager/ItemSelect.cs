@@ -16,18 +16,7 @@ public class ItemSelect : MonoBehaviour
 
     private void OnEnable()
     {
-        if(myType == ItemType.weapon)
-        {
-            Img.sprite = EquipmentManager.Instance.GetWeaponStat(myName).myImg;
-        }
-        else if(myType == ItemType.armor)
-        {
-            Img.sprite = EquipmentManager.Instance.GetArmorStat(myName).myImg;
-        }
-        else if(myType == ItemType.helmet)
-        {
-            Img.sprite = EquipmentManager.Instance.GetHelmetStat(myName).myImg;
-        }
+        
     }
 
     public void SelectItem()
@@ -38,8 +27,8 @@ public class ItemSelect : MonoBehaviour
 
     public void setMyItem(string itemName, ItemType itemType)
     {
-        myName = itemName;
         myType = itemType;
+        myName = itemName;
     }
 
     public void setImg()
@@ -61,6 +50,8 @@ public class ItemSelect : MonoBehaviour
     public void ShowInfo()
     {
         string name = myName;
+        string aE = "";
+        string cost = "";
 
         string ability = "";
         if (myType == ItemType.weapon)
@@ -70,15 +61,14 @@ public class ItemSelect : MonoBehaviour
         else if (myType == ItemType.armor)
         {
             ability = "Dmg Reduce : " + EquipmentManager.Instance.GetArmorStat(myName).Damage.ToString();
+            aE = EquipmentManager.Instance.GetArmorStat(myName).equipInfo;
         }
         else if (myType == ItemType.helmet)
         {
             ability = "Dmg Reduce : " + EquipmentManager.Instance.GetHelmetStat(myName).Damage.ToString();
+            aE = EquipmentManager.Instance.GetHelmetStat(myName).equipInfo;
         }
 
-
-        string aE = "";
-
-        InfoUI.Instance.setMyInfo(name, ability, aE);
+        InfoUI.Instance.setMyInfo(name, ability, aE, cost);
     }
 }

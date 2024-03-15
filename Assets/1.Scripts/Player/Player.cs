@@ -68,7 +68,6 @@ public class Player : MonoBehaviour, IBattle
         moveSpeed = 7;
         myLevel = 1;
         myExp = 0;
-        myGold = 0;
 
         bodyTr = transform.Find("P_Jungle_Charc");
 
@@ -368,7 +367,7 @@ public class Player : MonoBehaviour, IBattle
     {
         if (CameraFollow.Instance == null) return;
 
-        CameraFollow.Instance.transform.position = new Vector3(0, curHelmet.stat.equipmentSight.x, curHelmet.stat.equipmentSight.y);
+        CameraFollow.Instance.ChangeCamera(new Vector3(0, curHelmet.stat.equipmentSight.x, curHelmet.stat.equipmentSight.y));
     }
 
     public void falseJoystick()

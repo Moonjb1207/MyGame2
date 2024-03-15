@@ -28,8 +28,11 @@ public class BuildingManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BuildState = false;
         canBuild = true;
+
+        BuildState = true;
+
+        ChangeBuildState();
     }
 
     // Update is called once per frame

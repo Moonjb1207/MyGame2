@@ -17,7 +17,9 @@ public class BuildingStat
     public int buildingCost;
     public Sprite myImg;
 
-    public BuildingStat(string bn, float hp, float v, float d, float kt, float dt, int c, int uc, int bc, Sprite i)
+    public string buildingInfo;
+
+    public BuildingStat(string bn, float hp, float v, float d, float kt, float dt, int c, int uc, int bc, Sprite i, string bi)
     {
         buildingName = bn;
         buildingHP = hp;
@@ -29,6 +31,7 @@ public class BuildingStat
         upgradeCost = uc;
         buildingCost = bc;
         myImg = i;
+        buildingInfo = bi;
     }
 }
 

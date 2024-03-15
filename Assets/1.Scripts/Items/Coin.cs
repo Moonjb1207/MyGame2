@@ -25,6 +25,7 @@ public class Coin : MonoBehaviour
         dist = 0.5f;
         time = 10.0f;
         dir = transform.up;
+        eating = false;
     }
 
     private void Awake()
@@ -80,6 +81,22 @@ public class Coin : MonoBehaviour
     }
 
     private void OnTriggerStay(Collider other)
+    {
+        if ((myPlayer & 1 << other.gameObject.layer) != 0)
+        {
+            if (!eating)
+            {
+                IBattle ib = other.GetComponent<IBattle>();
+
+                if (ib != null)
+                {
+                    GetGold(other.gameObject);
+                }
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
     {
         if ((myPlayer & 1 << other.gameObject.layer) != 0)
         {

@@ -18,18 +18,24 @@ MonoBehaviour:
     Damage: 1
     helNum: 0
     myImg: {fileID: 21300000, guid: 1eefd6331deb50548994b1e4dad87200, type: 3}
+    equipInfo: "\uC815\uAE00\uBAA8, \uC544\uBB34 \uB3C4\uC6C0 \uC548\uB41C\uB2E4."
   - equipName: lv1_helmet
     equipmentSight: {x: 14, y: -2}
     Damage: 0.9
     helNum: 1
     myImg: {fileID: 21300000, guid: 99b80edcb30df33498df5e8f1b678be9, type: 3}
+    equipInfo: "1\uB808\uBCA8 \uD5EC\uBA67, \uAE30\uBCF8\uC801\uC778 \uD5EC\uBA67"
   - equipName: lv2_helmet
     equipmentSight: {x: 12, y: -2}
     Damage: 0.8
     helNum: 2
     myImg: {fileID: 21300000, guid: 0edaae0128d1fcc428eedbbb3e4f92ac, type: 3}
+    equipInfo: "2\uB808\uBCA8 \uD5EC\uBA67, \uC870\uAE08 \uB354 \uB2E8\uB2E8\uD558\uC9C0\uB9CC
+      \uB2F5\uB2F5\uD558\uB2E4."
   - equipName: lv3_helmet
     equipmentSight: {x: 10, y: -1}
     Damage: 0.7
     helNum: 3
     myImg: {fileID: 21300000, guid: f0bf604961d19994aa7e010e0912f4b2, type: 3}
+    equipInfo: "3\uB808\uBCA8 \uD5EC\uBA67, \uB9E4\uC6B0 \uB2E8\uB2E8\uD558\uC9C0\uB9CC
+      \uB9E4\uC6B0 \uB2F5\uB2F5\uD558\uB2E4."

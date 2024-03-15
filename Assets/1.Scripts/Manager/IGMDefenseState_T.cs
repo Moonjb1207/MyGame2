@@ -14,6 +14,7 @@ public class IGMDefenseState_T : IGMDefenseState
         manager.spawnerCount = 0;
 
         manager.buildButton.interactable = false;
+
         if (manager.buildManagner.BuildState)
         {
             manager.buildManagner.ChangeBuildState();
@@ -96,6 +97,7 @@ public class IGMDefenseState_T : IGMDefenseState
 
         if (++curTutorial >= tutorials.Count)
         {
+            manager.wave--;
             manager.NextState(manager.finishState);
             return;
         }

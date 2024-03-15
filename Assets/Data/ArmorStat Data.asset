@@ -18,18 +18,25 @@ MonoBehaviour:
     Damage: 1
     armorNum: 0
     myImg: {fileID: 21300000, guid: 9d306573366c73942ae1e3112f243e77, type: 3}
+    equipInfo: "\uAC1C\uAD6C\uB9AC \uAD70\uBCF5, \uD480 \uC18D\uC5D0 \uC228\uC73C\uBA74
+      \uBABB\uCC3E\uC744\uC9C0\uB3C4,,"
   - equipName: lv1_armor
     equipmentSpeed: 0.9
     Damage: 0.9
     armorNum: 1
     myImg: {fileID: 21300000, guid: f61eb2d843755b946823c1bcb986c880, type: 3}
+    equipInfo: "1\uB808\uBCA8 \uC544\uBA38, \uC870\uAE08\uC740 \uB2E8\uB2E8\uD558\uB2E4."
   - equipName: lv2_armor
     equipmentSpeed: 0.7
     Damage: 0.7
     armorNum: 2
     myImg: {fileID: 21300000, guid: 2a1ee7b9645264340b65b382943fde6c, type: 3}
+    equipInfo: "2\uB808\uBCA8 \uC544\uBA38, \uB354 \uB2E8\uB2E8\uD558\uC9C0\uB9CC
+      \uBAB8\uC774 \uB454\uD574\uC9C4\uB2E4."
   - equipName: lv3_armor
     equipmentSpeed: 0.5
     Damage: 0.5
     armorNum: 3
     myImg: {fileID: 21300000, guid: 1a69dc6c3883828498f5d65db4fcef55, type: 3}
+    equipInfo: "3\uB808\uBCA8 \uC544\uBA38, \uB9E4\uC6B0 \uB2E8\uB2E8\uD558\uC9C0\uB9CC
+      \uB9E4\uC6B0 \uB454\uD574\uC9C4\uB2E4."

@@ -17,7 +17,7 @@ public class RangeEnemy : Enemy
         RangeWeapon myWeapon = EnemyWeaponPool.Instance.DequeueWeapon();
 
         myWeapon.transform.position = shootTr.position;
-        myWeapon.Shoot(transform.forward, data.damage, 3, 4);
+        myWeapon.Shoot(curEnemyState.bodyTr.transform.forward, data.damage, 3, 4);
         myWeapon.gameObject.SetActive(true);
     }
 }

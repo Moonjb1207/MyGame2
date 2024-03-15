@@ -8,18 +8,22 @@ public class IGMBuildingState_T : IGMBuildingState
     public GameObject tutorial_2;
     int curTutorial;
 
+    int startGold;
+
     public override void EnterState()
     {
+        manager.buildButton.interactable = true;
+
         if (manager.wave == 2)
         {
             curTutorial = 0;
             tutorials[curTutorial].SetActive(true);
 
             Player.Instance.AddGold(100);
+            startGold = Player.Instance.myGold;
         }
         else if (manager.wave == 1)
         {
-            manager.buildButton.interactable = true;
             tutorial_2.SetActive(true);
 
             remainTime = myTime;
@@ -53,7 +57,7 @@ public class IGMBuildingState_T : IGMBuildingState
                     }
                     break;
                 case 3:
-                    if (Player.Instance.myGold <= 0)
+                    if (Player.Instance.myGold <= startGold - 100)
                     {
                         NextTutorial();
                     }

@@ -36,7 +36,7 @@ public class MainEquipmentContainer : MonoBehaviour
 
         List<string> showItems = InventoryManager.Instance.ShowEquipments(itemType);
 
-        if (showItems.Count < items.Count)
+        if (showItems.Count <= items.Count)
         {
             for (int i = 0; i < showItems.Count; i++)
             {
@@ -62,6 +62,7 @@ public class MainEquipmentContainer : MonoBehaviour
                 items.Add(Instantiate(selectItem));
                 items[i].setMyItem(showItems[i], itemType);
                 items[i].setImg();
+                items[i].transform.SetParent(transform);
             }
         }
     }

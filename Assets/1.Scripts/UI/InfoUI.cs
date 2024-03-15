@@ -11,6 +11,7 @@ public class InfoUI : MonoBehaviour
     public TMPro.TMP_Text nameInfo;
     public TMPro.TMP_Text abilityInfo;
     public TMPro.TMP_Text addExplainInfo;
+    public TMPro.TMP_Text costInfo;
 
     public Transform myMainImg;
 
@@ -22,11 +23,12 @@ public class InfoUI : MonoBehaviour
         myMainImg = transform.GetChild(0);
     }
 
-    public void setMyInfo(string n, string a, string e)
+    public void setMyInfo(string n, string a, string e, string c)
     {
         nameInfo.text = n;
         abilityInfo.text = a;
         addExplainInfo.text = "추가 설명 : " + e;
+        costInfo.text = c;
 
         myMainImg.gameObject.SetActive(true);
     }

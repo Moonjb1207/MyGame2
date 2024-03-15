@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponStat:
   - weaponName: machete
-    LifeTime: 0.7
+    LifeTime: 1
     moveSpeed: 0
     Damage: 0
     shootingDelay: 0

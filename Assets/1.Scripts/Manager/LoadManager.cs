@@ -23,6 +23,11 @@ public class LoadManager : MonoBehaviour
         SceneManager.LoadSceneAsync(scene);
     }
 
+    public void GameStart()
+    {
+        ChangeScene("PlayGame" + StageManager.Instance.stage);
+    }
+
     public void Change_to_MainScene()
     {
         Time.timeScale = 1.0f;

@@ -60,8 +60,9 @@ public class BuildingBuy : MonoBehaviour
 
         string name = myName;
         string ability = "HP : " + EquipmentManager.Instance.GetBuildingStat(myName).buildingHP.ToString();
-        string aE = "";
+        string aE = EquipmentManager.Instance.GetBuildingStat(myName).buildingInfo;
+        string cost = "Cost : " + EquipmentManager.Instance.GetBuildingStat(myName).cost.ToString();
 
-        InfoUI.Instance.setMyInfo(name, ability, aE);
+        InfoUI.Instance.setMyInfo(name, ability, aE, cost);
     }
 }

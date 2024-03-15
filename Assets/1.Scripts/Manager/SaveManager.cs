@@ -17,7 +17,7 @@ public class SaveManager : MonoBehaviour
         if (instance == null)
             instance = this;
 
-        StageSavefp = Application.dataPath + @"\Stage.data";
+        StageSavefp = Application.dataPath + @"\StageClear.data";
     }
 
     public void SaveFile<T>(string fpath, T data)
@@ -29,6 +29,7 @@ public class SaveManager : MonoBehaviour
 
         string ToJsonData = JsonUtility.ToJson(data, true);
         File.WriteAllText(fpath, ToJsonData);
+
     }
 
     public T LoadFile<T>(string fpath)

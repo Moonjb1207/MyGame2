@@ -37,8 +37,6 @@ public class InventoryManager : MonoBehaviour
         myItemDic[ItemType.weapon].Add(myWeapon);
 
         mybuildingDic.Add("Box", 1);
-
-        myGold = 0;
     }
 
     private void Start()

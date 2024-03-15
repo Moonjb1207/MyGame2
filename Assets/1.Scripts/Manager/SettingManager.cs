@@ -39,8 +39,8 @@ public class SettingManager : MonoBehaviour
 
             string data = JsonUtility.ToJson(mySettingData);
 
-            File.Create(settingDataPath).Close();
             File.WriteAllText(settingDataPath, data);
+            File.Create(settingDataPath).Close();
         }
         else
         {

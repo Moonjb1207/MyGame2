@@ -9,6 +9,7 @@ public class IGMClearState : IGMState
         Player.Instance.AddGold(100 * InGameManager.Instance.stage);
 
         InventoryManager.Instance.myGold += Player.Instance.myGold;
+        StageManager.Instance.StageClearSave();
 
         Time.timeScale = 0.0f;
         //클리어 UI 띄우기
