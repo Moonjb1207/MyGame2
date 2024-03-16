@@ -24,11 +24,6 @@ public class StageImage : MonoBehaviour
         curIMG.sprite = stageIMG[StageManager.Instance.stage];
         stageText.text = "Stage  " + StageManager.Instance.stage.ToString();
 
-        UpStage.onClick.AddListener(StageManager.Instance.UpStage);
-        UpStage.onClick.AddListener(ChangeStageIMG);
-        DownStage.onClick.AddListener(StageManager.Instance.DownStage);
-        DownStage.onClick.AddListener(ChangeStageIMG);
-
         StageManager.Instance.isCanPlay();
     }
 
@@ -36,5 +31,17 @@ public class StageImage : MonoBehaviour
     {
         curIMG.sprite = stageIMG[StageManager.Instance.stage];
         stageText.text = "Stage  " + StageManager.Instance.stage.ToString();
+    }
+
+    public void UpStageButton()
+    {
+        StageManager.Instance.UpStage();
+        ChangeStageIMG();
+    }
+
+    public void DownStageButton()
+    {
+        StageManager.Instance.DownStage();
+        ChangeStageIMG();
     }
 }

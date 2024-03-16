@@ -11,10 +11,12 @@ public class WarningManager : MonoBehaviour
     public GameObject[] warnings;
     public UnityEvent myEvent;
 
+    public bool needReset;
+
     private void Awake()
     {
         if (instance == null) instance = this;
-
+        needReset = false;
     }
 
     public void ShowWarning(Transform parent, int index)
@@ -40,5 +42,12 @@ public class WarningManager : MonoBehaviour
     {
         myEvent?.Invoke();
         myEvent.RemoveAllListeners();
+
+        for (int i = 0; i < warnings.Length; i++)
+        {
+            warnings[i].gameObject.SetActive(false);
+        }
+
+        needReset = true;
     }
 }

@@ -18,9 +18,6 @@ public class IGMBuildingState_T : IGMBuildingState
         {
             curTutorial = 0;
             tutorials[curTutorial].SetActive(true);
-
-            Player.Instance.AddGold(100);
-            startGold = Player.Instance.myGold;
         }
         else if (manager.wave == 1)
         {
@@ -54,6 +51,9 @@ public class IGMBuildingState_T : IGMBuildingState
                 case 2:
                     if (manager.tutoClear)
                     {
+                        Player.Instance.AddGold(100);
+                        startGold = Player.Instance.myGold;
+                        
                         NextTutorial();
                     }
                     break;

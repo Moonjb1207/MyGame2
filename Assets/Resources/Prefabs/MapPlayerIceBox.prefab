@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 2240881192534159605}
   - component: {fileID: 8465936755724388498}
   - component: {fileID: 1037889918288007972}
-  - component: {fileID: 4555832419719071801}
   m_Layer: 12
   m_Name: MapPlayerIceBox
   m_TagString: Untagged
@@ -150,19 +149,10 @@ MonoBehaviour:
   Delay: 0
   Value: 0
   KeepTime: 0
---- !u!135 &4555832419719071801
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464484887366625871}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 3
-  m_Center: {x: 0, y: 0.7, z: 0}
+  DamageTime: 0
+  myEnemy:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &7628867827952849558
 GameObject:
   m_ObjectHideFlags: 0

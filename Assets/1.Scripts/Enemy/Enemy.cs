@@ -193,9 +193,9 @@ public class Enemy : MonoBehaviour, IBattle
 
         if (curHP <= 0 && !dead)
         {
-            curEnemyState.myAnim.SetTrigger("IsDying");
-
             movementState.agent.velocity = Vector3.zero;
+
+            curEnemyState.myAnim.SetTrigger("IsDying");
 
             NextState(deadState);
             dead = true;

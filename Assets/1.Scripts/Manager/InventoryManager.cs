@@ -97,6 +97,13 @@ public class InventoryManager : MonoBehaviour
         myItemDic[itemType].Add(itemName);
     }
 
+    public void EraseWeapons()
+    {
+        myItemDic[ItemType.weapon].Clear();
+        myWeapon = "machete";
+        myItemDic[ItemType.weapon].Add(myWeapon);
+    }
+
     public void AddBuildings(string buildingName)
     {
         if (mybuildingDic.ContainsKey(buildingName))

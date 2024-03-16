@@ -5,12 +5,14 @@ using UnityEngine;
 public class EnemyDeadState : EnemyState
 {
     float eraseTime = 1.0f;
+    float curTime = 0.0f;
 
     public override void EnterState()
     {
         //GetComponent<Collider>().enabled = false;
         DropCoin();
         DropExp();
+        curTime = eraseTime;
     }
 
     public override void UpdateState()
@@ -28,9 +30,9 @@ public class EnemyDeadState : EnemyState
 
         if(myAnim.GetBool("DyingEnd"))
         {
-            eraseTime -= Time.deltaTime;
+            curTime -= Time.deltaTime;
         }
-        if(eraseTime < 0)
+        if(curTime < 0)
         {
             myAnim.SetBool("DyingEnd", false);
             enemy.mySpawn.MyEnemyDead();

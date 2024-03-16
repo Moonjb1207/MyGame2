@@ -24,7 +24,7 @@ public class SettingManager : MonoBehaviour
         if (instance == null)
             instance = this;
 
-        settingDataPath = Application.dataPath + @"gameSettingData.data";
+        settingDataPath = Application.persistentDataPath + @"gameSettingData.data";
 
         CreateSaveFile();
     }

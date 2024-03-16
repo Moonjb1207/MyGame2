@@ -28,6 +28,15 @@ public class BuildingStoreContainer : MonoBehaviour
         LoadBuilding();
     }
 
+    private void Update()
+    {
+        if(WarningManager.Instance.needReset)
+        {
+            LoadBuilding();
+            WarningManager.Instance.needReset = false;
+        }
+    }
+
     public void LoadBuilding()
     {
         if (InventoryManager.Instance == null)

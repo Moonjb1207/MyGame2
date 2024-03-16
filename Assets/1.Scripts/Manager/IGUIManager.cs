@@ -87,7 +87,7 @@ public class IGUIManager : MonoBehaviour
     public void GotoMain()
     {
         Time.timeScale = 1.0f;
-        LoadManager.Instance.ChangeScene("Main");
+        LoadManager.Instance.Change_to_MainScene();
     }
 
     public void OpenSetting()

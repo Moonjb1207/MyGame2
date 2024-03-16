@@ -13,9 +13,8 @@ public class IGMClearState_T : IGMClearState
 
         StageManager.Instance.StageClearSave();
 
-        Time.timeScale = 0.0f;
-
         tutorial.SetActive(true);
+        Time.timeScale = 0.0f;
     }
 
     public override void UpdateState()

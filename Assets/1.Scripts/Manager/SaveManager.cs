@@ -17,7 +17,7 @@ public class SaveManager : MonoBehaviour
         if (instance == null)
             instance = this;
 
-        StageSavefp = Application.dataPath + @"\StageClear.data";
+        StageSavefp = Application.persistentDataPath + @"\StageClear.data";
     }
 
     public void SaveFile<T>(string fpath, T data)

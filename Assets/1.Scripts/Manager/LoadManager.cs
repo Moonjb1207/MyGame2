@@ -30,8 +30,9 @@ public class LoadManager : MonoBehaviour
 
     public void Change_to_MainScene()
     {
+        InventoryManager.Instance.EraseWeapons();
         Time.timeScale = 1.0f;
-        SceneManager.LoadSceneAsync("Main");
+        ChangeScene("Main");
     }
 
     public void ResetDataYes()
@@ -41,15 +42,15 @@ public class LoadManager : MonoBehaviour
         File.Delete(SettingManager.Instance.settingDataPath);
         SettingManager.Instance.CreateSaveFile();
 
-        SceneManager.LoadSceneAsync("Main");
+        ChangeScene("Main");
     }
     public void ResetDataNo()
     {
-        SceneManager.LoadSceneAsync("Main");
+        ChangeScene("Main");
     }
 
     public void Change_to_ResetScene()
     {
-        SceneManager.LoadSceneAsync("Reset");
+        ChangeScene("Reset");
     }
 }
