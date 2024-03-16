@@ -27,6 +27,8 @@ public class IGIceBuilding : IGBuilding
                     enemy.AddDeBuff(new DeBuff(DeBuffType.Slow, KeepTime, Value, DamageTime));
                 }
             }
+
+            curDelay = Delay;
         }
     }
 }

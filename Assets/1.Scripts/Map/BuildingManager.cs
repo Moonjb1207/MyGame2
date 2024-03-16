@@ -26,8 +26,7 @@ public class BuildingManager : MonoBehaviour
         if (instance == null)
             instance = this;
 
-        canBuild = true;
-
+        canBuild = false;
         BuildState = true;
 
         ChangeBuildState();
@@ -159,12 +158,12 @@ public class BuildingManager : MonoBehaviour
     {
         Collider[] cols = Physics.OverlapBox(point, myBox.size, Quaternion.identity, Block);
 
-        canBuild = true;
-
         for (int i = 0; i < InGameManager.Instance.mySpawner.Length; i++)
         {
             if (!InGameManager.Instance.mySpawner[i].CheckPath())
                 canBuild = false;
+            else
+                canBuild = true;
         }
 
         if (cols.Length > 0 || !canBuild)
@@ -182,6 +181,9 @@ public class BuildingManager : MonoBehaviour
         if(BuildState)
         {
             BuildState = !BuildState;
+
+            if(myBox != null)
+                Destroy(myBox.gameObject);
 
             //Camera.main.transform.SetParent(Player.Instance.transform);
 

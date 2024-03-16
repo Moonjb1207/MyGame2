@@ -152,7 +152,7 @@ MonoBehaviour:
   DamageTime: 0
   myEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!1 &7628867827952849558
 GameObject:
   m_ObjectHideFlags: 0
