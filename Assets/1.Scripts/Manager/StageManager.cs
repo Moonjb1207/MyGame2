@@ -48,13 +48,20 @@ public class StageManager : MonoBehaviour
         if (!SaveManager.Instance.IsExist)
         {
             StageClearData data = new StageClearData();
+
             data.isUnlock[0] = true;
             data.isUnlock[1] = true;
-            data.Gold = 0;
-
             for (int i = 2; i < data.isUnlock.Length; i++)
             {
                 data.isUnlock[i] = false;
+            }
+
+            data.Gold = 0;
+
+            data.buildingLevel[0] = EquipmentManager.Instance.buildingData.buildingStats[0].buildingName + "_" + 1;
+            for (int i = 1; i < data.buildingLevel.Length; i++)
+            {
+                data.buildingLevel[i] = EquipmentManager.Instance.buildingData.buildingStats[i].buildingName + "_" + 0;
             }
 
             SaveManager.Instance.SaveFile<StageClearData>(SaveManager.Instance.StageSavefp, data);
@@ -63,6 +70,18 @@ public class StageManager : MonoBehaviour
         }
 
         InventoryManager.Instance.myGold = saveData.Gold;
+
+        string[] buildingInfo = saveData.buildingLevel[0].Split('_');
+
+        InventoryManager.Instance.mybuildingDic.Add(buildingInfo[0], System.Int32.Parse(buildingInfo[1]));
+        InventoryManager.Instance.myBuilding = buildingInfo[0];
+
+        for (int i = 1; i < saveData.buildingLevel.Length; i++)
+        {
+            buildingInfo = saveData.buildingLevel[i].Split('_');
+
+            InventoryManager.Instance.mybuildingDic.Add(buildingInfo[0], System.Int32.Parse(buildingInfo[1]));
+        }
 
         stageMinMax = new Vector2(0, data.stageStats.Length);
 

@@ -320,7 +320,12 @@ MonoBehaviour:
   myNum: 2
   mySpawn: {fileID: 0}
   hpBar: {fileID: 366340864}
+  myColl: {fileID: 0}
+  myRigid: {fileID: 0}
   myBombEffect: {fileID: 4593184484909914552, guid: be88c3cd78a4a324fa7ad82f4e278d03, type: 3}
+  DamageEnemy:
+    serializedVersion: 2
+    m_Bits: 4608
 --- !u!114 &1008042641311427816
 MonoBehaviour:
   m_ObjectHideFlags: 0

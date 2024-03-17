@@ -13,6 +13,9 @@ public class EnemyDeadState : EnemyState
         DropCoin();
         DropExp();
         curTime = eraseTime;
+
+        enemy.myColl.enabled = false;
+        enemy.myRigid.useGravity = false;
     }
 
     public override void UpdateState()

@@ -8,6 +8,8 @@ public class BuildingUpgrade : MonoBehaviour
     public Image Img;
     public string myName;
 
+    StageClearData saveData = new StageClearData();
+
     private void OnEnable()
     {
         //Img.sprite = EquipmentManager.Instance.GetBuildingStat(myName).myImg;
@@ -39,6 +41,15 @@ public class BuildingUpgrade : MonoBehaviour
 
         InventoryManager.Instance.UseGold(UpgradeCost);
         InventoryManager.Instance.mybuildingDic[myName]++;
+
+        saveData = SaveManager.Instance.LoadFile<StageClearData>(SaveManager.Instance.StageSavefp);
+
+        saveData.Gold = InventoryManager.Instance.myGold;
+
+        saveData.buildingLevel[EquipmentManager.Instance.GetBuildingStat(myName).buildingNum]
+            = myName + "_" + InventoryManager.Instance.mybuildingDic[myName];
+
+        SaveManager.Instance.SaveFile(SaveManager.Instance.StageSavefp, saveData);
     }
 
     public void setMyBuilding(string itemName)

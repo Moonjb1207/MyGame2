@@ -32,11 +32,11 @@ public class InventoryManager : MonoBehaviour
         myHelmet = "none_helmet";
         myArmor = "none_armor";
         myWeapon = "machete";
-        myBuilding = "Box";
+        //myBuilding = "Box";
 
         myItemDic[ItemType.weapon].Add(myWeapon);
 
-        mybuildingDic.Add("Box", 1);
+        //mybuildingDic.Add("Box", 1);
     }
 
     private void Start()
@@ -106,7 +106,7 @@ public class InventoryManager : MonoBehaviour
 
     public void AddBuildings(string buildingName)
     {
-        if (mybuildingDic.ContainsKey(buildingName))
+        if (mybuildingDic[buildingName] > 0)
         {
             return;
         }
@@ -127,8 +127,7 @@ public class InventoryManager : MonoBehaviour
 
         for (int i = 0; i < EquipmentManager.Instance.buildingData.buildingStats.Length; i++)
         {
-            if (mybuildingDic.ContainsKey
-                (EquipmentManager.Instance.buildingData.buildingStats[i].buildingName))
+            if (mybuildingDic[(EquipmentManager.Instance.buildingData.buildingStats[i].buildingName)] > 0)
             {
                 buildings.Add(EquipmentManager.Instance.buildingData.buildingStats[i].buildingName);
             }

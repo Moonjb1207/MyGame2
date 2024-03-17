@@ -37,6 +37,8 @@ public class LoadManager : MonoBehaviour
 
     public void ResetDataYes()
     {
+        InventoryManager.Instance.mybuildingDic.Clear();
+
         File.Delete(SaveManager.Instance.StageSavefp);
         StageManager.Instance.CreateSaveFile();
         File.Delete(SettingManager.Instance.settingDataPath);

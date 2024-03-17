@@ -28,6 +28,9 @@ public class Enemy : MonoBehaviour, IBattle
 
     public Image hpBar;
 
+    public Collider myColl;
+    public Rigidbody myRigid;
+
     Renderer[] _allRenderer = null;
 
     protected Renderer[] allRenderer
@@ -48,11 +51,15 @@ public class Enemy : MonoBehaviour, IBattle
         movementState = GetComponentInChildren<EnemyMovementState>();
         attackState = GetComponentInChildren<EnemyAttackState>();
         deadState = GetComponentInChildren<EnemyDeadState>();
+
+        myColl = GetComponent<Collider>();
+        myRigid = GetComponent<Rigidbody>();
     }
 
     private void OnEnable()
     {
-        //GetComponent<Collider>().enabled = true;
+        myColl.enabled = true;
+        myRigid.useGravity = true;
 
         curHP = data.hp;
         hpBar.fillAmount = curHP / data.hp;

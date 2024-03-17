@@ -8,6 +8,8 @@ public class BuildingBuy : MonoBehaviour
     public Image Img;
     public string myName;
 
+    StageClearData saveData = new StageClearData();
+
     private void Awake()
     {
         
@@ -42,6 +44,15 @@ public class BuildingBuy : MonoBehaviour
 
         InventoryManager.Instance.UseGold(BuyCost);
         InventoryManager.Instance.AddBuildings(myName);
+
+        saveData = SaveManager.Instance.LoadFile<StageClearData>(SaveManager.Instance.StageSavefp);
+
+        saveData.Gold = InventoryManager.Instance.myGold;
+
+        saveData.buildingLevel[EquipmentManager.Instance.GetBuildingStat(myName).buildingNum]
+            = myName + "_" + InventoryManager.Instance.mybuildingDic[myName];
+
+        SaveManager.Instance.SaveFile(SaveManager.Instance.StageSavefp, saveData);
     }
 
     public void setMyBuilding(string itemName)

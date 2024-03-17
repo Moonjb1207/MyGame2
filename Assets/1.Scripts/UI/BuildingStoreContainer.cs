@@ -43,10 +43,10 @@ public class BuildingStoreContainer : MonoBehaviour
             return;
 
         List<string> showBuildings = new List<string>();
+
         for(int i = 0; i < EquipmentManager.Instance.buildingData.buildingStats.Length; i++)
         {
-            if (InventoryManager.Instance.mybuildingDic.ContainsKey
-                (EquipmentManager.Instance.buildingData.buildingStats[i].buildingName))
+            if (InventoryManager.Instance.mybuildingDic[EquipmentManager.Instance.buildingData.buildingStats[i].buildingName] > 0)
                 continue;
 
             showBuildings.Add(EquipmentManager.Instance.buildingData.buildingStats[i].buildingName);

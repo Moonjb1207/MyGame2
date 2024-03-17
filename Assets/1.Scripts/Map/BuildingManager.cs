@@ -19,6 +19,8 @@ public class BuildingManager : MonoBehaviour
 
     public bool canBuild;
 
+    public Vector3 prevPoint;
+
     Touch touch;
 
     private void Awake()
@@ -26,7 +28,6 @@ public class BuildingManager : MonoBehaviour
         if (instance == null)
             instance = this;
 
-        canBuild = false;
         BuildState = true;
 
         ChangeBuildState();
@@ -38,24 +39,28 @@ public class BuildingManager : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+
+    }
+
     // Update is called once per frame
     void Update()
     {
-        /*
-        if(Input.GetMouseButtonDown(0))
+#if (UNITY_EDITOR)
+        if (Input.GetMouseButtonDown(0))
         {
             Down();
         }
-        else if(Input.GetMouseButton(0))
-        {
-            Drag();
-        }
-        else if(Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(0))
         {
             Up();
         }
-        */
-
+        else if (Input.GetMouseButton(0))
+        {
+            Drag();
+        }
+#elif (UNITY_IOS || UNITY_ANDROID)
         if(Input.touchCount > 0)
         {
             touch = Input.GetTouch(0);
@@ -73,12 +78,16 @@ public class BuildingManager : MonoBehaviour
                     break;
             }
         }
+#endif
     }
 
     Vector3 GetPointOnGround()
     {
-        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+#if (UNITY_EDITOR)
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+#elif (UNITY_IOS || UNITY_ANDROID)
         Ray ray = Camera.main.ScreenPointToRay(touch.position);
+#endif
         bool hitted = Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, LayerMask.GetMask("Ground"));
 
         if (hitted)
@@ -115,10 +124,8 @@ public class BuildingManager : MonoBehaviour
             return;
         }
 
-
         myBox.canPlaceIndicator.gameObject.SetActive(false);
         myBox.GetComponentInChildren<Collider>().enabled = true;
-        
         myBox.GetComponent<IGBuilding>().SetStat(InventoryManager.Instance.myBuilding);
         Player.Instance.UseGold
             (EquipmentManager.Instance.GetBuildingStat(InventoryManager.Instance.myBuilding).buildingCost);
@@ -131,15 +138,18 @@ public class BuildingManager : MonoBehaviour
         if (myBox == null) return;
 
         Vector3 point = GetPointOnGround();
+        CheckCanPlace(point);
 
         myBox.transform.position = point;
-
-        CheckCanPlace(point);
     }
 
     void Down()
     {
+#if (UNITY_EDITOR)
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+#elif (UNITY_IOS || UNITY_ANDROID)
         if (EventSystem.current.IsPointerOverGameObject(0)) return;
+#endif
 
         GameObject myBoxGb = Instantiate(Resources.Load("Prefabs/MapPlayer" + InventoryManager.Instance.myBuilding) as GameObject);
 
@@ -147,7 +157,6 @@ public class BuildingManager : MonoBehaviour
 
         myBox.GetComponentInChildren<Collider>().enabled = false;
         myBox.canPlaceIndicator.gameObject.SetActive(true);
-
         Vector3 point = GetPointOnGround();
         myBox.transform.position = point;
 
@@ -158,21 +167,21 @@ public class BuildingManager : MonoBehaviour
     {
         Collider[] cols = Physics.OverlapBox(point, myBox.size, Quaternion.identity, Block);
 
+        canBuild = true;
+
         for (int i = 0; i < InGameManager.Instance.mySpawner.Length; i++)
         {
             if (!InGameManager.Instance.mySpawner[i].CheckPath())
                 canBuild = false;
-            else
-                canBuild = true;
         }
 
-        if (cols.Length > 0 || !canBuild)
+        if (cols.Length <= 0 && canBuild)
         {
-            myBox.canPlaceIndicator.material = cantPlaceMaterial;
+            myBox.canPlaceIndicator.material = canPlaceMaterial;
         }
         else
         {
-            myBox.canPlaceIndicator.material = canPlaceMaterial;
+            myBox.canPlaceIndicator.material = cantPlaceMaterial;
         }
     }
 

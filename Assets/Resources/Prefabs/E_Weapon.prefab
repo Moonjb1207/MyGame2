@@ -130,8 +130,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myEnemy:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4608
   LifeTime: 0
   moveSpeed: 0
   Damage: 0
+  KeepTime: 0
+  Value: 0
+  DamageTime: 0
   mySpin: {fileID: 0}
