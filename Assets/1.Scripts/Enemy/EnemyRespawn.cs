@@ -61,9 +61,24 @@ public class EnemyRespawn : MonoBehaviour
 
     public void WaveStart(int stage)
     {
-        respawnCount = StageManager.Instance.data.getStageStat(stage).respawnCount;
-        maxCount = StageManager.Instance.data.getStageStat(stage).maxCount;
-        respawnDelay = StageManager.Instance.data.getStageStat(stage).respawnDelay;
+        StageStat myStageStat;
+
+        if (StageManager.Instance.data.stageStats.Length <= stage)
+        {
+            myStageStat = StageManager.Instance.data.getStageStat_s(stage);
+
+            respawnCount = myStageStat.respawnCount;
+            maxCount = myStageStat.maxCount;
+            respawnDelay = myStageStat.respawnDelay;
+        }
+        else
+        {
+            myStageStat = StageManager.Instance.data.getStageStat(stage);
+
+            respawnCount = myStageStat.respawnCount;
+            maxCount = myStageStat.maxCount;
+            respawnDelay = myStageStat.respawnDelay;
+        }
 
         curCount = 0;
         curDelay = 0;

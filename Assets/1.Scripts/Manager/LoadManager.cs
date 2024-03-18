@@ -31,6 +31,7 @@ public class LoadManager : MonoBehaviour
     public void Change_to_MainScene()
     {
         InventoryManager.Instance.EraseWeapons();
+        StageManager.Instance.stage = 0;
         Time.timeScale = 1.0f;
         ChangeScene("Main");
     }

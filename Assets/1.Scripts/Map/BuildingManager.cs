@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -18,8 +18,6 @@ public class BuildingManager : MonoBehaviour
     public bool BuildState;
 
     public bool canBuild;
-
-    public Vector3 prevPoint;
 
     Touch touch;
 
@@ -114,11 +112,7 @@ public class BuildingManager : MonoBehaviour
 
         CheckCanPlace(point);
 
-        if (cols.Length > 0 
-            || !canBuild 
-            || !Player.Instance.CheckGold
-            (EquipmentManager.Instance.GetBuildingStat(InventoryManager.Instance.myBuilding).buildingCost)
-            )
+        if (cols.Length > 0 || !canBuild)
         {
             Destroy(myBox.gameObject);
             return;
@@ -126,7 +120,7 @@ public class BuildingManager : MonoBehaviour
 
         myBox.canPlaceIndicator.gameObject.SetActive(false);
         myBox.GetComponentInChildren<Collider>().enabled = true;
-        myBox.GetComponent<IGBuilding>().SetStat(InventoryManager.Instance.myBuilding);
+        myBox.GetComponentInChildren<IGBuilding>().SetStat(InventoryManager.Instance.myBuilding);
         Player.Instance.UseGold
             (EquipmentManager.Instance.GetBuildingStat(InventoryManager.Instance.myBuilding).buildingCost);
         
@@ -166,7 +160,7 @@ public class BuildingManager : MonoBehaviour
     void CheckCanPlace(Vector3 point)
     {
         Collider[] cols = Physics.OverlapBox(point, myBox.size, Quaternion.identity, Block);
-
+       
         canBuild = true;
 
         for (int i = 0; i < InGameManager.Instance.mySpawner.Length; i++)
@@ -174,6 +168,9 @@ public class BuildingManager : MonoBehaviour
             if (!InGameManager.Instance.mySpawner[i].CheckPath())
                 canBuild = false;
         }
+
+        if (!Player.Instance.CheckGold((EquipmentManager.Instance.GetBuildingStat(InventoryManager.Instance.myBuilding).buildingCost)))
+            canBuild = false;
 
         if (cols.Length <= 0 && canBuild)
         {

@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour, IBattle
 
     public float curHP;
     public float curDelay;
-    bool dead;
+    public bool dead;
     
     public Transform target;
 
@@ -200,9 +200,10 @@ public class Enemy : MonoBehaviour, IBattle
 
         if (curHP <= 0 && !dead)
         {
-            movementState.agent.velocity = Vector3.zero;
-
             curEnemyState.myAnim.SetTrigger("IsDying");
+
+            if (curEnemyState == movementState)
+                movementState.agent.enabled = false;
 
             NextState(deadState);
             dead = true;

@@ -147,7 +147,9 @@ MonoBehaviour:
   myName: 
   curHP: 0
   Delay: 0
-  SpeedDown: 0
+  Value: 0
+  KeepTime: 0
+  DamageTime: 0
 --- !u!1 &7628867827952849558
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,4 +263,4 @@ NavMeshObstacle:
   m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.009000001, y: 1.131, z: 0}
-  m_TimeToStationary: 0.5
+  m_TimeToStationary: 0

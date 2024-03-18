@@ -42,4 +42,20 @@ public class StageData : ScriptableObject
 
         return stageStat[stage];
     }
+
+    public StageStat getStageStat_s(int stage)
+    {
+        int index = -1;
+        for (int i = 0; i < stageStat.Length; i++)
+        {
+            if (stageStat[i].stage == stage)
+            {
+                index = i;
+            }
+        }
+
+        if (index == -1) return null;
+
+        return stageStat[index];
+    }
 }

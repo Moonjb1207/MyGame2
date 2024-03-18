@@ -93,7 +93,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2240881192534159605}
   - component: {fileID: 8465936755724388498}
-  - component: {fileID: 1037889918288007972}
   m_Layer: 12
   m_Name: MapPlayerIceBox
   m_TagString: Untagged
@@ -132,27 +131,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: {x: 0.7, y: 0.7, z: 0.7}
   canPlaceIndicator: {fileID: 3703201642110241652}
---- !u!114 &1037889918288007972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464484887366625871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1853e81d1c8e35d4fbdbd59904058bff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myName: 
-  curHP: 0
-  Delay: 0
-  Value: 0
-  KeepTime: 0
-  DamageTime: 0
-  myEnemy:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &7628867827952849558
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,6 +144,7 @@ GameObject:
   - component: {fileID: 1052598617310108787}
   - component: {fileID: 7233300462945673909}
   - component: {fileID: 269504905755009064}
+  - component: {fileID: 5475014124722230339}
   m_Layer: 12
   m_Name: default
   m_TagString: Untagged
@@ -266,4 +245,25 @@ NavMeshObstacle:
   m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.009000001, y: 1.131, z: 0}
-  m_TimeToStationary: 0.1
+  m_TimeToStationary: 0
+--- !u!114 &5475014124722230339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7628867827952849558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1853e81d1c8e35d4fbdbd59904058bff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myName: 
+  curHP: 0
+  Delay: 0
+  Value: 0
+  KeepTime: 0
+  DamageTime: 0
+  myEnemy:
+    serializedVersion: 2
+    m_Bits: 256

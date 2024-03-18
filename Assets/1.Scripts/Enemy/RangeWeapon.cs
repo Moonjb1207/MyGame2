@@ -50,7 +50,7 @@ public class RangeWeapon : MonoBehaviour
                     ib?.OnDamage(Damage);
 
                     Player enemy = hit.transform.GetComponent<Player>();
-                    enemy.AddDeBuff(new DeBuff(DeBuffType.Bleeding, KeepTime, Value, DamageTime));
+                    enemy?.AddDeBuff(new DeBuff(DeBuffType.Bleeding, KeepTime, Value, DamageTime));
 
                     EnemyWeaponPool.Instance.EnqueueWeapon(this);
                     gameObject.SetActive(false);

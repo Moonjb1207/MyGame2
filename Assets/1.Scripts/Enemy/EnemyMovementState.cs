@@ -19,7 +19,8 @@ public class EnemyMovementState : EnemyState
 
     public override void EnterState()
     {
-
+        if(agent != null)
+            agent.enabled = true;
     }
 
     public void ChangeMoveSpeed(float v)
@@ -33,6 +34,8 @@ public class EnemyMovementState : EnemyState
 
         if (enemy.target == null)
             return;
+        if (enemy.dead)
+            agent.enabled = false;
 
         float distance = (enemy.target.position - transform.position).magnitude;
         //공격 범위보다 가까우면
@@ -48,7 +51,7 @@ public class EnemyMovementState : EnemyState
             enemy.NextState(enemy.attackState);
             return;
         }
-        else if(distance > enemy.data.attackRange && !myAnim.GetBool("IsAttacking"))//공격 범위보다 멂
+        else if (distance > enemy.data.attackRange && !myAnim.GetBool("IsAttacking"))//공격 범위보다 멂
         {
             Vector2 forward = new Vector2(transform.position.z, transform.position.x);
             Vector2 steeringTarget = new Vector2(agent.steeringTarget.z, agent.steeringTarget.x);

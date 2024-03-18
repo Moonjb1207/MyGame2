@@ -41,6 +41,16 @@ public class StageManager : MonoBehaviour
         SaveManager.Instance.SaveFile(SaveManager.Instance.StageSavefp, saveData);
     }
 
+    public void TutorialStageClear()
+    {
+        saveData = SaveManager.Instance.LoadFile<StageClearData>(SaveManager.Instance.StageSavefp);
+
+        saveData.Gold = InventoryManager.Instance.myGold;
+        saveData.isUnlock[0] = false;
+
+        SaveManager.Instance.SaveFile(SaveManager.Instance.StageSavefp, saveData);
+    }
+
     public void CreateSaveFile()
     {
         saveData = SaveManager.Instance.LoadFile<StageClearData>(SaveManager.Instance.StageSavefp);
@@ -108,6 +118,18 @@ public class StageManager : MonoBehaviour
         else
         {
             play.interactable = false;
+        }
+    }
+    
+    public bool isCanPlay_I()
+    {
+        if (saveData.isUnlock[0])
+        {
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 

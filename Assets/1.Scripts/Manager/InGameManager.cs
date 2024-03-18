@@ -53,6 +53,9 @@ public class InGameManager : MonoBehaviour
             finishState = GetComponent<IGMFinishState_T>();
         if (clearState == null)
             clearState = GetComponent<IGMClearState_T>();
+
+        if (defenseState == null)
+            defenseState = GetComponent<IGMDefenseState_I>();
     }
 
     // Start is called before the first frame update
@@ -61,7 +64,8 @@ public class InGameManager : MonoBehaviour
         //SoundManager.Instance.PlayPlayBGSound();
 
         stage = StageManager.Instance.stage;
-        wave = StageManager.Instance.data.stageStats[stage].wave;
+        //error
+        wave = StageManager.Instance.data.getStageStat_s(stage).wave;
 
         NextState(buildingState);
     }

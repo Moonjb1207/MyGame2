@@ -92,7 +92,7 @@ public class Player : MonoBehaviour, IBattle
         EquipItem(ItemType.armor, InventoryManager.Instance.myArmor);
         EquipItem(ItemType.helmet, InventoryManager.Instance.myHelmet);
 
-        myGold = InventoryManager.Instance.myGold;
+        //myGold = InventoryManager.Instance.myGold;
     }
 
     // Update is called once per frame

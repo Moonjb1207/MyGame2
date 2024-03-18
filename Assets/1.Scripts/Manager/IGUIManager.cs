@@ -37,7 +37,8 @@ public class IGUIManager : MonoBehaviour
         myExp.text = Player.Instance.myExp.ToString();
         needExp.text = Player.Instance.lvexpData.LvExpDatas[Player.Instance.myLevel].needExp.ToString();
 
-        ClearButton.onClick.AddListener(LoadManager.Instance.Change_to_MainScene);
+        if (ClearButton != null)
+            ClearButton.onClick.AddListener(LoadManager.Instance.Change_to_MainScene);
         GameoverButton.onClick.AddListener(LoadManager.Instance.Change_to_MainScene);
         PauseButton.onClick.AddListener(LoadManager.Instance.Change_to_MainScene);
     }

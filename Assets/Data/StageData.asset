@@ -34,3 +34,10 @@ MonoBehaviour:
     respawnDelay: 1
     curDelay: 0
     wave: 5
+  - stage: 99
+    respawnCount: 20
+    maxCount: 10
+    curCount: 0
+    respawnDelay: 1
+    curDelay: 0
+    wave: 1

@@ -13,6 +13,15 @@ public class IGMBuildingState : IGMState
 
         manager.buildButton.interactable = true;
         //building start
+
+        if(StageManager.Instance.stage == 99)
+        {
+            Player.Instance.AddGold(100);
+        }
+        else
+        {
+            Player.Instance.myGold = InventoryManager.Instance.myGold;
+        }
     }
 
     public override void UpdateState()

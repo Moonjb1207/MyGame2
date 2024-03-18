@@ -11,7 +11,8 @@ public class IGMClearState_T : IGMClearState
         Player.Instance.AddGold(500);
         InventoryManager.Instance.myGold += Player.Instance.myGold;
 
-        StageManager.Instance.StageClearSave();
+
+        StageManager.Instance.TutorialStageClear();
 
         tutorial.SetActive(true);
         Time.timeScale = 0.0f;
