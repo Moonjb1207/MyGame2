@@ -8,6 +8,7 @@ public class LoadingText : MonoBehaviour
     TMPro.TMP_Text loadingText;
 
     string[] loadingtexts = new string[4];
+    public GameObject[] RawImage;
 
     float changetext;
     float curtime;
@@ -17,6 +18,16 @@ public class LoadingText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        int rnd = Random.Range(0, 5);
+
+        for (int i = 0; i < RawImage.Length; i++)
+        {
+            RawImage[i].SetActive(false);
+
+            if (rnd == i)
+                RawImage[i].SetActive(true);
+        }
+
         changetext = 0.5f;
         curtime = 0;
         curindex = 0;

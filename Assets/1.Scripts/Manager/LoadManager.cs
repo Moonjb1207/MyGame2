@@ -9,6 +9,8 @@ public class LoadManager : MonoBehaviour
     private static LoadManager instance;
     public static LoadManager Instance => instance;
 
+    public string curScene;
+
     private void Awake()
     {
         if(instance == null)
@@ -18,14 +20,25 @@ public class LoadManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
+    public void ChangecurScene(string scene)
+    {
+        curScene = scene;
+    }
+
     public void ChangeScene(string scene)
     {
         SceneManager.LoadSceneAsync(scene);
     }
 
+    public void LoadScene()
+    {
+        StartCoroutine(LoadingScene(curScene));
+    }
+
     public void GameStart()
     {
-        ChangeScene("PlayGame" + StageManager.Instance.stage);
+        ChangecurScene("PlayGame" + StageManager.Instance.stage);
+        SceneManager.LoadSceneAsync("Loading");
     }
 
     public void Change_to_MainScene()
@@ -33,7 +46,9 @@ public class LoadManager : MonoBehaviour
         InventoryManager.Instance.EraseWeapons();
         StageManager.Instance.stage = 0;
         Time.timeScale = 1.0f;
-        ChangeScene("Main");
+        ChangecurScene("Main");
+
+        SceneManager.LoadSceneAsync("Loading");
     }
 
     public void ResetDataYes()
@@ -55,5 +70,30 @@ public class LoadManager : MonoBehaviour
     public void Change_to_ResetScene()
     {
         ChangeScene("Reset");
+    }
+
+
+    public void FirstLoadScene()
+    {
+        curScene = "Main";
+        StartCoroutine(LoadingScene(curScene));
+    }
+
+    IEnumerator LoadingScene(string scene)
+    {
+        AsyncOperation ao = SceneManager.LoadSceneAsync(scene);
+
+        ao.allowSceneActivation = false;
+
+        while(!ao.isDone)
+        {
+            if (ao.progress >= 0.9f)
+            {
+                yield return new WaitForSeconds(2.0f);
+                ao.allowSceneActivation = true;
+            }
+
+            yield return null;
+        }
     }
 }
