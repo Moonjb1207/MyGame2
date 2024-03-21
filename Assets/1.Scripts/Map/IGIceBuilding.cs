@@ -6,6 +6,7 @@ public class IGIceBuilding : IGBuilding
 {
     float curDelay = 0.0f;
     public LayerMask myEnemy;
+    public GameObject iceEffect;
 
     private void Start()
     {
@@ -18,8 +19,12 @@ public class IGIceBuilding : IGBuilding
 
         if(curDelay < 0.0f)
         {
-            Collider[] list = Physics.OverlapSphere(transform.position, 5.0f, myEnemy);
-            if(list != null)
+            Collider[] list = Physics.OverlapSphere(transform.position, 6.0f, myEnemy);
+
+            GameObject temp = Instantiate(iceEffect);
+            temp.transform.position = transform.position;
+
+            if (list != null)
             {
                 foreach(Collider col in list)
                 {

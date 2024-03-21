@@ -41,8 +41,8 @@ MonoBehaviour:
   - buildingName: IceBox
     buildingHP: 50
     value: 0.8
-    delay: 2
-    keepTime: 4
+    delay: 5
+    keepTime: 3
     damageTime: 0
     cost: 50
     upgradeCost: 60

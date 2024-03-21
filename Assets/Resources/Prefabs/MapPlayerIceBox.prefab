@@ -267,3 +267,4 @@ MonoBehaviour:
   myEnemy:
     serializedVersion: 2
     m_Bits: 256
+  iceEffect: {fileID: 4425129568585013132, guid: f6daf2dc316e4c444949b78bc42b6b2d, type: 3}

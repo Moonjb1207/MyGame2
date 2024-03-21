@@ -309,6 +309,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: e1a847a53d4b67941a486069b98b3d92, type: 2}
   curHP: 0
   curDelay: 0
+  dead: 0
   target: {fileID: 0}
   curEnemyState: {fileID: 0}
   movementState: {fileID: 0}
@@ -319,7 +320,11 @@ MonoBehaviour:
     m_Bits: 512
   myNum: 0
   mySpawn: {fileID: 0}
+  hpBarCanvas: {fileID: 1572688730}
   hpBar: {fileID: 2041240178}
+  myColl: {fileID: 0}
+  myRigid: {fileID: 0}
+  damagedEffect: {fileID: 4553287630450876385, guid: 784e2fc28a6e23044a997960874e11d5, type: 3}
 --- !u!114 &14361788862224628
 MonoBehaviour:
   m_ObjectHideFlags: 0

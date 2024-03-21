@@ -40,8 +40,8 @@ public class Bullet : MonoBehaviour
                 IBattle ib = hit.transform.GetComponent<IBattle>();
                 ib?.OnDamage(Damage);
 
-                BulletPool.Instance.EnqueueBullet(this);
                 gameObject.SetActive(false);
+                BulletPool.Instance.EnqueueBullet(this);
             }
         }
         else

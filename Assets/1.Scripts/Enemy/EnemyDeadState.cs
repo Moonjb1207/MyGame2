@@ -16,6 +16,7 @@ public class EnemyDeadState : EnemyState
 
         enemy.myColl.enabled = false;
         enemy.myRigid.useGravity = false;
+        enemy.hpBarCanvas.SetActive(false);
     }
 
     public override void UpdateState()

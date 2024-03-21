@@ -320,9 +320,11 @@ MonoBehaviour:
     m_Bits: 512
   myNum: 2
   mySpawn: {fileID: 0}
+  hpBarCanvas: {fileID: 1161900719}
   hpBar: {fileID: 366340864}
   myColl: {fileID: 0}
   myRigid: {fileID: 0}
+  damagedEffect: {fileID: 4553287630450876385, guid: 784e2fc28a6e23044a997960874e11d5, type: 3}
   myBombEffect: {fileID: 4593184484909914552, guid: be88c3cd78a4a324fa7ad82f4e278d03, type: 3}
   DamageEnemy:
     serializedVersion: 2

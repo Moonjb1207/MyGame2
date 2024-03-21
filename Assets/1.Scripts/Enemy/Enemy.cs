@@ -26,10 +26,13 @@ public class Enemy : MonoBehaviour, IBattle
 
     [SerializeField] List<DeBuff> debuffList = new List<DeBuff>();
 
+    public GameObject hpBarCanvas;
     public Image hpBar;
 
     public Collider myColl;
     public Rigidbody myRigid;
+
+    public GameObject damagedEffect;
 
     Renderer[] _allRenderer = null;
 
@@ -60,6 +63,7 @@ public class Enemy : MonoBehaviour, IBattle
     {
         myColl.enabled = true;
         myRigid.useGravity = true;
+        hpBarCanvas.SetActive(true);
 
         curHP = data.hp;
         hpBar.fillAmount = curHP / data.hp;
@@ -197,6 +201,9 @@ public class Enemy : MonoBehaviour, IBattle
             curHP -= dmg;
 
         hpBar.fillAmount = curHP / data.hp;
+
+        GameObject temp = Instantiate(damagedEffect);
+        temp.transform.position = transform.position;
 
         if (curHP <= 0 && !dead)
         {

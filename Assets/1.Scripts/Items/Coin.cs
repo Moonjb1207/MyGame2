@@ -23,7 +23,7 @@ public class Coin : MonoBehaviour
         rotate = true;
         rotationSpeed = 10;
         dist = 0.5f;
-        time = 10.0f;
+        time = 30.0f;
         dir = transform.up;
         eating = false;
     }

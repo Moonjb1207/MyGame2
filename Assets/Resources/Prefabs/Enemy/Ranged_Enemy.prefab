@@ -5825,6 +5825,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: c4fcab6ddd949cc4a8a21729afde8e3a, type: 2}
   curHP: 0
   curDelay: 0
+  dead: 0
   target: {fileID: 0}
   curEnemyState: {fileID: 0}
   movementState: {fileID: 0}
@@ -5835,7 +5836,11 @@ MonoBehaviour:
     m_Bits: 512
   myNum: 1
   mySpawn: {fileID: 0}
+  hpBarCanvas: {fileID: 1537474651}
   hpBar: {fileID: 1637653638}
+  myColl: {fileID: 0}
+  myRigid: {fileID: 0}
+  damagedEffect: {fileID: 4553287630450876385, guid: 784e2fc28a6e23044a997960874e11d5, type: 3}
   weaponPrefab: {fileID: 4943655089499265963, guid: 2e98f70bf59d9a14cb9502a893d5bbde, type: 3}
   shootTr: {fileID: 6589496253860346785}
 --- !u!114 &6589496255196540700

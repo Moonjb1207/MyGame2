@@ -8711,6 +8711,7 @@ MonoBehaviour:
     Damage: 0
     helNum: 0
     myImg: {fileID: 0}
+    equipInfo: 
 --- !u!1 &1450051057762742793
 GameObject:
   m_ObjectHideFlags: 0
@@ -11024,6 +11025,8 @@ MonoBehaviour:
   moveJoystick: {fileID: 0}
   rotJoystick: {fileID: 0}
   myGold: 0
+  damagedEffect: {fileID: 4553287630450876385, guid: 784e2fc28a6e23044a997960874e11d5, type: 3}
+  levelupEffect: {fileID: 100006, guid: 3248c2fce724ad243802f120ca0f1a68, type: 3}
   hpBar: {fileID: 479793949}
   hpBarCanvas: {fileID: 1882873048}
 --- !u!54 &1868841215006180969
@@ -28800,6 +28803,7 @@ MonoBehaviour:
     Damage: 0
     armorNum: 0
     myImg: {fileID: 0}
+    equipInfo: 
 --- !u!1 &5216529626064299424
 GameObject:
   m_ObjectHideFlags: 0
@@ -30308,6 +30312,7 @@ MonoBehaviour:
     Damage: 0
     helNum: 0
     myImg: {fileID: 0}
+    equipInfo: 
 --- !u!1 &5476372046602787003
 GameObject:
   m_ObjectHideFlags: 0
@@ -37102,6 +37107,7 @@ MonoBehaviour:
     Damage: 0
     armorNum: 0
     myImg: {fileID: 0}
+    equipInfo: 
 --- !u!1 &6526640773639984228
 GameObject:
   m_ObjectHideFlags: 0
@@ -40148,6 +40154,7 @@ MonoBehaviour:
     Damage: 0
     armorNum: 0
     myImg: {fileID: 0}
+    equipInfo: 
 --- !u!1 &6967891646860511163
 GameObject:
   m_ObjectHideFlags: 0
@@ -42081,6 +42088,7 @@ MonoBehaviour:
     Damage: 0
     armorNum: 0
     myImg: {fileID: 0}
+    equipInfo: 
 --- !u!1 &7284277558582203215
 GameObject:
   m_ObjectHideFlags: 0
@@ -42737,6 +42745,7 @@ MonoBehaviour:
     Damage: 0
     helNum: 0
     myImg: {fileID: 0}
+    equipInfo: 
 --- !u!1 &7426220537793612373
 GameObject:
   m_ObjectHideFlags: 0
@@ -46095,6 +46104,7 @@ MonoBehaviour:
     Damage: 0
     helNum: 0
     myImg: {fileID: 0}
+    equipInfo: 
 --- !u!1 &8024461507725604405
 GameObject:
   m_ObjectHideFlags: 0
@@ -50908,7 +50918,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meleeAttacking:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1868841215006180975}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: MeleeAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   gameOver:
     m_PersistentCalls:
       m_Calls:
@@ -51781,8 +51803,8 @@ MonoBehaviour:
   shootTr: {fileID: 1868841214094561521}
   bulletPrefab: {fileID: -8776923074991913517, guid: 84f31ff2376e75744a5beaf9bcc0ee55, type: 3}
   shootSound: {fileID: 8300000, guid: d1b35ac821812c840ac66b91c3ed9f35, type: 3}
-  angle: 0
-  dirCount: 3
+  angle: 20
+  dirCount: 5
 --- !u!1 &8569127148043772732
 GameObject:
   m_ObjectHideFlags: 0

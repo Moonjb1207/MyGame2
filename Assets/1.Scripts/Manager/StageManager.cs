@@ -57,24 +57,24 @@ public class StageManager : MonoBehaviour
 
         if (!SaveManager.Instance.IsExist)
         {
-            StageClearData data = new StageClearData();
+            StageClearData cdata = new StageClearData();
 
-            data.isUnlock[0] = true;
-            data.isUnlock[1] = true;
-            for (int i = 2; i < data.isUnlock.Length; i++)
+            cdata.isUnlock[0] = true;
+            cdata.isUnlock[1] = true;
+            for (int i = 2; i < cdata.isUnlock.Length; i++)
             {
-                data.isUnlock[i] = false;
+                cdata.isUnlock[i] = false;
             }
 
-            data.Gold = 0;
+            cdata.Gold = 0;
 
-            data.buildingLevel[0] = EquipmentManager.Instance.buildingData.buildingStats[0].buildingName + "_" + 1;
-            for (int i = 1; i < data.buildingLevel.Length; i++)
+            cdata.buildingLevel[0] = EquipmentManager.Instance.buildingData.buildingStats[0].buildingName + "_" + 1;
+            for (int i = 1; i < cdata.buildingLevel.Length; i++)
             {
-                data.buildingLevel[i] = EquipmentManager.Instance.buildingData.buildingStats[i].buildingName + "_" + 0;
+                cdata.buildingLevel[i] = EquipmentManager.Instance.buildingData.buildingStats[i].buildingName + "_" + 0;
             }
 
-            SaveManager.Instance.SaveFile<StageClearData>(SaveManager.Instance.StageSavefp, data);
+            SaveManager.Instance.SaveFile<StageClearData>(SaveManager.Instance.StageSavefp, cdata);
 
             saveData = SaveManager.Instance.LoadFile<StageClearData>(SaveManager.Instance.StageSavefp);
         }

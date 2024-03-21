@@ -22,7 +22,7 @@ MonoBehaviour:
     meleeDamage: 10
     myImg: {fileID: 21300000, guid: a8900e628b785fc46af1f73084c8860b, type: 3}
   - weaponName: colt
-    LifeTime: 4
+    LifeTime: 1
     moveSpeed: 15
     Damage: 5
     shootingDelay: 0.3
@@ -30,7 +30,7 @@ MonoBehaviour:
     meleeDamage: 4
     myImg: {fileID: 21300000, guid: 9bec9d3b9137f464b9ccefc4d1d7ff01, type: 3}
   - weaponName: shotgun
-    LifeTime: 3
+    LifeTime: 1
     moveSpeed: 15
     Damage: 8
     shootingDelay: 0.5
@@ -38,7 +38,7 @@ MonoBehaviour:
     meleeDamage: 4
     myImg: {fileID: 21300000, guid: 59cd3d3a19943b24a9b2da19d81aed40, type: 3}
   - weaponName: m4a1
-    LifeTime: 3
+    LifeTime: 1
     moveSpeed: 20
     Damage: 10
     shootingDelay: 0.2
@@ -46,7 +46,7 @@ MonoBehaviour:
     meleeDamage: 4
     myImg: {fileID: 21300000, guid: a5c3e3ab6e9537d4eb8ad3f8f65674d7, type: 3}
   - weaponName: ak47
-    LifeTime: 3
+    LifeTime: 1
     moveSpeed: 15
     Damage: 15
     shootingDelay: 0.4
@@ -54,7 +54,7 @@ MonoBehaviour:
     meleeDamage: 4
     myImg: {fileID: 21300000, guid: e1666a1c9751a614693646f9772d307a, type: 3}
   - weaponName: aug
-    LifeTime: 3
+    LifeTime: 1
     moveSpeed: 20
     Damage: 12
     shootingDelay: 0.15
@@ -62,7 +62,7 @@ MonoBehaviour:
     meleeDamage: 4
     myImg: {fileID: 21300000, guid: 2e4aee03255ed5441895a5efadb5f251, type: 3}
   - weaponName: famas
-    LifeTime: 2
+    LifeTime: 1
     moveSpeed: 25
     Damage: 10
     shootingDelay: 0.4

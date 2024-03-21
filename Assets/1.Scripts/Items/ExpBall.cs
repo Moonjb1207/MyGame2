@@ -18,7 +18,7 @@ public class ExpBall : MonoBehaviour
     private void OnEnable()
     {
         dist = 0.5f;
-        time = 10.0f;
+        time = 30.0f;
         dir = transform.up;
         eating = false;
     }

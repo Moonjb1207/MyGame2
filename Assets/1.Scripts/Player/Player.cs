@@ -39,6 +39,9 @@ public class Player : MonoBehaviour, IBattle
 
     public int myGold;
 
+    public GameObject damagedEffect;
+    public GameObject levelupEffect;
+
     public Image hpBar;
     public GameObject hpBarCanvas;
 
@@ -237,6 +240,9 @@ public class Player : MonoBehaviour, IBattle
 
         hpBar.fillAmount = curHP / maxHP;
 
+        GameObject temp = Instantiate(damagedEffect);
+        temp.transform.position = transform.position;
+
         if (curHP <= 0 && !myAnim.GetBool("Dying"))
         {
             myAnim.SetTrigger("IsDying");
@@ -283,7 +289,6 @@ public class Player : MonoBehaviour, IBattle
 
         if (curWeapon.stat.Damage == 0)
         {
-            curWeapon.Attack();
             myAnim.SetTrigger("MK_Attacking");
         }
         else
@@ -291,6 +296,11 @@ public class Player : MonoBehaviour, IBattle
             curWeapon.Attack();
             myAnim.SetTrigger("R_Attacking");
         }
+    }
+
+    public void MeleeAttack()
+    {
+        curWeapon.Attack();
     }
 
     //IEnumerator Attacking()
@@ -434,6 +444,9 @@ public class Player : MonoBehaviour, IBattle
     public void LevelUp()
     {
         InventoryManager.Instance.AddItems(EquipmentManager.Instance.weaponData.weaponStats[myLevel - 1].weaponName, ItemType.weapon);
+
+        GameObject temp = Instantiate(levelupEffect);
+        temp.transform.position = transform.position;
 
         curHP = maxHP;
         hpBar.fillAmount = curHP / maxHP;
