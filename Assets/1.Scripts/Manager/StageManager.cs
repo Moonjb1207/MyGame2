@@ -93,7 +93,7 @@ public class StageManager : MonoBehaviour
             InventoryManager.Instance.mybuildingDic.Add(buildingInfo[0], System.Int32.Parse(buildingInfo[1]));
         }
 
-        stageMinMax = new Vector2(0, data.stageStats.Length);
+        stageMinMax = new Vector2(0, data.stageStats.Length - 1);
 
         if(stage >= stageMinMax.y)
         {

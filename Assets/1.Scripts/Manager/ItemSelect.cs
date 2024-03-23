@@ -8,6 +8,7 @@ public class ItemSelect : MonoBehaviour
     public Image Img;
     public string myName;
     public ItemType myType;
+    public TMPro.TMP_Text equiping;
 
     private void Awake()
     {
@@ -23,6 +24,45 @@ public class ItemSelect : MonoBehaviour
     {
         InventoryManager.Instance.Equip(myType, myName);
         Player.Instance?.EquipItem(myType, myName);
+
+        GetComponentInParent<MainEquipmentContainer>().LoadEquipment();
+    }
+
+    public void setMyButton()
+    {
+        if (myType == ItemType.weapon)
+        {
+            if (myName == InventoryManager.Instance.myWeapon)
+            {
+                equiping.text = "ÀåÂø Áß";
+            }
+            else
+            {
+                equiping.text = "Àå Âø";
+            }
+        }
+        else if (myType == ItemType.armor)
+        {
+            if (myName == InventoryManager.Instance.myArmor)
+            {
+                equiping.text = "ÀåÂø Áß";
+            }
+            else
+            {
+                equiping.text = "Àå Âø";
+            }
+        }
+        else if (myType == ItemType.helmet)
+        {
+            if (myName == InventoryManager.Instance.myHelmet)
+            {
+                equiping.text = "ÀåÂø Áß";
+            }
+            else
+            {
+                equiping.text = "Àå Âø";
+            }
+        }
     }
 
     public void setMyItem(string itemName, ItemType itemType)

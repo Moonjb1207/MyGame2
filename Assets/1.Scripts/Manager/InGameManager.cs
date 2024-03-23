@@ -28,6 +28,8 @@ public class InGameManager : MonoBehaviour
     public int stage;
     public int wave;
 
+    public int score;
+
     private void Awake()
     {
         if (instance == null)
@@ -35,6 +37,7 @@ public class InGameManager : MonoBehaviour
 
         mySpawner = GetComponentsInChildren<EnemyRespawn>();
 
+        score = 0;
         spawnerCount = 0;
         gameClear = false;
         tutoClear = false;
@@ -86,5 +89,12 @@ public class InGameManager : MonoBehaviour
 
         curIGState = state;
         curIGState.EnterState();
+    }
+
+    public void AddScore(int s)
+    {
+        score += s;
+
+        IGUIManager.Instance.score.text = score.ToString();
     }
 }

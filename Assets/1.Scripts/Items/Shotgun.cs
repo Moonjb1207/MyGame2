@@ -26,6 +26,8 @@ public class Shotgun : Shooter
             startAngle -= angle;
         }
 
+        SoundManager.Instance.PlayEfSound(shootTr.position, shootSound);
+
         //for(int i = -1; i < 2; i++)
         //{
         //    Bullet bullet = BulletPool.Instance.DequeueBullet();

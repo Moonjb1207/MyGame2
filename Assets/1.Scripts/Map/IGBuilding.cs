@@ -29,7 +29,7 @@ public class IGBuilding : MonoBehaviour, IBattle
 
         if (curHP <= 0)
         {
-            Destroy(GetComponentInParent<GameObject>());
+            Destroy(transform.parent.gameObject);
         }
     }
 

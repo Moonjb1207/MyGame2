@@ -24,6 +24,8 @@ public class Hitscaner : Weapon
         {
             hits[i].collider.GetComponent<IBattle>().OnDamage(stat.Damage);
         }
+
+        SoundManager.Instance.PlayEfSound(shootTr.position, shootSound);
     }
 
     private void OnDrawGizmos()

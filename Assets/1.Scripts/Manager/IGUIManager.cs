@@ -18,6 +18,7 @@ public class IGUIManager : MonoBehaviour
     public TMPro.TMP_Text coin;
     public TMPro.TMP_Text myExp;
     public TMPro.TMP_Text needExp;
+    public TMPro.TMP_Text score;
     public Button ClearButton;
     public Button GameoverButton;
     public Button PauseButton;
@@ -36,6 +37,8 @@ public class IGUIManager : MonoBehaviour
         coin.text = Player.Instance.myGold.ToString();
         myExp.text = Player.Instance.myExp.ToString();
         needExp.text = Player.Instance.lvexpData.LvExpDatas[Player.Instance.myLevel].needExp.ToString();
+
+        InGameManager.Instance.AddScore(0);
 
         if (ClearButton != null)
             ClearButton.onClick.AddListener(LoadManager.Instance.Change_to_MainScene);

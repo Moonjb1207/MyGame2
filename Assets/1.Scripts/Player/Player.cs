@@ -324,6 +324,11 @@ public class Player : MonoBehaviour, IBattle
 
     public void EquipItem(ItemType type, string equipName)
     {
+        if (curWeapon != null)
+            curWeapon.IsAttacking = false;
+        if (myAnim != null)
+            myAnim.SetBool("IsAttacking", false);
+
         switch(type)
         {
             case ItemType.weapon:
@@ -444,6 +449,8 @@ public class Player : MonoBehaviour, IBattle
     public void LevelUp()
     {
         InventoryManager.Instance.AddItems(EquipmentManager.Instance.weaponData.weaponStats[myLevel - 1].weaponName, ItemType.weapon);
+
+        EquipItem(ItemType.weapon, EquipmentManager.Instance.weaponData.weaponStats[myLevel - 1].weaponName);
 
         GameObject temp = Instantiate(levelupEffect);
         temp.transform.position = transform.position;

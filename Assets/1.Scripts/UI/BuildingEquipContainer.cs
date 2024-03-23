@@ -41,6 +41,7 @@ public class BuildingEquipContainer : MonoBehaviour
             {
                 buildings[i].setMyBuilding(showBuildings[i]);
                 buildings[i].setMyImg();
+                buildings[i].setMyButton();
                 buildings[i].gameObject.SetActive(true);
             }
             for (int i = showBuildings.Count; i < buildings.Count; i++)
@@ -54,6 +55,7 @@ public class BuildingEquipContainer : MonoBehaviour
             {
                 buildings[i].setMyBuilding(showBuildings[i]);
                 buildings[i].setMyImg();
+                buildings[i].setMyButton();
                 buildings[i].gameObject.SetActive(true);
             }
             for (int i = buildings.Count; i < showBuildings.Count; i++)
@@ -61,6 +63,8 @@ public class BuildingEquipContainer : MonoBehaviour
                 buildings.Add(Instantiate(buildingEquip));
                 buildings[i].setMyBuilding(showBuildings[i]);
                 buildings[i].setMyImg();
+                buildings[i].setMyButton();
+                buildings[i].transform.SetParent(transform);
             }
         }
     }

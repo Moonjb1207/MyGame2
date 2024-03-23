@@ -12,6 +12,7 @@ public class EnemyDeadState : EnemyState
         //GetComponent<Collider>().enabled = false;
         DropCoin();
         DropExp();
+        InGameManager.Instance.AddScore(10);
         curTime = eraseTime;
 
         enemy.myColl.enabled = false;

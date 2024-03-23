@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public LayerMask myBlock;
     public LayerMask myEnemy;
     public float LifeTime;
     public float moveSpeed;
@@ -33,12 +34,15 @@ public class Bullet : MonoBehaviour
 
         float delta = moveSpeed * Time.deltaTime;
 
-        if (Physics.Raycast(ray, out RaycastHit hit, delta, myEnemy))
+        if (Physics.Raycast(ray, out RaycastHit hit, delta, myBlock))
         {
-            if ((myEnemy & 1 << hit.transform.gameObject.layer) != 0)
+            if ((myBlock & 1 << hit.transform.gameObject.layer) != 0)
             {
-                IBattle ib = hit.transform.GetComponent<IBattle>();
-                ib?.OnDamage(Damage);
+                if ((myEnemy & 1 << hit.transform.gameObject.layer) != 0)
+                {
+                    IBattle ib = hit.transform.GetComponent<IBattle>();
+                    ib?.OnDamage(Damage);
+                }
 
                 gameObject.SetActive(false);
                 BulletPool.Instance.EnqueueBullet(this);

@@ -7,6 +7,7 @@ public class BuildingEquip : MonoBehaviour
 {
     public Image Img;
     public string myName;
+    public TMPro.TMP_Text equiping;
 
     private void Awake()
     {
@@ -21,6 +22,8 @@ public class BuildingEquip : MonoBehaviour
     public void EquipBuilding()
     {
         InventoryManager.Instance.EquipBuilding(myName);
+
+        GetComponentInParent<BuildingEquipContainer>().LoadBuilding();
     }
 
     public void setMyBuilding(string itemName)
@@ -31,6 +34,18 @@ public class BuildingEquip : MonoBehaviour
     public void setMyImg()
     {
         Img.sprite = EquipmentManager.Instance.GetBuildingStat(myName).myImg;
+    }
+
+    public void setMyButton()
+    {
+        if (myName == InventoryManager.Instance.myBuilding)
+        {
+            equiping.text = "ÀåÂø Áß";
+        }
+        else
+        {
+            equiping.text = "Àå Âø";
+        }
     }
 
     public void ShowInfo()
