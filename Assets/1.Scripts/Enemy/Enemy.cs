@@ -181,14 +181,14 @@ public class Enemy : MonoBehaviour, IBattle
             case DeBuffType.Burn:
                 foreach (Renderer ren in allRenderer)
                 {
-                    ren.material.SetColor("_Color", new Color(255f, 165f, 0f));
+                    ren.material.SetColor("_Color", Color.red);
                 }
                 break;
 
             case DeBuffType.Bleeding:
                 foreach (Renderer ren in allRenderer)
                 {
-                    ren.material.SetColor("_Color", Color.red);
+                    ren.material.SetColor("_Color", Color.magenta);
                 }
                 break;
         }

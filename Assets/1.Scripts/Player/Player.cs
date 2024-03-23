@@ -287,7 +287,7 @@ public class Player : MonoBehaviour, IBattle
     {
         if (myAnim.GetBool("IsAttacking") || curWeapon.IsAttacking) return;
 
-        if (curWeapon.stat.Damage == 0)
+        if (curWeapon.stat.meleeDamage > 0)
         {
             myAnim.SetTrigger("MK_Attacking");
         }
@@ -324,11 +324,6 @@ public class Player : MonoBehaviour, IBattle
 
     public void EquipItem(ItemType type, string equipName)
     {
-        if (curWeapon != null)
-            curWeapon.IsAttacking = false;
-        if (myAnim != null)
-            myAnim.SetBool("IsAttacking", false);
-
         switch(type)
         {
             case ItemType.weapon:
@@ -341,6 +336,7 @@ public class Player : MonoBehaviour, IBattle
                     {
                         curWeapon = weapons[i];
                         curWeapon.gameObject.SetActive(true);
+                        InventoryManager.Instance.myWeapon = equipName;
                         meleeDamage = curWeapon.stat.meleeDamage;
                         break;
                     }
@@ -356,6 +352,7 @@ public class Player : MonoBehaviour, IBattle
                     {
                         curArmor = armors[i];
                         curArmor.gameObject.SetActive(true);
+                        InventoryManager.Instance.myArmor = equipName;
                         break;
                     }
                 }
@@ -370,12 +367,18 @@ public class Player : MonoBehaviour, IBattle
                     {
                         curHelmet = helmets[i];
                         curHelmet.gameObject.SetActive(true);
+                        InventoryManager.Instance.myHelmet = equipName;
                         ChangeHelmet();
                         break;
                     }
                 }
                 break;
         }
+
+        if (curWeapon != null)
+            curWeapon.IsAttacking = false;
+        if (myAnim != null)
+            myAnim.SetBool("IsAttacking", false);
     }
 
     public void ChangeHelmet()
@@ -407,6 +410,11 @@ public class Player : MonoBehaviour, IBattle
     {
         myExp += exp;
 
+        if (myLevel >= lvexpData.LvExpDatas.Length - 1)
+        {
+            return;
+        }
+
         if (myExp >= lvexpData.LvExpDatas[myLevel].needExp)
         {
             if (myLevel == lvexpData.LvExpDatas.Length - 1)
@@ -418,7 +426,6 @@ public class Player : MonoBehaviour, IBattle
             myExp = 0;
             myExp += remain;
 
-            myLevel++;
             LevelUp();
         }
 
@@ -448,6 +455,8 @@ public class Player : MonoBehaviour, IBattle
 
     public void LevelUp()
     {
+        myLevel++;
+
         InventoryManager.Instance.AddItems(EquipmentManager.Instance.weaponData.weaponStats[myLevel - 1].weaponName, ItemType.weapon);
 
         EquipItem(ItemType.weapon, EquipmentManager.Instance.weaponData.weaponStats[myLevel - 1].weaponName);

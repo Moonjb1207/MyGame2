@@ -12,6 +12,11 @@ public class Hitscaner : Weapon
 
     public override void Attack()
     {
+        StartCoroutine(shootingBullets(stat.shootingCount, stat.shootingDelay));
+    }
+
+    public void Shooting()
+    {
         SoundManager.Instance.PlayEfSound(shootTr.position, shootSound);
 
         if (Physics.Raycast(shootTr.position, transform.forward, out RaycastHit hit, atkRange, layerMask))
@@ -20,12 +25,22 @@ public class Hitscaner : Weapon
         }
 
         RaycastHit[] hits = Physics.RaycastAll(shootTr.position, transform.forward, atkRange, layerMask);
-        for(int i = 0; i < hits.Length; i++)
+        for (int i = 0; i < hits.Length; i++)
         {
             hits[i].collider.GetComponent<IBattle>().OnDamage(stat.Damage);
         }
+    }
 
-        SoundManager.Instance.PlayEfSound(shootTr.position, shootSound);
+    public IEnumerator shootingBullets(int count, float delay)
+    {
+        IsAttacking = true;
+        while (count != 0)
+        {
+            count--;
+            Shooting();
+            yield return new WaitForSeconds(delay);
+        }
+        IsAttacking = false;
     }
 
     private void OnDrawGizmos()
