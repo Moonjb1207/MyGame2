@@ -8,6 +8,16 @@ public class IGIceBuilding : IGBuilding
     public LayerMask myEnemy;
     public GameObject iceEffect;
 
+    public override void SetStat(string name)
+    {
+        myName = name;
+        curHP = EquipmentManager.Instance.GetBuildingStat(myName).buildingHP;
+        Delay = EquipmentManager.Instance.GetBuildingStat(myName).delay;
+        Value = EquipmentManager.Instance.GetBuildingStat(myName).value + (InventoryManager.Instance.mybuildingDic[myName] - 1) / 10;
+        KeepTime = EquipmentManager.Instance.GetBuildingStat(myName).keepTime;
+        DamageTime = EquipmentManager.Instance.GetBuildingStat(myName).damageTime;
+    }
+
     private void Start()
     {
         curDelay = Delay;

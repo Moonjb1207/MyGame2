@@ -11,7 +11,7 @@ public class IGBuilding : MonoBehaviour, IBattle
     public float KeepTime;
     public float DamageTime;
 
-    public void SetStat(string name)
+    public virtual void SetStat(string name)
     {
         myName = name;
         curHP = EquipmentManager.Instance.GetBuildingStat(myName).buildingHP
@@ -22,7 +22,7 @@ public class IGBuilding : MonoBehaviour, IBattle
         DamageTime = EquipmentManager.Instance.GetBuildingStat(myName).damageTime;
     }
 
-    public void OnDamage(float dmg)
+    public virtual void OnDamage(float dmg)
     {
         if (curHP > 0)
             curHP -= dmg;

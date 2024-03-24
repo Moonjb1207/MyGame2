@@ -74,8 +74,45 @@ public class StageManager : MonoBehaviour
                 cdata.buildingLevel[i] = EquipmentManager.Instance.buildingData.buildingStats[i].buildingName + "_" + 0;
             }
 
-            SaveManager.Instance.SaveFile<StageClearData>(SaveManager.Instance.StageSavefp, cdata);
+            SaveManager.Instance.SaveFile(SaveManager.Instance.StageSavefp, cdata);
 
+            saveData = SaveManager.Instance.LoadFile<StageClearData>(SaveManager.Instance.StageSavefp);
+        }
+
+        if (SaveManager.Instance.IsExist)
+        {
+            StageClearData cdata = new StageClearData();
+
+            if (saveData.isUnlock.Length != data.stageStats.Length)
+            {
+                int i = 0;
+
+                for (; i < saveData.isUnlock.Length - 2; i++)
+                {
+                    cdata.isUnlock[i] = saveData.isUnlock[i];
+                }
+                for (; i < cdata.isUnlock.Length; i++)
+                {
+                    cdata.isUnlock[i] = false;
+                }
+                cdata.isUnlock[i] = saveData.isUnlock[saveData.isUnlock.Length - 1];
+            }
+
+            if (saveData.buildingLevel.Length != EquipmentManager.Instance.buildingData.buildingStats.Length)
+            {
+                int i = 0;
+
+                for (; i < saveData.buildingLevel.Length; i++)
+                {
+                    cdata.buildingLevel[i] = saveData.buildingLevel[i];
+                }
+                for (; i < cdata.buildingLevel.Length; i++)
+                {
+                    cdata.buildingLevel[i] = EquipmentManager.Instance.buildingData.buildingStats[i].buildingName + "_" + 0;
+                }
+            }
+
+            SaveManager.Instance.SaveFile(SaveManager.Instance.StageSavefp, cdata);
             saveData = SaveManager.Instance.LoadFile<StageClearData>(SaveManager.Instance.StageSavefp);
         }
 
