@@ -51,3 +51,17 @@ MonoBehaviour:
     myImg: {fileID: 21300000, guid: 55c4ef4b02a48ac45933480ea8b4b662, type: 3}
     buildingInfo: "\uC5BC\uC74C \uBC15\uC2A4, \uC8FC\uC704 \uBAAC\uC2A4\uD130\uB97C
       \uC5BC\uB9B0\uB2E4."
+  - buildingName: FlameBarrel
+    buildingHP: 10
+    value: 1
+    delay: 80
+    keepTime: 2
+    damageTime: 0
+    cost: 100
+    upgradeCost: 200
+    buildingCost: 40
+    buildingNum: 3
+    myImg: {fileID: 21300000, guid: 6680558db65ac624c8b1a87777145fde, type: 3}
+    buildingInfo: "\uAE30\uB984\uD1B5, \uB370\uBBF8\uC9C0\uB97C \uC785\uC73C\uBA74
+      \uD3ED\uBC1C\uC744 \uC77C\uC73C\uCF1C \uC8FC\uC704\uC5D0 \uB370\uBBF8\uC9C0\uB97C
+      \uC900\uB2E4."

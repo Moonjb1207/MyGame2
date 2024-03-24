@@ -83,33 +83,42 @@ public class StageManager : MonoBehaviour
         {
             StageClearData cdata = new StageClearData();
 
+            cdata.Gold = saveData.Gold;
+
             if (saveData.isUnlock.Length != data.stageStats.Length)
             {
-                int i = 0;
-
-                for (; i < saveData.isUnlock.Length - 2; i++)
+                for (int i = 0; i < saveData.isUnlock.Length - 2; i++)
                 {
                     cdata.isUnlock[i] = saveData.isUnlock[i];
                 }
-                for (; i < cdata.isUnlock.Length; i++)
+                for (int i = saveData.isUnlock.Length - 2; i < data.stageStats.Length - 1; i++)
                 {
                     cdata.isUnlock[i] = false;
                 }
-                cdata.isUnlock[i] = saveData.isUnlock[saveData.isUnlock.Length - 1];
+
+                cdata.isUnlock[cdata.isUnlock.Length - 1] = saveData.isUnlock[saveData.isUnlock.Length - 1];
+
+                cdata.buildingLevel = saveData.buildingLevel;
+            }
+            else
+            {
+                cdata.isUnlock = saveData.isUnlock;
             }
 
             if (saveData.buildingLevel.Length != EquipmentManager.Instance.buildingData.buildingStats.Length)
             {
-                int i = 0;
-
-                for (; i < saveData.buildingLevel.Length; i++)
+                for (int i = 0; i < saveData.buildingLevel.Length; i++)
                 {
                     cdata.buildingLevel[i] = saveData.buildingLevel[i];
                 }
-                for (; i < cdata.buildingLevel.Length; i++)
+                for (int i = saveData.buildingLevel.Length; i < EquipmentManager.Instance.buildingData.buildingStats.Length; i++)
                 {
                     cdata.buildingLevel[i] = EquipmentManager.Instance.buildingData.buildingStats[i].buildingName + "_" + 0;
                 }
+            }
+            else
+            {
+                cdata.buildingLevel = saveData.buildingLevel;
             }
 
             SaveManager.Instance.SaveFile(SaveManager.Instance.StageSavefp, cdata);
