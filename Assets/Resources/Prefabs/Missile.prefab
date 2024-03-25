@@ -50,10 +50,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myEnemy:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 16640
+  myBlock:
+    serializedVersion: 2
+    m_Bits: 22784
   LifeTime: 0
   moveSpeed: 0
   Damage: 0
+  DamageTime: 0
+  KeepTime: 0
+  Value: 0
   expEffect: {fileID: 2433282508537954060, guid: e548f19bc9bfd4e41bf6f7a216c3ac6a, type: 3}
 --- !u!33 &2311561692777981721
 MeshFilter:

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Missile : MonoBehaviour
 {
     public LayerMask myEnemy;
+    public LayerMask myBlock;
     public float LifeTime;
     public float moveSpeed;
     public float Damage;
@@ -24,7 +25,7 @@ public class Missile : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if((myEnemy & 1 << other.gameObject.layer) != 0)
+        if((myBlock & 1 << other.gameObject.layer) != 0)
         {
             StopAllCoroutines();
             Collider[] list = Physics.OverlapSphere(transform.position + new Vector3(0, 0, 0.5f), 5.0f, myEnemy);

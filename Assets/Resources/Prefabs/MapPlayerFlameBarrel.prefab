@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 255744359571926967}
   - component: {fileID: 4866518851265769306}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: MapPlayerFlameBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: {x: 0.7, y: 0.7, z: 0.7}
-  canPlaceIndicator: {fileID: 3703201642110241652, guid: b0f17faf35a30ff4c95cee9baec03947, type: 3}
+  canPlaceIndicator: {fileID: 4354020525104452470}
 --- !u!1 &1321252765945139485
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 2425206744748036523}
   - component: {fileID: 9052691732438763770}
   - component: {fileID: 4354020525104452470}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,12 +140,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5379158056727369101}
+  - component: {fileID: 5396251728342764962}
   - component: {fileID: 232603674679984617}
   - component: {fileID: 5386595591359984573}
   - component: {fileID: 5396251728342764961}
   - component: {fileID: 5396251728342764963}
-  - component: {fileID: 5396251728342764962}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Flamable_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,6 +167,19 @@ Transform:
   m_Father: {fileID: 255744359571926967}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5396251728342764962
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5382327435802130173}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00884802, y: 0.012061439, z: 0.00884801}
+  m_Center: {x: -0.000004793983, y: -0.000004914822, z: -0.0000040468294}
 --- !u!114 &232603674679984617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,16 +268,3 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0
---- !u!65 &5396251728342764962
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5382327435802130173}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.00884802, y: 0.012061439, z: 0.00884801}
-  m_Center: {x: -0.000004793983, y: -0.000004914822, z: -0.0000040468294}

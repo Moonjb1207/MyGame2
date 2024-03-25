@@ -16,7 +16,7 @@ public class BombEnemy : Enemy
 
     public void BombAttack()
     {
-        Collider[] list = Physics.OverlapSphere(transform.position, 4.0f, DamageEnemy);
+        Collider[] list = Physics.OverlapSphere(transform.position, 5.0f, DamageEnemy);
 
         if (list != null)
         {

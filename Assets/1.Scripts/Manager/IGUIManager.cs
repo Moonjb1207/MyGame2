@@ -14,6 +14,7 @@ public class IGUIManager : MonoBehaviour
     public GameObject PauseUI;
     public GameObject GameoverUI;
     public GameObject SettingUI;
+    public GameObject HelpUI;
 
     public TMPro.TMP_Text coin;
     public TMPro.TMP_Text myExp;
@@ -102,5 +103,15 @@ public class IGUIManager : MonoBehaviour
     public void CloseSetting()
     {
         SettingUI.SetActive(false);
+    }
+
+    public void OpenHelp()
+    {
+        HelpUI.SetActive(true);
+    }
+
+    public void CloseHelp()
+    {
+        HelpUI.SetActive(false);
     }
 }

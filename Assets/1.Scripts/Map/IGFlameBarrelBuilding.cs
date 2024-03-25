@@ -24,7 +24,7 @@ public class IGFlameBarrelBuilding : IGBuilding
 
         if (curHP <= 0)
         {
-            Collider[] list = Physics.OverlapSphere(transform.position, 6.0f, myEnemy);
+            Collider[] list = Physics.OverlapSphere(transform.position, 4.0f, myEnemy);
 
             if (list != null)
             {

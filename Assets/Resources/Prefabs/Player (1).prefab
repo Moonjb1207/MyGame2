@@ -50338,7 +50338,7 @@ MonoBehaviour:
   atkRange: 10
   layerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 16640
   shootSound: {fileID: 8300000, guid: 0e2277d5bd487194ea8f19007765e655, type: 3}
 --- !u!1 &8569127146437426611
 GameObject:
