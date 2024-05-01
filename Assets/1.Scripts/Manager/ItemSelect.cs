@@ -109,6 +109,6 @@ public class ItemSelect : MonoBehaviour
             aE = EquipmentManager.Instance.GetHelmetStat(myName).equipInfo;
         }
 
-        InfoUI.Instance.setMyInfo(name, ability, aE, cost);
+        InvenInfoUI.Instance?.setMyInfo(name, ability, aE, cost);
     }
 }

@@ -55,6 +55,6 @@ public class BuildingEquip : MonoBehaviour
         string aE = EquipmentManager.Instance.GetBuildingStat(myName).buildingInfo;
         string cost = "";
 
-        InfoUI.Instance?.setMyInfo(name, ability, aE, cost);
+        InvenInfoUI.Instance?.setMyInfo(name, ability, aE, cost);
     }
 }

@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class InfoUI : MonoBehaviour
 {
-    private static InfoUI instance;
-    public static InfoUI Instance => instance;
+    //private static InfoUI instance;
+    //public static InfoUI Instance => instance;
+
+
 
     public TMPro.TMP_Text nameInfo;
     public TMPro.TMP_Text abilityInfo;
@@ -17,8 +19,8 @@ public class InfoUI : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-            instance = this;
+        //if (instance == null)
+        //    instance = this;
 
         myMainImg = transform.GetChild(0);
     }
